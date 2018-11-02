@@ -3,7 +3,7 @@ import "./header.css";
 // import ReactDOM from "react-dom";
 // import Input from "@material-ui/core/Input";
 // import InputLabel from '@material-ui/core/InputLabel';
-import Icon from '@material-ui/core/Icon';
+import Icon from "@material-ui/core/Icon";
 
 class Header extends React.Component {
   constructor(props) {
@@ -21,14 +21,14 @@ class Header extends React.Component {
     return (
       <div className="header-wrapper">
         <form className="headerInputCntr">
-        <Icon className={classNames(classes.icon, 'fas fa-map-pin')} />
+          <Icon className={classNames(classes.icon, "fas fa-map-pin")} />
           <input
             type="text"
             placeholder=" Your Location"
             value={this.state.value}
             onChange={event => this.handleChange(event)}
           />
-          <Icon className={classNames(classes.icon, 'fas fa-arrow-right')} />
+          <Icon className={classNames(classes.icon, "fas fa-arrow-right")} />
           <input
             type="text"
             placeholder=" Going To?"
