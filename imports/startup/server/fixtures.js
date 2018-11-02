@@ -1,12 +1,12 @@
 import { Meteor } from "meteor/meteor";
-import { Accounts } from "meteor/accounts-base";
+import { UsersInfo } from "../../api/usersInfo/usersInfo";
 
 Meteor.startup(() => {
-  if (Meteor.users.find().count() === 0) {
-    Accounts.createUser({
-      name: "Brock",
-      email: "m@wise.com",
-      password: "password",
+  console.log(UsersInfo.find().count());
+
+  if (UsersInfo.find().count() === 0) {
+    UsersInfo.insert({
+      id: "default",
       driver: false,
       passenger: false,
       driverInfo: {
@@ -32,9 +32,3 @@ Meteor.startup(() => {
     });
   }
 });
-
-if (Meteor.isServer) {
-  Meteor.publish("Meteor.users", function usersPublication() {
-    return Users.find();
-  });
-}
