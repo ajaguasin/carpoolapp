@@ -10,6 +10,7 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "@material-ui/core": "^3.3.2",
+    "bcrypt": "^3.0.2",
     "final-form": "^4.10.0",
     "meteor-node-stubs": "^0.4.1",
     "react": "^16.6.0",

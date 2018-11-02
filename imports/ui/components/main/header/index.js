@@ -4,7 +4,8 @@ import React from "react";
 // import InputLabel from '@material-ui/core/InputLabel';
 import Icon from "@material-ui/core/Icon";
 import { withStyles } from "@material-ui/core/styles";
-import headerstyles from "./headerstyles";
+import styles from "./styles";
+import SimpleMenu from '../menu'
 
 class Header extends React.Component {
   constructor(props) {
@@ -22,6 +23,9 @@ class Header extends React.Component {
 
     return (
       <div className={classes.headerWrapper}>
+      <div className={classes.menuDiv}>
+      <SimpleMenu />
+      </div>
         <form className={classes.headerInputCntr}>
           {/* <Icon className={`${classes.fas} `} /> */}
           {/* ${classes.fa-map-pin} */}
@@ -46,4 +50,4 @@ class Header extends React.Component {
   }
 }
 
-export default withStyles(headerstyles)(Header);
+export default withStyles(styles)(Header);
