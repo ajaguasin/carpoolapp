@@ -1,21 +1,11 @@
-import React, { Fragment } from "react";
-import AccountsUIWrapper from "./components/AccountsWrapper";
-import Map from "./components/main/Map";
-import SimpleMenu from "./components/main/SimpleMenu";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "../client/routes";
 
 const App = () => (
-  <div className="app-wrapper">
-    {/* <div className="login-wrapper">
-      <AccountsUIWrapper />
-    </div> */}
-
-    <SimpleMenu />
-    <div>
-      <h1>Welcome to Meteor!</h1>
-      <p>PHINCHIK</p>
-    </div>
-    <Map />
-  </div>
+  <Router>
+    <Routes />
+  </Router>
 );
 
 export default App;
