@@ -7,6 +7,7 @@ const App = () => (
     </div> */}
     <div>
       <h1>Welcome to Meteor!</h1>
+      <p>PHINCHIK</p>
     </div>
   </div>
 );
