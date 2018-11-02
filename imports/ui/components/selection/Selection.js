@@ -7,8 +7,12 @@ import styles from "./styles";
 class SelectButton extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      driver: false,
+      passenger: false
+    };
   }
+
   render() {
     const { classes } = this.props;
     return (
