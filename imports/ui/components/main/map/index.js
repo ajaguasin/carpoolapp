@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactMapGL from "react-map-gl";
 import { withStyles } from "@material-ui/core";
-import styles from "./mapstyles";
+import styles from "./styles";
 
 const TOKEN =
   "pk.eyJ1IjoiYWphZ3Vhc2luIiwiYSI6ImNqbnllYW5yNTJheDAzcm1vdXFxOHJoMWwifQ.ntYdMe4rfbmQ-7OkbQuBMw";
