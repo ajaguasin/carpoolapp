@@ -1,0 +1,19 @@
+.headerInputCntr {
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+}
+
+.header-wrapper {
+  background-color: #252553;
+  height: 100px;
+  display: flex;
+  Justify-content: center;
+  align-items: center;
+}
+
+input {
+  height: 25px;
+  border: none;
+  margin: 5px;
+}
