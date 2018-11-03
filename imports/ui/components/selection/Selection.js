@@ -12,6 +12,13 @@ class SelectButton extends React.Component {
       passenger: false
     };
   }
+  // componentDidMount = () => {
+  //   Meteor.call()
+  // }
+
+  // onClick = () => {
+  //   Meteor.call('onClick')
+  // }
 
   render() {
     const { classes } = this.props;

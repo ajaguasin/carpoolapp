@@ -6,7 +6,7 @@ export default class Select extends Component {
     return (
       <div>
         <UsersInfoContext.Consumer>
-          <Selection />
+          {({ allUserInfo }) => <Selection allUserInfo={allUserInfo} />}
         </UsersInfoContext.Consumer>
       </div>
     );
