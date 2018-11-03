@@ -2,8 +2,6 @@ import { Meteor } from "meteor/meteor";
 import { UsersInfo } from "../../api/usersInfo/usersInfo";
 
 Meteor.startup(() => {
-  console.log(UsersInfo.find().count());
-
   if (UsersInfo.find().count() === 0) {
     UsersInfo.insert({
       id: "default",
