@@ -16,7 +16,14 @@ class Map extends Component {
     }
   };
 
+  // componentDidMount() {
+  //   const userMarker = new mapboxgl.Marker()
+  // .setLngLat([49, -123])
+  // .addTo(map);
+  // }
+
   render() {
+    console.log("map/index.js props :", this.props);
     const { classes } = this.props;
     return (
       <div className={classes.mapContainer}>
