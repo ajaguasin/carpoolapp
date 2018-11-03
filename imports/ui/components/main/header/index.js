@@ -5,7 +5,8 @@ import React from "react";
 import Icon from "@material-ui/core/Icon";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
-import SimpleMenu from '../menu'
+import SimpleMenu from '../menu';
+
 
 class Header extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class Header extends React.Component {
     this.setState({ value: event.target.value });
   }
 
+
   render() {
     const { classes } = this.props;
 
@@ -27,8 +29,6 @@ class Header extends React.Component {
       <SimpleMenu />
       </div>
         <form className={classes.headerInputCntr}>
-          {/* <Icon className={`${classes.fas} `} /> */}
-          {/* ${classes.fa-map-pin} */}
           <input
             className={classes.input}
             type="text"
@@ -36,7 +36,6 @@ class Header extends React.Component {
             value={this.state.value}
             onChange={event => this.handleChange(event)}
           />
-          {/* <Icon className={`${fas} ${fa - arrow - right}`} /> */}
           <input
             className={classes.input}
             type="text"

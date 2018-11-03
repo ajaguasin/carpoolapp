@@ -10,6 +10,10 @@ const styles = theme => ({
 
   },
 
+  icon: {
+    margin: theme.spacing.unit * 2,
+  },
+
   headerWrapper: {
     backgroundColor: "#252553",
     height: "100px",
