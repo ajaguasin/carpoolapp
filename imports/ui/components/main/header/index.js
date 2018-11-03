@@ -5,45 +5,51 @@ import React from "react";
 import Icon from "@material-ui/core/Icon";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
-import SimpleMenu from '../menu'
+import SimpleMenu from "../menu";
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: "" };
-    this.handleChange = this.handleChange.bind(this);
+    this.textInput = React.createRef();
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
+  handleSubmit = e => {
+    e.preventDefault();
+    let location = this.textInput.current.value;
+    console.log(location);
+
+    if (location.value) {
+      Meteor.call("usersInfo.handleSubmit");
+      location.value = "";
+    }
+  };
 
   render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.headerWrapper}>
-      <div className={classes.menuDiv}>
-      <SimpleMenu />
-      </div>
-        <form className={classes.headerInputCntr}>
-          {/* <Icon className={`${classes.fas} `} /> */}
-          {/* ${classes.fa-map-pin} */}
+        <div className={classes.menuDiv}>
+          <SimpleMenu />
+        </div>
+        <form
+          className={classes.headerInputCntr}
+          onSubmit={e => this.handleSubmit(e)}
+        >
           <input
             className={classes.input}
             type="text"
             placeholder=" Your Location"
-            value={this.state.value}
-            onChange={event => this.handleChange(event)}
+            ref={this.textInput}
           />
-          {/* <Icon className={`${fas} ${fa - arrow - right}`} /> */}
-          <input
+          {/* <input
             className={classes.input}
             type="text"
             placeholder=" Going To?"
             value={this.state.value}
             onChange={event => this.handleChange(event)}
-          />
+          /> */}
         </form>
       </div>
     );
