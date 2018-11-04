@@ -7,9 +7,9 @@ export const UsersInfoContext = React.createContext();
 
 class UsersInfoProvider extends Component {
   render() {
-    const { allUserInfo } = this.props;
+    const { allUserInfo, myUserInfo } = this.props;
     return (
-      <UsersInfoContext.Provider value={{ allUserInfo }}>
+      <UsersInfoContext.Provider value={{ allUserInfo, myUserInfo }}>
         {this.props.children}
       </UsersInfoContext.Provider>
     );
@@ -19,6 +19,7 @@ class UsersInfoProvider extends Component {
 export default withTracker(() => {
   Meteor.subscribe("usersInfo");
   return {
-    allUserInfo: UsersInfo.find({}).fetch()
+    allUserInfo: UsersInfo.find({}).fetch(),
+    myUserInfo: UsersInfo.find({ id: Meteor.userId() }).fetch()
   };
 })(UsersInfoProvider);

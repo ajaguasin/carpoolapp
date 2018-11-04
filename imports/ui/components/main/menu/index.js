@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core";
 import styles from "./styles";
 
@@ -37,7 +38,9 @@ class SimpleMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClose}>Switch Roles</MenuItem>
+          <MenuItem onClick={this.handleClose}>
+            <Link to="/select">Switch Roles</Link>
+          </MenuItem>
           <MenuItem onClick={this.handleClose}>Logout</MenuItem>
         </Menu>
       </div>

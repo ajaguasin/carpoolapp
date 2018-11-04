@@ -3,12 +3,24 @@
  */
 
 import { Mongo } from "meteor/mongo";
+export const UsersInfo = new Mongo.Collection("usersInfo");
 
 /**
  *
  * Methods
  *
  */
-Meteor.methods({});
-
-export const UsersInfo = new Mongo.Collection("usersInfo");
+Meteor.methods({
+  "usersInfo.handleSubmit"() {
+    if (UsersInfo.driver || UsersInfo.passenger === true) {
+      UsersInfo.update(users._id, {
+        $set: {
+          currentLocation: {
+            long: this.current.value,
+            lat: this.current.value
+          }
+        }
+      });
+    }
+  }
+});
