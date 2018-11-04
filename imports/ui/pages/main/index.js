@@ -10,7 +10,9 @@ export default class Main extends Component {
       <div>
         <Header />
         <UsersInfoContext.Consumer>
-          {({ allUserInfo }) => <Map allUserInfo={allUserInfo} />}
+          {({ allUserInfo, myUserInfo }) => (
+            <Map allUserInfo={allUserInfo} myUserInfo={myUserInfo} />
+          )}
         </UsersInfoContext.Consumer>
         <Footer />
       </div>
