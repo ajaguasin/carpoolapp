@@ -12,13 +12,17 @@ class SelectButton extends React.Component {
       passenger: false
     };
   }
-  // componentDidMount = () => {
-  //   Meteor.call()
-  // }
+  componentDidMount = () => {
+    if (driver && passenger === true) {
+      this.setState({ driver: false, passenger: false });
+    } else {
+      return false;
+    }
+  };
 
-  // onClick = () => {
-  //   Meteor.call('onClick')
-  // }
+  onClick = () => {
+    Meteor.call("onClick");
+  };
 
   render() {
     const { classes } = this.props;
@@ -26,15 +30,21 @@ class SelectButton extends React.Component {
       <Grid className={classes.buttons}>
         <h2>Are you a:</h2>
         <div>
-          <Button variant="contained" className={classes.driver}>
-            Driver
-          </Button>
+          <Link to="/main">
+            <Button variant="contained" className={classes.driver}>
+              Driver
+            </Button>
+          </Link>
+
           <p>You drive a passenger going in the same direction</p>
         </div>
         <div>
-          <Button variant="contained" className={classes.passenger}>
-            Passenger
-          </Button>
+          <Link to="/main">
+            <Button variant="contained" className={classes.passenger}>
+              Passenger
+            </Button>
+          </Link>
+
           <p>You carpool with a driver going in the same direction</p>
         </div>
       </Grid>

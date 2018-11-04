@@ -9,6 +9,10 @@ import { Mongo } from "meteor/mongo";
  * Methods
  *
  */
-Meteor.methods({});
+Meteor.methods({
+  "UsersInfo.onClick"() {
+    if (driver || passenger === !true) return true;
+  }
+});
 
 export const UsersInfo = new Mongo.Collection("usersInfo");
