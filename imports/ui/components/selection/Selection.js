@@ -3,35 +3,35 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import styles from "./styles";
+import { Link } from "react-router-dom";
 
 class SelectButton extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      driver: false,
-      passenger: false
-    };
   }
-  componentDidMount = () => {
-    if (driver && passenger === true) {
-      this.setState({ driver: false, passenger: false });
-    } else {
-      return false;
-    }
+
+  driverToggle = myUserInfo => {
+    Meteor.call("usersInfo.driverToggle", myUserInfo);
   };
 
-  onClick = () => {
-    Meteor.call("onClick");
+  passengerToggle = myUserInfo => {
+    Meteor.call("usersInfo.passengerToggle", myUserInfo);
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, myUserInfo } = this.props;
+    console.log("Expected undefined", myUserInfo);
+    myUserInfo && console.log(myUserInfo);
     return (
       <Grid className={classes.buttons}>
         <h2>Are you a:</h2>
         <div>
           <Link to="/main">
-            <Button variant="contained" className={classes.driver}>
+            <Button
+              onClick={() => this.driverToggle(myUserInfo)}
+              variant="contained"
+              className={classes.driver}
+            >
               Driver
             </Button>
           </Link>
@@ -40,7 +40,11 @@ class SelectButton extends React.Component {
         </div>
         <div>
           <Link to="/main">
-            <Button variant="contained" className={classes.passenger}>
+            <Button
+              onClick={() => this.passengerToggle(myUserInfo)}
+              variant="contained"
+              className={classes.passenger}
+            >
               Passenger
             </Button>
           </Link>
