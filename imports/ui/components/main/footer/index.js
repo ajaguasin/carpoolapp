@@ -2,6 +2,7 @@ import React from "react";
 import ProfileCard from "../../profilecard/index";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
+import { Link } from "react-router-dom";
 
 class Footer extends React.Component {
   render() {
@@ -15,7 +16,9 @@ class Footer extends React.Component {
           </span>
         </div>
         <p>Your ride details:</p>
+        <Link to="/profile">
         <ProfileCard />
+        </Link>
         <button className={classes.button}>Cancel Ride</button>
       </div>
     );

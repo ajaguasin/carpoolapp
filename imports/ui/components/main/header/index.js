@@ -1,55 +1,75 @@
 import React from "react";
-// import ReactDOM from "react-dom";
-// import Input from "@material-ui/core/Input";
-// import InputLabel from '@material-ui/core/InputLabel';
-import Icon from "@material-ui/core/Icon";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import SimpleMenu from "../menu";
+import landmarks from "../map/marker/landmarks";
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
-    this.textInput = React.createRef();
+    this.state = {};
+    // this.textInput = React.createRef();
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
-    let location = this.textInput.current.value;
-    console.log(location);
+  // handleChange = e => {
+  //   this.setState({
+  //     [e.target.currentLocation.lat]: e.target.value
+  //   });
+  // };
 
-    if (location.value) {
-      Meteor.call("usersInfo.handleSubmit");
-      location.value = "";
-    }
-  };
+  // onSubmit = e => {
+  //   e.preventDefault();
+  //   const form = {
+  //     name: this.state.currentLocation.lat,
+  //     email: this.state.currentLocation.long
+  //   };
+  //   database.push(form);
+  //   this.setState({
+  //     lat: "",
+  //     long: ""
+  //   });
+  // };
+
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   let location = this.textInput.current.value;
+  //   console.log(location);
+
+  //   if (location.value) {
+  //     Meteor.call("usersInfo.handleSubmit");
+  //     location.value = "";
+  //   }
+  // };
+
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  //   this.setState({ value: this.element.value });
+  // }
 
   render() {
     const { classes } = this.props;
-
+    ("");
     return (
       <div className={classes.headerWrapper}>
         <div className={classes.menuDiv}>
           <SimpleMenu />
         </div>
-        <form
-          className={classes.headerInputCntr}
-          onSubmit={e => this.handleSubmit(e)}
-        >
+
+        <form className={classes.headerInputCntr}>
           <input
             className={classes.input}
             type="text"
             placeholder=" Your Location"
-            ref={this.textInput}
+            onChange={e => this.handleChange(e)}
           />
-          {/* <input
-            className={classes.input}
-            type="text"
-            placeholder=" Going To?"
-            value={this.state.value}
-            onChange={event => this.handleChange(event)}
-          /> */}
+          <select className={classes.input}>
+            <option selected disabled>
+              Choose Destination
+            </option>
+            {landmarks.map(landmark => (
+              <option>{landmark.name}</option>
+            ))}
+          </select>
         </form>
       </div>
     );
