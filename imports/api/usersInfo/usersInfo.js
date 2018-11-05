@@ -11,6 +11,26 @@ export const UsersInfo = new Mongo.Collection("usersInfo");
  *
  */
 Meteor.methods({
+  "usersInfo.driverToggle"(myUserInfo) {
+    UsersInfo.update(
+      { id: this.userId },
+      {
+        $set: {
+          driver: true
+        }
+      }
+    );
+  },
+  "usersInfo.passengerToggle"() {
+    UsersInfo.update(
+      { id: this.userId },
+      {
+        $set: {
+          passenger: true
+        }
+      }
+    );
+  },
   "usersInfo.handleSubmit"() {
     if (UsersInfo.driver || UsersInfo.passenger === true) {
       UsersInfo.update(users._id, {
