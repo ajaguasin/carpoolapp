@@ -11,16 +11,15 @@ export const UsersInfo = new Mongo.Collection("usersInfo");
  *
  */
 Meteor.methods({
-  "usersInfo.handleSubmit"() {
-    if (UsersInfo.driver || UsersInfo.passenger === true) {
-      UsersInfo.update(users._id, {
+  "usersInfo.handleSubmit"(coordinates) {
+      UsersInfo.update({id: users._id}, {
         $set: {
+          driverInfo: {
           currentLocation: {
-            long: this.current.value,
-            lat: this.current.value
+            long: coordinates.lng
           }
-        }
+        }}
       });
-    }
+    
   }
 });
