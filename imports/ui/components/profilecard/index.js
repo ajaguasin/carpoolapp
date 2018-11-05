@@ -7,13 +7,13 @@ import Typography from "@material-ui/core/Typography";
 import styles from "./styles";
 // import Gravatar from "react-gravatar";
 
-const ProfileCard = ({ classes, data }) => {
+const ProfileCard = ({ classes, allUserInfo }) => {
   return (
     <Card className={classes.card}>
       <CardContent className={classes.footerMetaWrapper}>
         {/* <CardHeader
             avatar={
-              <Gravatar className={classes.avatar} email={data.users.email} />
+              <Gravatar className={classes.avatar} email={user.email} />
             }
           /> */}
         <img
@@ -22,7 +22,7 @@ const ProfileCard = ({ classes, data }) => {
         />
         <div className={classes.footerMeta}>
           <Typography component="h2" className={classes.p}>
-            Einer Lim
+          Einer Lim
           </Typography>
           <Typography component="h2" className={classes.p}>
             Email: einer@einer.com
