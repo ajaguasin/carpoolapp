@@ -6,7 +6,9 @@ class HomePage extends Component {
   render() {
     return (
       <UsersInfoContext.Consumer>
-        {({ allUserInfo }) => <LoginForm allUserInfo={allUserInfo} />}
+        {({ allUserInfo, loading }) => (
+          <LoginForm allUserInfo={allUserInfo} loading={loading} />
+        )}
       </UsersInfoContext.Consumer>
     );
   }

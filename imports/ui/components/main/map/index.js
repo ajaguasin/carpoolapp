@@ -44,32 +44,36 @@ class Map extends Component {
     );
   };
 
-  renderMypin = myUserInfo => {
-    // const { myUserInfo } = this.props;
-    // console.log("myUserInfo", ...myUserInfo);
-    // let lng = { ...myUserInfo };
-    console.log(myUserInfo[0] && myUserInfo[0].lat);
+  renderDestpin = myUserInfo => {
+    console.log(myUserInfo);
     return (
-      myUserInfo[0] && (
-        <Marker
-          key="myLocation"
-          longitude={myUserInfo[0].lng}
-          latitude={myUserInfo[0].lat}
-          // longitude={-123.1145}
-          // latitude={49.2628}
-        >
-          <Pin size={15} myPin={true} />
-        </Marker>
-      )
+      <Marker
+        key="myDestination"
+        longitude={myUserInfo[0].destination.long}
+        latitude={myUserInfo[0].destination.lat}
+      >
+        <Pin size={15} myPin={true} />
+      </Marker>
     );
+  };
+  renderCurrpin = myUserInfo => {
+    console.log("updated");
+    // return (
+    //   myUserInfo[0].currentLocation.lat && (
+    //     <Marker
+    //       key="myLocation"
+    //       longitude={myUserInfo[0].currentLocation.long}
+    //       latitude={myUserInfo[0].currentLocation.lat}
+    //     >
+    //       <Pin size={15} myPin={true} current={true} />
+    //     </Marker>
+    //   )
+    // );
   };
 
   render() {
-    const { myUserInfo } = this.props;
+    const { myUserInfo, classes, loading } = this.props;
 
-    console.log("map/index.js props :", this.props);
-    console.log(myUserInfo);
-    const { classes } = this.props;
     return (
       <div className={classes.mapContainer}>
         <ReactMapGL
@@ -97,7 +101,8 @@ class Map extends Component {
             );
           })}
           {this.renderPopup()}
-          {/* {myUserInfo && this.renderMypin(myUserInfo)} */}
+          {!loading && this.renderDestpin(myUserInfo)}
+          {!loading && this.renderCurrpin(myUserInfo)}
         </ReactMapGL>
       </div>
     );
