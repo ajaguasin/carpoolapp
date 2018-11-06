@@ -3,6 +3,11 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import SimpleMenu from "../menu";
 import landmarks from "../map/marker/landmarks";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faStroopwafel);
 
 class Header extends React.Component {
   constructor(props) {
@@ -38,13 +43,13 @@ class Header extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.headerWrapper}>
+        <div>
+          Favorite Food: <FontAwesomeIcon icon="stroopwafel" />
+        </div>
         <div className={classes.menuDiv}>
           <SimpleMenu />
         </div>
-        <img
-          alt="company's logo"
-          src='/images/Logo_top.png'
-        />
+        <img alt="company's logo" src="/images/Logo_top.png" />
         <form className={classes.headerInputCntr}>
           <div className={classes.currentLocation}>
             <input
