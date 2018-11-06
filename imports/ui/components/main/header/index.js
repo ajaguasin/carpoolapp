@@ -43,7 +43,6 @@ class Header extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.headerWrapper}>
-        
         <div className={classes.menuDiv}>
           <SimpleMenu />
         </div>
@@ -59,7 +58,11 @@ class Header extends React.Component {
               type="text"
               placeholder=" Your Location"
             />
-            <FontAwesomeIcon icon="search-location" onClick={() => this.getLocation()} className={classes.locationButton} />
+            <FontAwesomeIcon
+              icon="search-location"
+              onClick={() => this.getLocation()}
+              className={classes.locationButton}
+            />
           </div>
           <select
             className={classes.select}
