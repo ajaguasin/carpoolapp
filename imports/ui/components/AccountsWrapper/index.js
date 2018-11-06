@@ -19,6 +19,11 @@ export default class AccountsUIWrapper extends Component {
     Blaze.remove(this.view); // Clean up Blaze view
   }
   render() {
-    return <span ref="container" />; // Render a placeholder
+    return (
+      <React.Fragment>
+        <h1>click me</h1>
+        <span ref="container" />
+      </React.Fragment>
+    ); // Render a placeholder
   }
 }

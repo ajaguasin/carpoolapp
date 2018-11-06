@@ -18,7 +18,7 @@ const myPinStyle = {
 
 export default class Pin extends Component {
   render() {
-    const { size = 20, onClick, myPin } = this.props;
+    const { size = 20, onClick, myPin, current } = this.props;
 
     return (
       <svg
