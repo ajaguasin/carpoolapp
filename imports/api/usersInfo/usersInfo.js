@@ -39,7 +39,15 @@ Meteor.methods({
       {
         $set: {
           driver: false,
-          passenger: false
+          passenger: false,
+          currentLocation: {
+            long: "",
+            lat: ""
+          },
+          destination: {
+            long: "",
+            lat: ""
+          }
         }
       }
     );
