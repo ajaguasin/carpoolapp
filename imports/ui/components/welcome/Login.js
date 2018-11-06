@@ -1,26 +1,39 @@
 import React, { Component } from "react";
 import { Form, Field } from "react-final-form";
 import "./styles.css";
-import { withStyles } from "@material-ui/core/styles";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Input from "@material-ui/core/Input";
-import Button from "@material-ui/core/Button";
 import AccountsUIWrapper from "../AccountsWrapper";
+import { UsersInfo } from "../../../api/usersInfo/usersInfo";
 
 class LoginForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      showPassword: false
-    };
+  constructor(props) {
+    super(props);
+  }
+
+  insertInfo = () => {
+    console.log("test");
+    let meteorUser = Accounts.userId();
+    let userinfoId = this.props.allUserInfo.filter(
+      user => user.id === meteorUser
+    );
+
+    if (userinfoId.length === 0) {
+      Meteor.call("usersInfo.insertMethod", meteorUser);
+    }
+  };
+
+  componentDidMount() {
+    this.insertInfo();
   }
 
   render() {
+    console.log("this is the one", this.props.allUserInfo);
+    console.log("userID", Accounts.userId());
     return (
       <div className="app-wrapper">
         <div className="login-wrapper">
           <AccountsUIWrapper />
+
+          {/* <button onClick={() => this.insertInfo()}>click</button> */}
         </div>
       </div>
     );

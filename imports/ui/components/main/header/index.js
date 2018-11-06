@@ -1,55 +1,54 @@
 import React from "react";
-// import ReactDOM from "react-dom";
-// import Input from "@material-ui/core/Input";
-// import InputLabel from '@material-ui/core/InputLabel';
-import Icon from "@material-ui/core/Icon";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import SimpleMenu from "../menu";
+import landmarks from "../map/marker/landmarks";
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
-    this.textInput = React.createRef();
+    // this.state = {};
+    this.destSelect = React.createRef();
   }
 
-  handleSubmit = e => {
+  handleChange = e => {
     e.preventDefault();
-    let location = this.textInput.current.value;
-    console.log(location);
+    let location = this.destSelect.current.value;
+    console.log(">>>>>>> VANESSA", location);
 
-    if (location.value) {
-      Meteor.call("usersInfo.handleSubmit");
-      location.value = "";
-    }
+    let result = landmarks.filter(data => data.name === location);
+    console.log(result[0].DD.lng)
+
+     Meteor.call("usersInfo.handleSubmit", result[0].DD);
+      console.log('meteor call', result[0].DD)
+  
   };
 
   render() {
     const { classes } = this.props;
-
+    ("");
     return (
       <div className={classes.headerWrapper}>
         <div className={classes.menuDiv}>
           <SimpleMenu />
         </div>
-        <form
-          className={classes.headerInputCntr}
-          onSubmit={e => this.handleSubmit(e)}
-        >
+
+        <form className={classes.headerInputCntr}>
           <input
             className={classes.input}
             type="text"
             placeholder=" Your Location"
-            ref={this.textInput}
           />
-          {/* <input
+          <select
             className={classes.input}
-            type="text"
-            placeholder=" Going To?"
-            value={this.state.value}
-            onChange={event => this.handleChange(event)}
-          /> */}
+            onChange={e => this.handleChange(e)}
+            ref={this.destSelect}
+          >
+            <option value>Choose Destination</option>
+            {landmarks.map(landmark => (
+              <option>{landmark.name}</option>
+            ))}
+          </select>
         </form>
       </div>
     );
