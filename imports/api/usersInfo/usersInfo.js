@@ -10,48 +10,58 @@ export const UsersInfo = new Mongo.Collection("usersInfo");
  * Methods
  *
  */
-Meteor.methods({  
-  
+Meteor.methods({
   "usersInfo.driverToggle"(myUserInfo) {
-  UsersInfo.update(
-    { id: this.userId },
-    {
-      $set: {
-        driver: true
-      }
-    }
-  );
-},
-
-"usersInfo.passengerToggle"() {
-  UsersInfo.update(
-    { id: this.userId },
-    {
-      $set: {
-        passenger: true
-      }
-    }
-  );
-},
-
-"usersInfo.handleSubmit"(coordinates) {
-  console.log(coordinates)
-  UsersInfo.update({id: this.userId}, 
-    { $set: {
-        driverInfo: {
-        currentLocation: {
-          long: coordinates.lng,
-          lat: coordinates.lat
+    UsersInfo.update(
+      { id: this.userId },
+      {
+        $set: {
+          driver: true
         }
-       }
       }
-    })
+    );
+  },
+
+  "usersInfo.passengerToggle"() {
+    UsersInfo.update(
+      { id: this.userId },
+      {
+        $set: {
+          passenger: true
+        }
+      }
+    );
+  },
+
+  "usersInfo.handleSubmit"(coordinates) {
+    console.log(coordinates);
+    UsersInfo.update(
+      { id: this.userId },
+      {
+        $set: {
+          driverInfo: {
+            currentLocation: {
+              long: coordinates.lng,
+              lat: coordinates.lat
+            }
+          }
+        }
+      }
+    );
   },
   "usersInfo.insertMethod"(userId) {
     UsersInfo.insert({
       id: userId,
       driver: false,
-      passenger: false
+      passenger: false,
+      currentLocation: {
+        long: null,
+        lat: null
+      },
+      destination: {
+        long: null,
+        lat: null
+      }
     });
   }
 });
