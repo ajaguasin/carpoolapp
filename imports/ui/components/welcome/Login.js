@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
-import AccountsUIWrapper from "../AccountsWrapper";
+import AccountsUIWrapper from "../accountsWrapper";
 
 class LoginForm extends Component {
   constructor(props) {

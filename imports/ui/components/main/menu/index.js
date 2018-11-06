@@ -21,7 +21,9 @@ class SimpleMenu extends React.Component {
   };
 
   // handleClose = () => {
+  //   // this.setState({ anchorEl: null });
   //   Meteor.logout();
+  //   alert("logged out!!");
   // };
 
   resetStatus = myUserInfo => {
@@ -53,7 +55,9 @@ class SimpleMenu extends React.Component {
               Switch Roles
             </Link>
           </MenuItem>
-          <MenuItem onClick={() => Meteor.logout()}>Logout</MenuItem>
+          <MenuItem onClick={() => Meteor.logout()}>
+            <Link to="/welcome">Logout</Link>
+          </MenuItem>
         </Menu>
       </div>
     );
