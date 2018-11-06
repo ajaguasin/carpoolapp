@@ -29,14 +29,28 @@ class Header extends React.Component {
   };
 
   getLocation = () => {
-    navigator.geolocation.getCurrentPosition(success => {
-      console.log(success);
-      const myLocation = {
-        lat: success.coords.latitude,
-        lng: success.coords.longitude
-      };
-      Meteor.call("usersInfo.getLocation", myLocation);
-    });
+    // navigator.geolocation.getCurrentPosition(success => {
+    //   console.log(success);
+    //   const myLocation = {
+    //     lat: success.coords.latitude,
+    //     lng: success.coords.longitude
+    //   };
+    //   Meteor.call("usersInfo.getLocation", myLocation);
+    // });
+
+    navigator.geolocation.watchPosition(
+      success => {
+        const myLocation = {
+          lat: success.coords.latitude,
+          lng: success.coords.longitude
+        };
+        Meteor.call("usersInfo.getLocation", myLocation);
+      },
+      err => console.log(err),
+      {
+        enableHighAccuracy: true
+      }
+    );
   };
 
   render() {
