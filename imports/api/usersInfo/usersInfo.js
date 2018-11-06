@@ -39,11 +39,22 @@ Meteor.methods({
       { id: this.userId },
       {
         $set: {
-          driverInfo: {
-            currentLocation: {
+            destination: {
               long: coordinates.lng,
               lat: coordinates.lat
             }
+          }
+      }
+    );
+  },
+  "usersInfo.getLocation"(coords) {
+    UsersInfo.update(
+      { id: this.userId },
+      {
+        $set: {
+          currentLocation: {
+            long: coords.lng,
+            lat: coords.lat
           }
         }
       }

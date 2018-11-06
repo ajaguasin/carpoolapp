@@ -97,7 +97,7 @@ class Map extends Component {
             );
           })}
           {this.renderPopup()}
-          {myUserInfo && this.renderMypin(myUserInfo)}
+          {/* {myUserInfo && this.renderMypin(myUserInfo)} */}
         </ReactMapGL>
       </div>
     );
