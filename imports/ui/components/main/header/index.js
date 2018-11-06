@@ -3,6 +3,11 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import SimpleMenu from "../menu";
 import landmarks from "../map/marker/landmarks";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearchLocation } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faSearchLocation);
 
 class Header extends React.Component {
   constructor(props) {
@@ -57,7 +62,8 @@ class Header extends React.Component {
         </div>
         <img
           alt="company's logo"
-          src="../../../../../public/images/Logo_top.png"
+          src="/images/Logo @3x.png"
+          className={classes.logo}
         />
         <form className={classes.headerInputCntr}>
           <div className={classes.currentLocation}>
@@ -66,12 +72,14 @@ class Header extends React.Component {
               type="text"
               placeholder=" Your Location"
             />
-            <button type="button" onClick={() => this.getLocation()}>
-              Get Location
-            </button>
+            <FontAwesomeIcon
+              icon="search-location"
+              onClick={() => this.getLocation()}
+              className={classes.locationButton}
+            />
           </div>
           <select
-            className={classes.input}
+            className={classes.select}
             onChange={e => this.handleChange(e)}
             ref={this.destSelect}
           >

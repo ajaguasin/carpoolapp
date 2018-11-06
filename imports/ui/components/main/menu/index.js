@@ -5,6 +5,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core";
 import styles from "./styles";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faBars);
 
 class SimpleMenu extends React.Component {
   state = {
@@ -17,11 +22,16 @@ class SimpleMenu extends React.Component {
 
   handleClose = () => {
     this.setState({ anchorEl: null });
+    Meteor.logout();
+  };
+
+  resetStatus = myUserInfo => {
+    Meteor.call("usersInfo.resetStatus", myUserInfo);
   };
 
   render() {
     const { anchorEl } = this.state;
-    const { classes } = this.props;
+    const { classes, myUserInfo } = this.props;
 
     return (
       <div className={classes.menuContainer}>
@@ -30,8 +40,9 @@ class SimpleMenu extends React.Component {
           aria-haspopup="true"
           onClick={this.handleClick}
         >
-          Menu
+          <FontAwesomeIcon className={classes.icon} icon="bars" />
         </Button>
+
         <Menu
           id="simple-menu"
           anchorEl={anchorEl}
@@ -39,9 +50,11 @@ class SimpleMenu extends React.Component {
           onClose={this.handleClose}
         >
           <MenuItem onClick={this.handleClose}>
-            <Link to="/select">Switch Roles</Link>
+            <Link onClick={() => this.resetStatus(myUserInfo)} to="/select">
+              Switch Roles
+            </Link>
           </MenuItem>
-          <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+          <MenuItem onClick={this.handleClose()}>Logout</MenuItem>
         </Menu>
       </div>
     );

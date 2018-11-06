@@ -11,7 +11,6 @@ class LoginForm extends Component {
     console.log("inside method", allUserInfo);
 
     let arr = allUserInfo.filter(e => e.id === Meteor.userId());
-    // console.log(arr);
     if (arr.length === 0) {
       Meteor.call("usersInfo.insertMethod", Meteor.userId());
     }
@@ -22,11 +21,8 @@ class LoginForm extends Component {
     !loading && console.log(allUserInfo);
     return (
       <div className="app-wrapper">
-        {/* <div className="login-wrapper"> */}
         <AccountsUIWrapper />
         {!loading && this.insertInfo(allUserInfo)}
-        {/* <button onClick={() => this.insertInfo()}>click</button> */}
-        {/* </div> */}
       </div>
     );
   }
