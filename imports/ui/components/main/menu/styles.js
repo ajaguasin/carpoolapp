@@ -1,6 +1,7 @@
 const styles = theme => ({
-  menuContainer: {
-    backgroundColor: "papayawhip"
+  icon: {
+    color: "white",
+    fontSize: "35px"
   }
 });
 
