@@ -33,6 +33,18 @@ Meteor.methods({
     );
   },
 
+  "usersInfo.resetStatus"() {
+    UsersInfo.update(
+      { id: this.userId },
+      {
+        $set: {
+          driver: false,
+          passenger: false
+        }
+      }
+    );
+  },
+
   "usersInfo.handleSubmit"(coordinates) {
     console.log(coordinates);
     UsersInfo.update(
@@ -47,6 +59,21 @@ Meteor.methods({
       }
     );
   },
+
+  "usersInfo.getLocation"(coords) {
+    UsersInfo.update(
+      { id: this.userId },
+      {
+        $set: {
+          currentLocation: {
+            long: coords.lng,
+            lat: coords.lat
+          }
+        }
+      }
+    );
+  },
+
   "usersInfo.insertMethod"(userId) {
     UsersInfo.insert({
       id: userId,

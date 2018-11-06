@@ -19,9 +19,13 @@ class SimpleMenu extends React.Component {
     this.setState({ anchorEl: null });
   };
 
+  resetStatus = myUserInfo => {
+    Meteor.call("usersInfo.resetStatus", myUserInfo);
+  };
+
   render() {
     const { anchorEl } = this.state;
-    const { classes } = this.props;
+    const { classes, myUserInfo } = this.props;
 
     return (
       <div className={classes.menuContainer}>
@@ -39,7 +43,9 @@ class SimpleMenu extends React.Component {
           onClose={this.handleClose}
         >
           <MenuItem onClick={this.handleClose}>
-            <Link to="/select">Switch Roles</Link>
+            <Link onClick={() => this.resetStatus(myUserInfo)} to="/select">
+              Switch Roles
+            </Link>
           </MenuItem>
           <MenuItem onClick={this.handleClose}>Logout</MenuItem>
         </Menu>
