@@ -58,17 +58,15 @@ class Map extends Component {
   };
   renderCurrpin = myUserInfo => {
     console.log("updated");
-    // return (
-    //   myUserInfo[0].currentLocation.lat && (
-    //     <Marker
-    //       key="myLocation"
-    //       longitude={myUserInfo[0].currentLocation.long}
-    //       latitude={myUserInfo[0].currentLocation.lat}
-    //     >
-    //       <Pin size={15} myPin={true} current={true} />
-    //     </Marker>
-    //   )
-    // );
+    return (
+      <Marker
+        key="myLocation"
+        longitude={myUserInfo[0].currentLocation.long}
+        latitude={myUserInfo[0].currentLocation.lat}
+      >
+        <Pin size={15} myPin={true} current={true} />
+      </Marker>
+    );
   };
 
   render() {
