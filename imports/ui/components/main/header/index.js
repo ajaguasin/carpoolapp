@@ -25,9 +25,10 @@ class Header extends React.Component {
 
   getLocation = () => {
     navigator.geolocation.getCurrentPosition(success => {
+      console.log(success);
       const myLocation = {
-        lat: success.latitude,
-        lng: success.longitude
+        lat: success.coords.latitude,
+        lng: success.coords.longitude
       };
       Meteor.call("usersInfo.getLocation", myLocation);
     });
