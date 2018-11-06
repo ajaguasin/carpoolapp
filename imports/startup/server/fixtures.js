@@ -8,12 +8,12 @@ Meteor.startup(() => {
       driver: false,
       passenger: false,
       currentLocation: {
-        long: "",
-        lat: ""
+        long: null,
+        lat: null
       },
       destination: {
-        long: "",
-        lat: ""
+        long: null,
+        lat: null
       }
     });
   }

@@ -39,9 +39,11 @@ Meteor.methods({
       { id: this.userId },
       {
         $set: {
-          currentLocation: {
-            long: coordinates.lng,
-            lat: coordinates.lat
+          driverInfo: {
+            currentLocation: {
+              long: coordinates.lng,
+              lat: coordinates.lat
+            }
           }
         }
       }
@@ -51,7 +53,15 @@ Meteor.methods({
     UsersInfo.insert({
       id: userId,
       driver: false,
-      passenger: false
+      passenger: false,
+      currentLocation: {
+        long: null,
+        lat: null
+      },
+      destination: {
+        long: null,
+        lat: null
+      }
     });
   }
 });
