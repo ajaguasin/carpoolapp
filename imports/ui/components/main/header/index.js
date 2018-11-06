@@ -29,21 +29,34 @@ class Header extends React.Component {
   };
 
   getLocation = () => {
-    navigator.geolocation.getCurrentPosition(success => {
-      console.log(success);
-      const myLocation = {
-        lat: success.coords.latitude,
-        lng: success.coords.longitude
-      };
-      Meteor.call("usersInfo.getLocation", myLocation);
-    });
+    // navigator.geolocation.getCurrentPosition(success => {
+    //   console.log(success);
+    //   const myLocation = {
+    //     lat: success.coords.latitude,
+    //     lng: success.coords.longitude
+    //   };
+    //   Meteor.call("usersInfo.getLocation", myLocation);
+    // });
+
+    navigator.geolocation.watchPosition(
+      success => {
+        const myLocation = {
+          lat: success.coords.latitude,
+          lng: success.coords.longitude
+        };
+        Meteor.call("usersInfo.getLocation", myLocation);
+      },
+      err => console.log(err),
+      {
+        enableHighAccuracy: true
+      }
+    );
   };
 
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.headerWrapper}>
-        
         <div className={classes.menuDiv}>
           <SimpleMenu />
         </div>
@@ -59,7 +72,11 @@ class Header extends React.Component {
               type="text"
               placeholder=" Your Location"
             />
-            <FontAwesomeIcon icon="search-location" onClick={() => this.getLocation()} className={classes.locationButton} />
+            <FontAwesomeIcon
+              icon="search-location"
+              onClick={() => this.getLocation()}
+              className={classes.locationButton}
+            />
           </div>
           <select
             className={classes.select}
