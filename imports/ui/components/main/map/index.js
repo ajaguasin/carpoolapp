@@ -44,13 +44,24 @@ class Map extends Component {
     );
   };
 
-  renderMypin = () => {
-    const { myUserInfo } = this.props;
-    console.log(myUserInfo[0]);
-    return true;
-    // <Marker longitude={myUserInfo[0].lng} latitude={myUserInfo[0].lat}>
-    //   <Pin size={15} />
-    // </Marker>
+  renderMypin = myUserInfo => {
+    // const { myUserInfo } = this.props;
+    // console.log("myUserInfo", ...myUserInfo);
+    // let lng = { ...myUserInfo };
+    console.log(myUserInfo[0] && myUserInfo[0].lat);
+    return (
+      myUserInfo[0] && (
+        <Marker
+          key="myLocation"
+          longitude={myUserInfo[0].lng}
+          latitude={myUserInfo[0].lat}
+          // longitude={-123.1145}
+          // latitude={49.2628}
+        >
+          <Pin size={15} myPin={true} />
+        </Marker>
+      )
+    );
   };
 
   render() {
@@ -86,7 +97,7 @@ class Map extends Component {
             );
           })}
           {this.renderPopup()}
-          {this.renderMypin()}
+          {myUserInfo && this.renderMypin(myUserInfo)}
         </ReactMapGL>
       </div>
     );
