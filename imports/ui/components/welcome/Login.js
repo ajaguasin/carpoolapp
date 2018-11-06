@@ -1,40 +1,31 @@
 import React, { Component } from "react";
-import { Form, Field } from "react-final-form";
 import "./styles.css";
 import AccountsUIWrapper from "../AccountsWrapper";
-import { UsersInfo } from "../../../api/usersInfo/usersInfo";
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
   }
 
-  insertInfo = () => {
-    console.log("test");
-    let meteorUser = Accounts.userId();
-    let userinfoId = this.props.allUserInfo.filter(
-      user => user.id === meteorUser
-    );
-
-    if (userinfoId.length === 0) {
-      Meteor.call("usersInfo.insertMethod", meteorUser);
+  insertInfo(allUserInfo) {
+    console.log(allUserInfo);
+    if (
+      allUserInfo &&
+      allUserInfo.filter(e => e.id === Meteor.userId()).length === 0
+    ) {
+      Meteor.call("usersInfo.insertMethod", Meteor.userId());
     }
-  };
-
-  componentDidMount() {
-    this.insertInfo();
   }
 
   render() {
-    console.log("this is the one", this.props.allUserInfo);
-    console.log("userID", Accounts.userId());
+    const { allUserInfo } = this.props;
     return (
       <div className="app-wrapper">
-        <div className="login-wrapper">
-          <AccountsUIWrapper />
-
-          {/* <button onClick={() => this.insertInfo()}>click</button> */}
-        </div>
+        {/* <div className="login-wrapper"> */}
+        <AccountsUIWrapper />
+        {allUserInfo && this.insertInfo(allUserInfo)}
+        {/* <button onClick={() => this.insertInfo()}>click</button> */}
+        {/* </div> */}
       </div>
     );
   }
