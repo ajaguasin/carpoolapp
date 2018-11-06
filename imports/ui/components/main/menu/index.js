@@ -21,8 +21,8 @@ class SimpleMenu extends React.Component {
   };
 
   handleClose = () => {
+    // Meteor.logout();
     this.setState({ anchorEl: null });
-    Meteor.logout();
   };
 
   resetStatus = myUserInfo => {

@@ -38,7 +38,7 @@ class Header extends React.Component {
     //   Meteor.call("usersInfo.getLocation", myLocation);
     // });
 
-    navigator.geolocation.watchPosition(
+    const watchId = navigator.geolocation.watchPosition(
       success => {
         const myLocation = {
           lat: success.coords.latitude,
@@ -48,9 +48,12 @@ class Header extends React.Component {
       },
       err => console.log(err),
       {
-        enableHighAccuracy: true
+        enableHighAccuracy: true,
+        distanceFilter: 5
       }
     );
+
+    console.log("watchID: ", watchId);
   };
 
   render() {
