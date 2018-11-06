@@ -7,44 +7,22 @@ import landmarks from "../map/marker/landmarks";
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    // this.textInput = React.createRef();
+    // this.state = {};
+    this.destSelect = React.createRef();
   }
 
-  // handleChange = e => {
-  //   this.setState({
-  //     [e.target.currentLocation.lat]: e.target.value
-  //   });
-  // };
+  handleChange = e => {
+    e.preventDefault();
+    let location = this.destSelect.current.value;
+    console.log(">>>>>>> VANESSA", location);
 
-  // onSubmit = e => {
-  //   e.preventDefault();
-  //   const form = {
-  //     name: this.state.currentLocation.lat,
-  //     email: this.state.currentLocation.long
-  //   };
-  //   database.push(form);
-  //   this.setState({
-  //     lat: "",
-  //     long: ""
-  //   });
-  // };
+    let result = landmarks.filter(data => data.name === location);
+    console.log(result[0].DD.lng)
 
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   let location = this.textInput.current.value;
-  //   console.log(location);
-
-  //   if (location.value) {
-  //     Meteor.call("usersInfo.handleSubmit");
-  //     location.value = "";
-  //   }
-  // };
-
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   this.setState({ value: this.element.value });
-  // }
+     Meteor.call("usersInfo.handleSubmit", result[0].DD);
+      console.log('meteor call', result[0].DD)
+  
+  };
 
   render() {
     const { classes } = this.props;
@@ -60,12 +38,13 @@ class Header extends React.Component {
             className={classes.input}
             type="text"
             placeholder=" Your Location"
-            onChange={e => this.handleChange(e)}
           />
-          <select className={classes.input}>
-            <option selected disabled>
-              Choose Destination
-            </option>
+          <select
+            className={classes.input}
+            onChange={e => this.handleChange(e)}
+            ref={this.destSelect}
+          >
+            <option value>Choose Destination</option>
             {landmarks.map(landmark => (
               <option>{landmark.name}</option>
             ))}
