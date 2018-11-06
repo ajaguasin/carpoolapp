@@ -19,7 +19,7 @@ class SimpleMenu extends React.Component {
     this.setState({ anchorEl: null });
   };
 
-  resetStatus = () => {
+  resetStatus = myUserInfo => {
     Meteor.call("usersInfo.resetStatus", myUserInfo);
   };
 
