@@ -5,9 +5,8 @@ const styles = theme => ({
     flexDirection: "column"
   },
 
-  menuDiv: {
-
-
+  currentLocation: {
+    display: "flex"
   },
 
   icon: {
@@ -15,7 +14,10 @@ const styles = theme => ({
   },
 
   headerWrapper: {
-    backgroundColor: "#252553",
+    backgroundColor: "#31455A",
+    position: "absolute",
+    top: "0",
+    width: "100vw",
     height: "100px",
     display: "flex",
     justifyContent: "space-around",

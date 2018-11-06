@@ -6,7 +6,9 @@ const styles = theme => ({
     width: "100vw",
     height: "100vh",
     zIndex: "-1"
-  }
+  },
+  destMarker: {},
+  currentMarker: {}
 });
 
 export default styles;

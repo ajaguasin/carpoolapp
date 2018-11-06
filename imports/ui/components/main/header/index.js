@@ -35,22 +35,26 @@ class Header extends React.Component {
 
   render() {
     const { classes } = this.props;
-    ("");
     return (
       <div className={classes.headerWrapper}>
         <div className={classes.menuDiv}>
           <SimpleMenu />
         </div>
-
+        <img
+          alt="company's logo"
+          src="../../../../../public/images/Logo_top.png"
+        />
         <form className={classes.headerInputCntr}>
-          <input
-            className={classes.input}
-            type="text"
-            placeholder=" Your Location"
-          />
-          <button type="button" onClick={() => this.getLocation()}>
-            Get Location
-          </button>
+          <div className={classes.currentLocation}>
+            <input
+              className={classes.input}
+              type="text"
+              placeholder=" Your Location"
+            />
+            <button type="button" onClick={() => this.getLocation()}>
+              Get Location
+            </button>
+          </div>
           <select
             className={classes.input}
             onChange={e => this.handleChange(e)}
