@@ -48,13 +48,13 @@ class Map extends Component {
     // const { myUserInfo } = this.props;
     // console.log("myUserInfo", ...myUserInfo);
     // let lng = { ...myUserInfo };
-    console.log(myUserInfo[0] && myUserInfo[0].lat);
+    console.log(myUserInfo[0] && myUserInfo[0].currentLocation);
     return (
       myUserInfo[0] && (
         <Marker
           key="myLocation"
-          longitude={myUserInfo[0].lng}
-          latitude={myUserInfo[0].lat}
+          longitude={myUserInfo[0].currentLocation.long}
+          latitude={myUserInfo[0].currentLocation.lat}
           // longitude={-123.1145}
           // latitude={49.2628}
         >

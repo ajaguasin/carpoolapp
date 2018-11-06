@@ -7,13 +7,25 @@ Meteor.startup(() => {
       id: "default",
       driver: false,
       passenger: false,
-      currentLocation: {
-        long: "",
-        lat: ""
+      driverInfo: {
+        currentLocation: {
+          long: "",
+          lat: ""
+        },
+        destination: {
+          long: "",
+          lat: ""
+        }
       },
-      destination: {
-        long: "",
-        lat: ""
+      passengerInfo: {
+        currentLocation: {
+          long: "",
+          lat: ""
+        },
+        destination: {
+          long: "",
+          lat: ""
+        }
       }
     });
   }
