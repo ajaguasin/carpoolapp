@@ -1,13 +1,19 @@
 /* Account Login
 /*-----------------------------------------*/
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
 
 .app-wrapper {
   align-items: center;
   display: flex;
   justify-content: center;
   height: 100vh;
-  background-color: #a071b8;
-  background-image: url("/images/cover.jpeg");
+  background-image: linear-gradient(rgba(1, 1, 1, 0.75), rgba(2, 3, 3, 0.35)),
+    url("/images/cover.jpeg");
+}
+
+#login-dropdown-list {
+  background-color: #10b9c7;
+  height: 200px;
 }
 
 .logged-out-message {
@@ -63,14 +69,14 @@
 .login-link-and-dropdown-list {
   position: relative;
   text-align: right;
-  background-color: #451869;
+  height: 70px;
 }
 
 .login-link-text {
   color: white;
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  margin-right: 0.5rem;
+  font-size: 50px;
+  margin-right: 50px;
+  padding-right: 50px;
 }
 
 .login-close-text {
@@ -114,10 +120,11 @@
 [id="login-buttons-logout"],
 .login-button-form-submit {
   background-color: #a071b8;
-  color: white;
+  color: #31455a;
   display: block;
   padding: 0.25rem 0.5rem;
   text-align: center;
+  font-size: 20px;
 }
 
 [id="login-buttons-logout"]:hover,
@@ -132,7 +139,11 @@
   display: flex;
   justify-content: space-between;
   line-height: 1;
+  height: 50px;
+  font-size: 20px;
+  font-family: Lato;
   margin-bottom: 0.5rem;
+  background-color: #10b9c7 !important;
 }
 
 [id="login-password-label-and-input"],
@@ -157,3 +168,53 @@
   background-color: yellowgreen;
   height: 30px;
 } */
+
+/* body {
+  background: #2d2d37;
+} */
+a {
+  color: rgb(22, 89, 190);
+  text-decoration: none;
+}
+
+.arrow {
+  text-align: center;
+  margin: 8% 0;
+}
+
+.svg-inline--fa {
+  color: #10b9c7;
+  font-size: 70px;
+}
+
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 150px;
+}
+
+/* .login-link-and-dropdown-list {
+  bac
+} */
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}

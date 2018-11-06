@@ -22,11 +22,8 @@ class LoginForm extends Component {
     !loading && console.log(allUserInfo);
     return (
       <div className="app-wrapper">
-        {/* <div className="login-wrapper"> */}
         <AccountsUIWrapper />
         {!loading && this.insertInfo(allUserInfo)}
-        {/* <button onClick={() => this.insertInfo()}>click</button> */}
-        {/* </div> */}
       </div>
     );
   }
