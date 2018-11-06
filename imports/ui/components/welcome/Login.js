@@ -11,7 +11,6 @@ class LoginForm extends Component {
     console.log("inside method", allUserInfo);
 
     let arr = allUserInfo.filter(e => e.id === Meteor.userId());
-    // console.log(arr);
     if (arr.length === 0) {
       Meteor.call("usersInfo.insertMethod", Meteor.userId());
     }
