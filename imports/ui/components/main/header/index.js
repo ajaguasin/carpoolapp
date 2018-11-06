@@ -42,7 +42,7 @@ class Header extends React.Component {
         </div>
         <img
           alt="company's logo"
-          src="../../../../../public/images/Logo_top.png"
+          src='/images/Logo_top.png'
         />
         <form className={classes.headerInputCntr}>
           <div className={classes.currentLocation}>
