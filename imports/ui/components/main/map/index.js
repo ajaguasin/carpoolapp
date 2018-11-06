@@ -3,7 +3,7 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { withStyles } from "@material-ui/core";
 import styles from "./styles";
 import Pin from "./marker/Pin";
-import landmarks from "./marker/landmarks";
+import landmarks from "./marker/data";
 import PinPopup from "./marker/PinPopup";
 
 const TOKEN =
@@ -13,6 +13,7 @@ class Map extends Component {
   constructor() {
     super();
     this.state = {
+      data: null,
       viewport: {
         width: window.innerWidth,
         height: window.innerHeight,
