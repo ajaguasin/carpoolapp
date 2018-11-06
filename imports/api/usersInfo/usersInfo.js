@@ -45,9 +45,19 @@ Meteor.methods({
         }
        }
       }
-
-
     })
+  },
+  "usersInfo.insertMethod"(userId) {
+    UsersInfo.insert({
+      id: userId,
+      driver: false,
+      passenger: false
+    });
   }
 });
 
+if (Meteor.isServer) {
+  Meteor.publish("UsersInfo", function usersPublication() {
+    return UsersInfo.find({});
+  });
+}
