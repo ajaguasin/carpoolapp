@@ -7,7 +7,7 @@ import landmarks from "../map/marker/landmarks";
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    // this.state = {};
     this.destSelect = React.createRef();
   }
 
@@ -17,12 +17,11 @@ class Header extends React.Component {
     console.log(">>>>>>> VANESSA", location);
 
     let result = landmarks.filter(data => data.name === location);
-    console.log(result[0].DD);
+    console.log(result[0].DD.lng)
 
-    if (location.value) {
-      Meteor.call("usersInfo.handleSubmit", result[0].DD);
-      location.value = "";
-    }
+     Meteor.call("usersInfo.handleSubmit", result[0].DD);
+      console.log('meteor call', result[0].DD)
+  
   };
 
   render() {

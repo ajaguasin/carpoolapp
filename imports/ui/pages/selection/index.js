@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import Selection from "../../components/selection/Selection";
+import { UsersInfoContext } from "../../components/context/UsersInfoProvider";
 export default class Select extends Component {
   render() {
     return (
       <div>
-        <Selection />
+        <UsersInfoContext.Consumer>
+          {({ allUserInfo, myUserInfo }) => (
+            <Selection myUserInfo={myUserInfo} />
+          )}
+        </UsersInfoContext.Consumer>
       </div>
     );
   }
