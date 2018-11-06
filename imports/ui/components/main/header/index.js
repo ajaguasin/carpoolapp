@@ -5,9 +5,9 @@ import SimpleMenu from "../menu";
 import landmarks from "../map/marker/landmarks";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
+import { faSearchLocation } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faStroopwafel);
+library.add(faSearchLocation);
 
 class Header extends React.Component {
   constructor(props) {
@@ -43,13 +43,15 @@ class Header extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.headerWrapper}>
-        <div>
-          Favorite Food: <FontAwesomeIcon icon="stroopwafel" />
-        </div>
+        
         <div className={classes.menuDiv}>
           <SimpleMenu />
         </div>
-        <img alt="company's logo" src="/images/Logo_top.png" />
+        <img
+          alt="company's logo"
+          src="/images/Logo @3x.png"
+          className={classes.logo}
+        />
         <form className={classes.headerInputCntr}>
           <div className={classes.currentLocation}>
             <input
@@ -57,12 +59,10 @@ class Header extends React.Component {
               type="text"
               placeholder=" Your Location"
             />
-            <button type="button" onClick={() => this.getLocation()}>
-              Get Location
-            </button>
+            <FontAwesomeIcon icon="search-location" onClick={() => this.getLocation()} className={classes.locationButton} />
           </div>
           <select
-            className={classes.input}
+            className={classes.select}
             onChange={e => this.handleChange(e)}
             ref={this.destSelect}
           >

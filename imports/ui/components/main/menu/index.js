@@ -5,6 +5,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core";
 import styles from "./styles";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faBars);
 
 class SimpleMenu extends React.Component {
   state = {
@@ -34,8 +39,9 @@ class SimpleMenu extends React.Component {
           aria-haspopup="true"
           onClick={this.handleClick}
         >
-          Menu
+          <FontAwesomeIcon className={classes.icon} icon="bars" />
         </Button>
+
         <Menu
           id="simple-menu"
           anchorEl={anchorEl}
