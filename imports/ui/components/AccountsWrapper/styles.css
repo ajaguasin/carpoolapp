@@ -130,6 +130,7 @@
   justify-content: space-between;
   line-height: 1;
   margin-bottom: 0.5rem;
+  background-color: #4ccbb0;
 }
 
 [id="login-password-label-and-input"],

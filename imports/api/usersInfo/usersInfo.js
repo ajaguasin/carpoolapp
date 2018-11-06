@@ -39,22 +39,9 @@ Meteor.methods({
       { id: this.userId },
       {
         $set: {
-            destination: {
-              long: coordinates.lng,
-              lat: coordinates.lat
-            }
-          }
-      }
-    );
-  },
-  "usersInfo.getLocation"(coords) {
-    UsersInfo.update(
-      { id: this.userId },
-      {
-        $set: {
-          currentLocation: {
-            long: coords.lng,
-            lat: coords.lat
+          destination: {
+            long: coordinates.lng,
+            lat: coordinates.lat
           }
         }
       }
@@ -74,6 +61,19 @@ Meteor.methods({
         lat: null
       }
     });
+  },
+  "usersInfo.getLocation"(coords) {
+    UsersInfo.update(
+      { id: this.userId },
+      {
+        $set: {
+          currentLocation: {
+            long: coords.lng,
+            lat: coords.lat
+          }
+        }
+      }
+    );
   }
 });
 

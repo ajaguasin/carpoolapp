@@ -7,30 +7,24 @@ class LoginForm extends Component {
     super(props);
   }
 
-  insertInfo = () => {
-    console.log("test");
-    let meteorUser = Accounts.userId();
-    let userinfoId = this.props.allUserInfo.filter(
-      user => user.id === meteorUser
-    );
+  insertInfo(allUserInfo) {
+    console.log("inside method", allUserInfo);
 
-    if (userinfoId.length === 0) {
-      Meteor.call("usersInfo.insertMethod", meteorUser);
+    let arr = allUserInfo.filter(e => e.id === Meteor.userId());
+    // console.log(arr);
+    if (arr.length === 0) {
+      Meteor.call("usersInfo.insertMethod", Meteor.userId());
     }
-  };
-
-  componentDidMount() {
-    this.insertInfo();
   }
 
   render() {
-    console.log("this is the one", this.props.allUserInfo);
-    console.log("userID", Accounts.userId());
+    const { allUserInfo, loading } = this.props;
+    !loading && console.log(allUserInfo);
     return (
       <div className="app-wrapper">
         {/* <div className="login-wrapper"> */}
         <AccountsUIWrapper />
-
+        {!loading && this.insertInfo(allUserInfo)}
         {/* <button onClick={() => this.insertInfo()}>click</button> */}
         {/* </div> */}
       </div>

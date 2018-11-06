@@ -1,4 +1,4 @@
-/* Account Login */
+/* Account Login
 /*-----------------------------------------*/
 
 .app-wrapper {
@@ -6,7 +6,8 @@
   display: flex;
   justify-content: center;
   height: 100vh;
-  background-color: pink;
+  background-color: #a071b8;
+  background-image: url("/images/cover.jpeg");
 }
 
 .logged-out-message {
@@ -62,6 +63,7 @@
 .login-link-and-dropdown-list {
   position: relative;
   text-align: right;
+  background-color: #451869;
 }
 
 .login-link-text {
@@ -142,3 +144,16 @@
   color: red;
   font-size: 0.85rem;
 }
+
+/* .login-form.login-password-form {
+  background-color: rgb(51, 32, 139);
+  height: 500px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+#login-email-label-and-input {
+  background-color: yellowgreen;
+  height: 30px;
+} */
