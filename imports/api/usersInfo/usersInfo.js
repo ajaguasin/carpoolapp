@@ -33,17 +33,29 @@ Meteor.methods({
     );
   },
 
+  "usersInfo.resetStatus"() {
+    UsersInfo.update(
+      { id: this.userId },
+      {
+        $set: {
+          driver: false,
+          passenger: false
+        }
+      }
+    );
+  },
+
   "usersInfo.handleSubmit"(coordinates) {
     console.log(coordinates);
     UsersInfo.update(
       { id: this.userId },
       {
         $set: {
-            destination: {
-              long: coordinates.lng,
-              lat: coordinates.lat
-            }
+          destination: {
+            long: coordinates.lng,
+            lat: coordinates.lat
           }
+        }
       }
     );
   },
