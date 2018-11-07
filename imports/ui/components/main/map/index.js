@@ -46,7 +46,6 @@ class Map extends Component {
   };
 
   renderDestpin = myUserInfo => {
-    console.log(myUserInfo);
     return (
       <Marker
         key="myDestination"
