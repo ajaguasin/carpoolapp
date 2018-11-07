@@ -115,6 +115,22 @@ Meteor.methods({
         }
       }
     );
+  },
+
+  "usersInfo.profileUpdate"(name, number, car) {
+    UsersInfo.update(
+      { id: this.userId },
+      {
+        $set: {
+          profileComplete: true,
+          profileInformation: {
+            fullName: name,
+            phoneNumber: number,
+            carModel: car
+          }
+        }
+      }
+    );
   }
 });
 

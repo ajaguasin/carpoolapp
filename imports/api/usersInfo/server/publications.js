@@ -11,6 +11,12 @@ if (Meteor.isServer) {
     UsersInfo.insert({
       email: user.emails[0],
       id: user._id,
+      profileComplete: false,
+      profileInformation: {
+        fullName: "",
+        phoneNumber: "",
+        carModel: ""
+      },
       driver: false,
       passenger: false,
       currentLocation: {

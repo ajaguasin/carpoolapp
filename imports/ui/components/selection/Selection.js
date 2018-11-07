@@ -49,15 +49,6 @@ class SelectButton extends React.Component {
             </Button>
           </Link>
 
-          <Link to="/profile">
-            <Button
-              variant="contained"
-              className={classes.passenger}
-            >
-              Profile
-            </Button>
-          </Link>
-
           <p>You carpool with a driver going in the same direction</p>
         </div>
       </Grid>

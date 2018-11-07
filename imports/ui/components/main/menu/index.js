@@ -56,6 +56,9 @@ class SimpleMenu extends React.Component {
           <MenuItem onClick={() => Meteor.logout()}>
             <Link to="/welcome">Logout</Link>
           </MenuItem>
+          <MenuItem>
+            <Link to="/profile">My Profile</Link>
+          </MenuItem>
         </Menu>
       </div>
     );
