@@ -68,8 +68,36 @@ class Map extends Component {
     );
   };
 
+  renderPassengersPin = (myUserInfo, allUserInfo) => {
+    // if (myUserInfo[0].driver === true) {
+    //   const filtered = allUserInfo
+    //     .filter(record => {
+    //       return record.passenger;
+    //     })
+    //     .filter(passenger => {
+    //       return (
+    //         passenger.destination.lat === myUserInfo[0].destination.lat &&
+    //         passenger.destination.long === myUserInfo[0].destination.long
+    //       );
+    //     });
+    //   console.log(filtered);
+    //   filtered.map((record, index) => {
+    //     console.log(record.destination.lat);
+    //     return (
+    //       <Marker
+    //         key="9999999"
+    //         longitude={record.destination.long}
+    //         latitude={record.destination.lat}
+    //       >
+    //         <Pin size={15} />
+    //       </Marker>
+    //     );
+    //   });
+    // }
+  };
+
   render() {
-    const { myUserInfo, classes, loading } = this.props;
+    const { myUserInfo, classes, loading, allUserInfo } = this.props;
 
     return (
       <div className={classes.mapContainer}>
@@ -100,6 +128,28 @@ class Map extends Component {
           {this.renderPopup()}
           {!loading && this.renderDestpin(myUserInfo)}
           {!loading && this.renderCurrpin(myUserInfo)}
+          {!loading &&
+            allUserInfo
+              .filter(record => {
+                return record.passenger;
+              })
+              .filter(passenger => {
+                return (
+                  passenger.destination.lat === myUserInfo[0].destination.lat &&
+                  passenger.destination.long === myUserInfo[0].destination.long
+                );
+              })
+              .map((record, index) => {
+                return (
+                  <Marker
+                    key="9999999"
+                    longitude={record.destination.long}
+                    latitude={record.destination.lat}
+                  >
+                    <Pin size={15} />
+                  </Marker>
+                );
+              })}
         </ReactMapGL>
       </div>
     );
