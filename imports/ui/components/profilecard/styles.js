@@ -1,7 +1,8 @@
 const styles = theme => ({
   card: {
-    width: "200px",
-    height: "50px"
+    width: "100%",
+    height: "20%",
+    margin: "15px 0"
   },
 
   footerMetaWrapper: {
@@ -16,11 +17,11 @@ const styles = theme => ({
     width: "30px",
     height: "30px",
     borderRadius: "50%"
-  }, 
+  },
   p: {
     margin: "0",
     paddingLeft: "10px"
-  },
+  }
 });
 
 export default styles;
