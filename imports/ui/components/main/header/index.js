@@ -105,7 +105,11 @@ class Header extends React.Component {
           loading={loading}
         />
         <div>
-          <NotificationCard />
+          <NotificationCard
+            allUserInfo={allUserInfo}
+            myUserInfo={myUserInfo}
+            loading={loading}
+          />
         </div>
       </div>
     );
