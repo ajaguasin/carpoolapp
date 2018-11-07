@@ -1,7 +1,7 @@
 const styles = theme => ({
   card: {
     width: "200px",
-    height: "80px"
+    height: "50px"
   },
 
   footerMetaWrapper: {
@@ -9,12 +9,12 @@ const styles = theme => ({
   },
 
   footerMeta: {
-    paddingTop: "15px"
+    paddingTop: "5px"
   },
 
   img: {
-    width: "50px",
-    height: "50px",
+    width: "30px",
+    height: "30px",
     borderRadius: "50%"
   }, 
   p: {

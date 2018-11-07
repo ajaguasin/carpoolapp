@@ -3,7 +3,7 @@ const styles = theme => ({
     display: "flex",
     width: "300px",
     flexDirection: "column",
-    margin: "50px auto"
+    margin: "10px auto"
   },
 
   currentLocation: {
