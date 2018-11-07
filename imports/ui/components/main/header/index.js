@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import PassengerList from "../PassengerList";
 import NotificationCard from "../notificationCard/index";
+import { RideStateContext } from "../../context/RideStateProvider";
 
 library.add(faSearchLocation, faMapMarkedAlt);
 
@@ -112,14 +113,35 @@ class Header extends React.Component {
         </form>
 
         <div className={classes.menuDiv} />
-        <PassengerList
-          allUserInfo={allUserInfo}
-          myUserInfo={myUserInfo}
-          loading={loading}
-        />
-        <div>
-          <NotificationCard />
-        </div>
+
+        <RideStateContext.Consumer>
+          {({ rideStatus, setInitial, setMatched, setPending }) => {
+            console.log(rideStatus);
+            return (
+              <React.Fragment>
+                <PassengerList
+                  allUserInfo={allUserInfo}
+                  myUserInfo={myUserInfo}
+                  loading={loading}
+                  setInitial={setInitial}
+                  setMatched={setMatched}
+                  setPending={setPending}
+                />
+
+                <div>
+                  <NotificationCard
+                    allUserInfo={allUserInfo}
+                    myUserInfo={myUserInfo}
+                    loading={loading}
+                    setInitial={setInitial}
+                    setMatched={setMatched}
+                    setPending={setPending}
+                  />
+                </div>
+              </React.Fragment>
+            );
+          }}
+        </RideStateContext.Consumer>
       </div>
     );
   }
