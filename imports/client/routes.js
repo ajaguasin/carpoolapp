@@ -12,22 +12,22 @@ export default () => {
     <React.Fragment>
       <UsersInfoContext.Consumer>
         {({ allUserInfo, myUserInfo, loading }) => {
-          if (!loading && myUserInfo) {
-            console.log(myUserInfo);
+          if (!loading && myUserInfo.length) {
             return (
               <Switch>
                 <Route exact path="/select" component={Select} />
                 <Route exact path="/main" component={Main} />
                 <Route exact path="/profile" component={Profile} />
-                <Route exact path="/welcome" component={Welcome} />
                 <Redirect from="*" to="/select" />
               </Switch>
             );
           } else {
-            <Switch>
-              <Route exact path="/welcome" component={Welcome} />
-              <Redirect to="/welcome" />
-            </Switch>;
+            return (
+              <Switch>
+                <Route exact path="/welcome" component={Welcome} />
+                <Redirect from="*" to="/welcome" />
+              </Switch>
+            );
           }
         }}
       </UsersInfoContext.Consumer>

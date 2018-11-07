@@ -95,6 +95,11 @@ Meteor.methods({
       destination: {
         long: null,
         lat: null
+      },
+      partnerStatus: {
+        partnerId: null,
+        partnerPending: false,
+        partnerMatched: false
       }
     });
   },
