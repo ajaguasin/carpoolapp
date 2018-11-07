@@ -8,6 +8,9 @@ const styles = theme => ({
     left: "0px",
     height: "200px",
     width: "25vw"
+  },
+  destination: {
+    fontSize: "20px"
   }
 });
 
