@@ -1,12 +1,15 @@
 const styles = theme => ({
+  card: {
+    width: "200px",
+    height: "80px"
+  },
+
   footerMetaWrapper: {
-    display: "flex",
-    justifyContent: "space-between"
+    display: "flex"
   },
 
   footerMeta: {
-    paddingTop: "10px",
-    paddingRight: "150px"
+    paddingTop: "15px"
   },
 
   img: {
@@ -17,7 +20,7 @@ const styles = theme => ({
   p: {
     margin: "0",
     paddingLeft: "10px"
-  }
+  },
 });
 
 export default styles;

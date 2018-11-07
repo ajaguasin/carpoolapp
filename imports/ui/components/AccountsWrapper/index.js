@@ -27,11 +27,11 @@ export default class AccountsUIWrapper extends Component {
   render() {
     return (
       <React.Fragment>
-        <div class="container">
+        <div className="container">
           <img src="/images/Logo-Front-page.png" />
 
-          <div class="arrow bounce">
-            <a class="icon" href="#" />
+          <div className="arrow bounce">
+            <a className="icon" href="#" />
             <FontAwesomeIcon icon={faArrowDown} />
           </div>
           <span ref="container" />

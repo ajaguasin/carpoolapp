@@ -4,7 +4,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import styles from "./styles";
 import { Link } from "react-router-dom";
-import AccountsUIWrapper from "../../components/accountsWrapper/index";
 
 class SelectButton extends React.Component {
   constructor(props) {
