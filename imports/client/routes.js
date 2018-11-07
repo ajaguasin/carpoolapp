@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from "react-router";
 import Welcome from "../ui/pages/welcome/index";
 import Select from "../ui/pages/selection/index";
 import Main from "../ui/pages/main/index";
-import Profile from "../../imports/ui/pages/profile";
+import Profile from "../ui/pages/profile";
 import { UsersInfoContext } from "../ui/components/context/UsersInfoProvider";
 import { UsersInfo } from "../api/usersInfo/usersInfo";
 
@@ -19,7 +19,7 @@ export default () => {
                 <Route exact path="/select" component={Select} />
                 <Route exact path="/main" component={Main} />
                 <Route exact path="/profile" component={Profile} />
-                {/* <Redirect from="*" to="/select" /> */}
+                <Redirect from="*" to="/select" />
               </Switch>
             );
           } else {
