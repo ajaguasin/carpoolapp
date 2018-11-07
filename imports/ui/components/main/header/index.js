@@ -2,30 +2,30 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import SimpleMenu from "../menu";
-import landmarks from "../map/marker/landmarks";
+import landmarks from "../map/marker/data";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearchLocation } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearchLocation,
+  faMapMarkedAlt
+} from "@fortawesome/free-solid-svg-icons";
+import PassengerList from "../PassengerList";
 
-library.add(faSearchLocation);
+library.add(faSearchLocation, faMapMarkedAlt);
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {};
     this.destSelect = React.createRef();
   }
 
   handleChange = e => {
     e.preventDefault();
     let location = this.destSelect.current.value;
-    console.log(">>>>>>> VANESSA", location);
 
     let result = landmarks.filter(data => data.name === location);
-    console.log(result[0].DD.lng);
 
     Meteor.call("usersInfo.handleSubmit", result[0].DD);
-    console.log("meteor call", result[0].DD);
   };
 
   getLocation = () => {
@@ -54,41 +54,56 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, allUserInfo, myUserInfo, loading } = this.props;
     return (
       <div className={classes.headerWrapper}>
-        <div className={classes.menuDiv}>
-          <SimpleMenu />
-        </div>
         <img
           alt="company's logo"
           src="/images/Logo @3x.png"
           className={classes.logo}
         />
+
         <form className={classes.headerInputCntr}>
           <div className={classes.currentLocation}>
-            <input
-              className={classes.input}
-              type="text"
-              placeholder=" Your Location"
-            />
             <FontAwesomeIcon
               icon="search-location"
               onClick={() => this.getLocation()}
               className={classes.locationButton}
             />
+            <button
+              className={classes.input}
+              onClick={() => this.getLocation()}
+            >
+              Use My Current location
+            </button>
           </div>
-          <select
-            className={classes.select}
-            onChange={e => this.handleChange(e)}
-            ref={this.destSelect}
-          >
-            <option value>Choose Destination</option>
-            {landmarks.map(landmark => (
-              <option>{landmark.name}</option>
-            ))}
-          </select>
+
+          <div className={classes.currentLocation}>
+            <FontAwesomeIcon
+              icon="map-marked-alt"
+              className={classes.locationButton}
+            />
+            <select
+              className={classes.select}
+              onChange={e => this.handleChange(e)}
+              ref={this.destSelect}
+            >
+              <option>Choose Destination</option>
+              {landmarks.map((landmark, index) => (
+                <option key={index}>{landmark.name}</option>
+              ))}
+            </select>
+          </div>
         </form>
+
+        <PassengerList
+          allUserInfo={allUserInfo}
+          myUserInfo={myUserInfo}
+          loading={loading}
+        />
+        <div className={classes.menuDiv}>
+          <SimpleMenu />
+        </div>
       </div>
     );
   }

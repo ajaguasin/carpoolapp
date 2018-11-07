@@ -22,7 +22,7 @@ export default withTracker(() => {
   const ready = handle.ready();
   return {
     loading: !ready,
-    allUserInfo: UsersInfo.find({}).fetch(),
+    allUserInfo: UsersInfo.find({ }).fetch(),
     myUserInfo: UsersInfo.find({ id: Meteor.userId() }).fetch()
   };
 })(UsersInfoProvider);
