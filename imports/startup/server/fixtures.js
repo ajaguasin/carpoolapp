@@ -2,20 +2,34 @@ import { Meteor } from "meteor/meteor";
 import { UsersInfo } from "../../api/usersInfo/usersInfo";
 
 Meteor.startup(() => {
-  if (UsersInfo.find().count() === 0) {
-    UsersInfo.insert({
-      id: "default",
-      email: "default",
-      driver: false,
-      passenger: true,
-      currentLocation: {
-        long: -123.1145,
-        lat: 49.2628
+  if (!Meteor.users.find().count) {
+    Accounts.createUser(
+      {
+        email: "j@j.j",
+        password: "j"
       },
-      destination: {
-        long: -123.118337,
-        lat: 49.231989
+      user => {
+        UsersInfo.insert({
+          id: user._id,
+          email: user.emails[0],
+          driver: false,
+          passenger: false,
+          currentLocation: {
+            long: null,
+            lat: null
+          },
+          destination: {
+            long: null,
+            lat: null
+          },
+          partnerStatus: {
+            partnerId: null,
+            partnerPending: false,
+            partnerMatched: false
+          }
+        });
+
       }
-    });
+    );
   }
 });

@@ -1,33 +1,18 @@
 import React, { Component } from "react";
 import "./styles.css";
 import AccountsUIWrapper from "../accountsWrapper";
+import { Link } from "react-router-dom";
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
   }
-
-  insertInfo(allUserInfo) {
-    console.log("inside method", allUserInfo);
-    // const email = Meteor.user().emails[0];
-    // console.log(email);
-    let arr = allUserInfo.filter(e => e.id === Meteor.userId());
-    if (arr.length === 0) {
-      Meteor.call(
-        "usersInfo.insertMethod",
-        Meteor.userId(),
-        Meteor.user().emails[0]
-      );
-    }
-  }
-
   render() {
     const { allUserInfo, loading } = this.props;
     // !loading && console.log(allUserInfo);
     return (
       <div className="app-wrapper">
         <AccountsUIWrapper />
-        {!loading && this.insertInfo(allUserInfo)}
       </div>
     );
   }
