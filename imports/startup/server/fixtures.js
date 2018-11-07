@@ -12,6 +12,12 @@ Meteor.startup(() => {
         UsersInfo.insert({
           id: user._id,
           email: user.emails[0],
+          profileComplete: false,
+          profileInformation: {
+            fullName: "",
+            phoneNumber: "",
+            carModel: ""
+          },
           driver: false,
           passenger: false,
           currentLocation: {

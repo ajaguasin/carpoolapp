@@ -3,16 +3,19 @@ import { Route, Switch, Redirect } from "react-router";
 import Welcome from "../ui/pages/welcome/index";
 import Select from "../ui/pages/selection/index";
 import Main from "../ui/pages/main/index";
-import Profile from "../../imports/ui/pages/profile";
+import Profile from "../ui/pages/profile";
 import { UsersInfoContext } from "../ui/components/context/UsersInfoProvider";
 import { UsersInfo } from "../api/usersInfo/usersInfo";
+// import {withRouter} from 'react-router'
 
-export default () => {
+const Layout = (props) => {
+  console.log("props", props)
   return (
     <React.Fragment>
       <UsersInfoContext.Consumer>
         {({ allUserInfo, myUserInfo, loading }) => {
           if (!loading && myUserInfo.length) {
+            // console.log(myUserInfo)
             return (
               <Switch>
                 <Route exact path="/select" component={Select} />
@@ -21,7 +24,8 @@ export default () => {
                 <Redirect from="*" to="/select" />
               </Switch>
             );
-          } else {
+          } 
+          else {
             return (
               <Switch>
                 <Route exact path="/welcome" component={Welcome} />
@@ -34,3 +38,6 @@ export default () => {
     </React.Fragment>
   );
 };
+
+// export default withRouter(Layout)
+export default Layout
