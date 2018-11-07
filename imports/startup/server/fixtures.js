@@ -28,7 +28,6 @@ Meteor.startup(() => {
             partnerMatched: false
           }
         });
-
       }
     );
   }

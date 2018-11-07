@@ -10,6 +10,7 @@ import {
   faMapMarkedAlt
 } from "@fortawesome/free-solid-svg-icons";
 import PassengerList from "../PassengerList";
+import NotificationCard from "../notificationCard/index";
 
 library.add(faSearchLocation, faMapMarkedAlt);
 
@@ -103,6 +104,9 @@ class Header extends React.Component {
           myUserInfo={myUserInfo}
           loading={loading}
         />
+        <div>
+          <NotificationCard />
+        </div>
       </div>
     );
   }
