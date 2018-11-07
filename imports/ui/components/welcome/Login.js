@@ -9,16 +9,21 @@ class LoginForm extends Component {
 
   insertInfo(allUserInfo) {
     console.log("inside method", allUserInfo);
-
+    // const email = Meteor.user().emails[0];
+    // console.log(email);
     let arr = allUserInfo.filter(e => e.id === Meteor.userId());
     if (arr.length === 0) {
-      Meteor.call("usersInfo.insertMethod", Meteor.userId());
+      Meteor.call(
+        "usersInfo.insertMethod",
+        Meteor.userId(),
+        Meteor.user().emails[0]
+      );
     }
   }
 
   render() {
     const { allUserInfo, loading } = this.props;
-    !loading && console.log(allUserInfo);
+    // !loading && console.log(allUserInfo);
     return (
       <div className="app-wrapper">
         <AccountsUIWrapper />
