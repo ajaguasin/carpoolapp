@@ -46,7 +46,6 @@ class Map extends Component {
   };
 
   renderDestpin = myUserInfo => {
-    console.log(myUserInfo);
     return (
       <Marker
         key="myDestination"
@@ -58,7 +57,6 @@ class Map extends Component {
     );
   };
   renderCurrpin = myUserInfo => {
-    console.log("updated");
     return (
       <Marker
         key="myLocation"
