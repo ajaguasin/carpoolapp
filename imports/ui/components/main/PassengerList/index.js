@@ -26,10 +26,16 @@ class PassengerList extends Component {
     const { classes, allUserInfo, myUserInfo, loading } = this.props;
 
     return (
-      <div>
+      <div className={classes.list}>
         {!loading &&
           this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
-            return <ProfileCard key={index} email={record.email} />;
+            return (
+              <ProfileCard
+                className={classes.card}
+                key={index}
+                email={record.email}
+              />
+            );
           })}
       </div>
     );
