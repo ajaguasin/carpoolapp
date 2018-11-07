@@ -82,9 +82,10 @@ Meteor.methods({
     );
   },
 
-  "usersInfo.insertMethod"(userId) {
+  "usersInfo.insertMethod"(userId, email) {
     UsersInfo.insert({
       id: userId,
+      email: email.address,
       driver: false,
       passenger: false,
       currentLocation: {

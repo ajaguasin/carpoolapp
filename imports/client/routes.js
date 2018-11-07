@@ -5,14 +5,15 @@ import Select from "../ui/pages/selection/index";
 import Main from "../ui/pages/main/index";
 import Profile from "../../imports/ui/pages/profile";
 import { UsersInfoContext } from "../ui/components/context/UsersInfoProvider";
-import { Meteor } from "meteor/meteor";
+import { UsersInfo } from "../api/usersInfo/usersInfo";
 
 export default () => {
   return (
     <React.Fragment>
       <UsersInfoContext.Consumer>
-        {({ myUserInfo }) => {
-          if (myUserInfo) {
+        {({ allUserInfo, myUserInfo, loading }) => {
+          if (!loading && myUserInfo) {
+            console.log(myUserInfo);
             return (
               <Switch>
                 <Route exact path="/select" component={Select} />

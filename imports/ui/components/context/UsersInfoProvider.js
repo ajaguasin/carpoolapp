@@ -7,6 +7,7 @@ export const UsersInfoContext = React.createContext();
 
 class UsersInfoProvider extends Component {
   render() {
+    console.log("thisss>>>", this.props);
     const { allUserInfo, myUserInfo, loading } = this.props;
     return (
       <UsersInfoContext.Provider value={{ allUserInfo, myUserInfo, loading }}>
