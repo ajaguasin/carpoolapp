@@ -103,9 +103,6 @@ class Header extends React.Component {
           myUserInfo={myUserInfo}
           loading={loading}
         />
-        <div className={classes.menuDiv}>
-          <SimpleMenu />
-        </div>
       </div>
     );
   }

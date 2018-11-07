@@ -1,6 +1,6 @@
 const styles = theme => ({
   footerWrapper: {
-
+    
   },
 
 });
