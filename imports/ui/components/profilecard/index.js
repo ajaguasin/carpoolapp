@@ -15,27 +15,29 @@ class ProfileCard extends Component {
       <Card className={classes.card}>
         <CardContent className={classes.footerMetaWrapper}>
           <UsersInfoContext.Consumer>
-          {({ myUserInfo, loading }) => (
-            console.log('all user vanessa', myUserInfo)
-          )}
-            {/* <CardHeader
-            avatar={
-              <Gravatar className={classes.avatar} email={user.email} />
-            }
-          />
-            <img
-              src="http://maliconsultoria.com.br/wp-content/uploads/2017/10/avatar-viola.png"
-              className={classes.img}
-            />
-            <div className={classes.footerMeta}>
-              <Typography component="h2" className={classes.p}>
-                Einer Lim
-              </Typography>
-              <Typography component="h2" className={classes.p}>
-                Email: einer@einer.com
-              </Typography>
-            </div> */}
+            {({ allUserInfo }) => {
+              <CardHeader
+                avatar={
+                  <Gravatar
+                    className={classes.avatar}
+                    email={allUserInfo[12].email}
+                    default="monsterid"
+                  />
+                }
+              />;
+              console.log("gravatr email", allUserInfo[12].email);
+              console.log("gravataaaar", allUserInfo);
+            }}
           </UsersInfoContext.Consumer>
+          <img
+            src="http://maliconsultoria.com.br/wp-content/uploads/2017/10/avatar-viola.png"
+            className={classes.img}
+          />
+          <div className={classes.footerMeta}>
+            <Typography component="h2" className={classes.p}>
+              Einer Lim
+            </Typography>
+          </div>
         </CardContent>
       </Card>
     );
