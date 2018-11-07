@@ -129,28 +129,6 @@ class Map extends Component {
           {this.renderPopup()}
           {!loading && this.renderDestpin(myUserInfo)}
           {!loading && this.renderCurrpin(myUserInfo)}
-          {!loading &&
-            allUserInfo
-              .filter(record => {
-                return record.passenger;
-              })
-              .filter(passenger => {
-                return (
-                  passenger.destination.lat === myUserInfo[0].destination.lat &&
-                  passenger.destination.long === myUserInfo[0].destination.long
-                );
-              })
-              .map((record, index) => {
-                return (
-                  <Marker
-                    key="9999999"
-                    longitude={record.destination.long}
-                    latitude={record.destination.lat}
-                  >
-                    <Pin size={15} />
-                  </Marker>
-                );
-              })}
         </ReactMapGL>
       </div>
     );
