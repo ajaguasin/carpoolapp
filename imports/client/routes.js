@@ -15,11 +15,11 @@ export default () => {
           if (myUserInfo) {
             return (
               <Switch>
-                <Route exact path="/welcome" component={Welcome} />
                 <Route exact path="/select" component={Select} />
                 <Route exact path="/main" component={Main} />
                 <Route exact path="/profile" component={Profile} />
-                <Redirect to="/select" />
+                <Route exact path="/welcome" component={Welcome} />
+                <Redirect from="*" to="/select" />
               </Switch>
             );
           } else {

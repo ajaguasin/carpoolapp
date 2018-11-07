@@ -2,7 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import SimpleMenu from "../menu";
-import landmarks from "../map/marker/landmarks";
+import landmarks from "../map/marker/data";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearchLocation } from "@fortawesome/free-solid-svg-icons";
@@ -29,31 +29,41 @@ class Header extends React.Component {
   };
 
   getLocation = () => {
-    // navigator.geolocation.getCurrentPosition(success => {
-    //   console.log(success);
-    //   const myLocation = {
-    //     lat: success.coords.latitude,
-    //     lng: success.coords.longitude
-    //   };
-    //   Meteor.call("usersInfo.getLocation", myLocation);
-    // });
-
-    const watchId = navigator.geolocation.watchPosition(
-      success => {
-        const myLocation = {
-          lat: success.coords.latitude,
-          lng: success.coords.longitude
-        };
-        Meteor.call("usersInfo.getLocation", myLocation);
+    setInterval(
+      () => {
+        navigator.geolocation.getCurrentPosition(
+          success => {
+            console.log(success.coords);
+            const myLocation = {
+              lat: success.coords.latitude,
+              lng: success.coords.longitude
+            };
+            Meteor.call("usersInfo.getLocation", myLocation);
+          },
+          err => console.log(err),
+          {
+            enableHighAccuracy: true,
+            distanceFilter: 1
+          }
+        );
       },
-      err => console.log(err),
-      {
-        enableHighAccuracy: true,
-        distanceFilter: 5
-      }
+
+      2000
     );
 
-    console.log("watchID: ", watchId);
+    // const watchId = navigator.geolocation.watchPosition(
+    //   success => {
+    //     console.log(success.coords);
+    //     const myLocation = {
+    //       lat: success.coords.latitude,
+    //       lng: success.coords.longitude
+    //     };
+    //     Meteor.call("usersInfo.getLocation", myLocation);
+    //   },
+    //   err => console.log(err)
+    // );
+
+    // console.log("watchID: ", watchId);
   };
 
   render() {

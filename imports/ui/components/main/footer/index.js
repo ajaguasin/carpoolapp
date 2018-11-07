@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileCard from "../../profilecard/index";
+import ProfileCard from "../../profileCard/index";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import { Link } from "react-router-dom";
