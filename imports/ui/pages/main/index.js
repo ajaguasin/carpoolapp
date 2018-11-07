@@ -8,14 +8,20 @@ export default class Main extends Component {
   render() {
     return (
       <div>
-        <Header />
         <UsersInfoContext.Consumer>
           {({ allUserInfo, myUserInfo, loading }) => (
-            <Map
-              allUserInfo={allUserInfo}
-              myUserInfo={myUserInfo}
-              loading={loading}
-            />
+            <React.Fragment>
+              <Header
+                allUserInfo={allUserInfo}
+                myUserInfo={myUserInfo}
+                loading={loading}
+              />
+              <Map
+                allUserInfo={allUserInfo}
+                myUserInfo={myUserInfo}
+                loading={loading}
+              />
+            </React.Fragment>
           )}
         </UsersInfoContext.Consumer>
         <Footer />
