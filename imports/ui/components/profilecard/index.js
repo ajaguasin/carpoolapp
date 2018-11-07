@@ -20,12 +20,12 @@ class ProfileCard extends Component {
                 avatar={
                   <Gravatar
                     className={classes.avatar}
-                    email={allUserInfo[12].email}
+                    // email={allUserInfo[12].email}
                     default="monsterid"
                   />
                 }
               />;
-              console.log("gravatr email", allUserInfo[12].email);
+              // console.log("gravatr email", allUserInfo[12].email);
               console.log("gravataaaar", allUserInfo);
             }}
           </UsersInfoContext.Consumer>
