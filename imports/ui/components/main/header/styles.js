@@ -2,7 +2,8 @@ const styles = theme => ({
   headerInputCntr: {
     display: "flex",
     width: "300px",
-    flexDirection: "column"
+    flexDirection: "column",
+    margin: "50px auto"
   },
 
   currentLocation: {
@@ -15,7 +16,8 @@ const styles = theme => ({
 
   logo: {
     width: '230px',
-    height: '50px'
+    height: '50px',
+    margin: '30px auto'
 
   },
 
@@ -23,18 +25,20 @@ const styles = theme => ({
     backgroundColor: "#31455A",
     position: "absolute",
     top: "0",
-    width: "100vw",
-    height: "100px",
+    width: "25vw",
+    height: "100vh",
     display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center"
+    flexDirection: 'column',
+    position: 'absolute',
+    left: '0'
   },
 
   input: {
     height: "30px",
     border: "none",
     margin: "5px",
-    width: "300px"
+    width: "300px",
+    cursor: "pointer"
   },
 
   select: {
@@ -48,12 +52,17 @@ const styles = theme => ({
   },
 
   locationButton: {
-    fontSize: "30px",
+    fontSize: "20px",
     color: "white",
     cursor: "pointer",
-    paddingTop: "7px",
-    paddingLeft: "5px"
+    margin: '10px'
   
+  },
+
+  menuDiv: {
+    position: 'absolute',
+    bottom: '20px',
+    margin: '30px'
   }
 });
 
