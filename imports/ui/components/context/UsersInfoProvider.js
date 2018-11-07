@@ -7,7 +7,6 @@ export const UsersInfoContext = React.createContext();
 
 class UsersInfoProvider extends Component {
   render() {
-    console.log("thisss>>>", this.props);
     const { allUserInfo, myUserInfo, loading } = this.props;
     return (
       <UsersInfoContext.Provider value={{ allUserInfo, myUserInfo, loading }}>
@@ -22,7 +21,7 @@ export default withTracker(() => {
   const ready = handle.ready();
   return {
     loading: !ready,
-    allUserInfo: UsersInfo.find({ }).fetch(),
+    allUserInfo: UsersInfo.find({}).fetch(),
     myUserInfo: UsersInfo.find({ id: Meteor.userId() }).fetch()
   };
 })(UsersInfoProvider);

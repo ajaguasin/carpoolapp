@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
-import ProfileCard from "../../profileCard/index";
 
 class PassengerList extends Component {
   constructor() {
     super();
+    this.state = {
+      partnerId: null
+    };
   }
   passengerArray = (allUserInfo, myUserInfo) => {
     const passengers = allUserInfo
@@ -26,18 +28,20 @@ class PassengerList extends Component {
     const { classes, allUserInfo, myUserInfo, loading } = this.props;
 
     return (
-      <div className={classes.list}>
-        {!loading &&
-          this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
-            return (
-              <ProfileCard
-                className={classes.card}
-                key={index}
-                email={record.email}
-              />
-            );
-          })}
-      </div>
+      <div>Testing</div>
+
+      // <div className={classes.list}>
+      //   {!loading &&
+      //     this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
+      //       return (
+      //         <ProfileCard
+      //           className={classes.card}
+      //           key={index}
+      //           email={record.email}
+      //         />
+      //       );
+      //     })}
+      // </div>
     );
   }
 }
