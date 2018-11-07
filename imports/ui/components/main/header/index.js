@@ -56,6 +56,7 @@ class Header extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.headerWrapper}>
+        <SimpleMenu />
         <img
           alt="company's logo"
           src="/images/Logo @3x.png"
@@ -95,9 +96,7 @@ class Header extends React.Component {
           </div>
         </form>
 
-        <div className={classes.menuDiv}>
-          <SimpleMenu />
-        </div>
+        <div className={classes.menuDiv} />
       </div>
     );
   }
