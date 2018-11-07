@@ -5,7 +5,6 @@ import Select from "../ui/pages/selection/index";
 import Main from "../ui/pages/main/index";
 import Profile from "../../imports/ui/pages/profile";
 import { UsersInfoContext } from "../ui/components/context/UsersInfoProvider";
-import { Meteor } from "meteor/meteor";
 
 export default () => {
   return (
