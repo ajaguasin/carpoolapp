@@ -9,6 +9,8 @@ import {
   faSearchLocation,
   faMapMarkedAlt
 } from "@fortawesome/free-solid-svg-icons";
+import PassengerList from "../PassengerList";
+import NotificationCard from "../notificationCard/index";
 
 library.add(faSearchLocation, faMapMarkedAlt);
 
@@ -53,9 +55,10 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, allUserInfo, myUserInfo, loading } = this.props;
     return (
       <div className={classes.headerWrapper}>
+        <SimpleMenu />
         <img
           alt="company's logo"
           src="/images/Logo @3x.png"
@@ -88,15 +91,21 @@ class Header extends React.Component {
               ref={this.destSelect}
             >
               <option>Choose Destination</option>
-              {landmarks.map(landmark => (
-                <option>{landmark.name}</option>
+              {landmarks.map((landmark, index) => (
+                <option key={index}>{landmark.name}</option>
               ))}
             </select>
           </div>
         </form>
 
-        <div className={classes.menuDiv}>
-          <SimpleMenu />
+        <div className={classes.menuDiv} />
+        <PassengerList
+          allUserInfo={allUserInfo}
+          myUserInfo={myUserInfo}
+          loading={loading}
+        />
+        <div>
+          <NotificationCard />
         </div>
       </div>
     );
