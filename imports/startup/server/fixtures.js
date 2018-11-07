@@ -5,6 +5,7 @@ Meteor.startup(() => {
   if (UsersInfo.find().count() === 0) {
     UsersInfo.insert({
       id: "default",
+      email: "default",
       driver: false,
       passenger: false,
       currentLocation: {
