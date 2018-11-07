@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import PassengerList from "../PassengerList";
 import NotificationCard from "../notificationCard/index";
+import { RideStateContext } from "../../context/RideStateProvider";
 
 library.add(faSearchLocation, faMapMarkedAlt);
 
@@ -30,28 +31,41 @@ class Header extends React.Component {
   };
 
   getLocation = () => {
-    // navigator.geolocation.getCurrentPosition(success => {
-    //   console.log(success);
-    //   const myLocation = {
-    //     lat: success.coords.latitude,
-    //     lng: success.coords.longitude
-    //   };
-    //   Meteor.call("usersInfo.getLocation", myLocation);
-    // });
-
-    navigator.geolocation.watchPosition(
-      success => {
-        const myLocation = {
-          lat: success.coords.latitude,
-          lng: success.coords.longitude
-        };
-        Meteor.call("usersInfo.getLocation", myLocation);
+    setInterval(
+      () => {
+        navigator.geolocation.getCurrentPosition(
+          success => {
+            console.log(success.coords);
+            const myLocation = {
+              lat: success.coords.latitude,
+              lng: success.coords.longitude
+            };
+            Meteor.call("usersInfo.getLocation", myLocation);
+          },
+          err => console.log(err),
+          {
+            enableHighAccuracy: true,
+            distanceFilter: 1
+          }
+        );
       },
-      err => console.log(err),
-      {
-        enableHighAccuracy: true
-      }
+
+      2000
     );
+
+    // const watchId = navigator.geolocation.watchPosition(
+    //   success => {
+    //     console.log(success.coords);
+    //     const myLocation = {
+    //       lat: success.coords.latitude,
+    //       lng: success.coords.longitude
+    //     };
+    //     Meteor.call("usersInfo.getLocation", myLocation);
+    //   },
+    //   err => console.log(err)
+    // );
+
+    // console.log("watchID: ", watchId);
   };
 
   render() {
@@ -99,18 +113,35 @@ class Header extends React.Component {
         </form>
 
         <div className={classes.menuDiv} />
-        <PassengerList
-          allUserInfo={allUserInfo}
-          myUserInfo={myUserInfo}
-          loading={loading}
-        />
-        <div>
-          <NotificationCard
-            allUserInfo={allUserInfo}
-            myUserInfo={myUserInfo}
-            loading={loading}
-          />
-        </div>
+
+        <RideStateContext.Consumer>
+          {({ rideStatus, setInitial, setMatched, setPending }) => {
+            console.log(rideStatus);
+            return (
+              <React.Fragment>
+                <PassengerList
+                  allUserInfo={allUserInfo}
+                  myUserInfo={myUserInfo}
+                  loading={loading}
+                  setInitial={setInitial}
+                  setMatched={setMatched}
+                  setPending={setPending}
+                />
+
+                <div>
+                  <NotificationCard
+                    allUserInfo={allUserInfo}
+                    myUserInfo={myUserInfo}
+                    loading={loading}
+                    setInitial={setInitial}
+                    setMatched={setMatched}
+                    setPending={setPending}
+                  />
+                </div>
+              </React.Fragment>
+            );
+          }}
+        </RideStateContext.Consumer>
       </div>
     );
   }
