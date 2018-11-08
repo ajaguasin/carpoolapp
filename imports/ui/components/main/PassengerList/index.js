@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
-
+import CircularIndeterminate from "../../loadingSpinner/index";
 class PassengerList extends Component {
   constructor() {
     super();
@@ -28,8 +28,28 @@ class PassengerList extends Component {
     const { classes, allUserInfo, myUserInfo, loading } = this.props;
 
     return (
-      <div>Testing</div>
+      /* Initial state of passenger list when driver is selected */
+      // <div>
+      //   <p>
+      //     Please select a destination. Passengers going to the same destination
+      //     will be listed in this panel.
+      //   </p>
+      // </div>
 
+      /*Initial state of passenger list when passenger is selected. */
+      // <div>
+      //   <p>
+      //     Please select a destination. Drivers going to the same destination
+      //     will be listed in this panel.
+      //   </p>
+      // </div>
+
+      /*When passenger picks a destination show drivers also to the same destination*/
+      <div>
+        <CircularIndeterminate />
+      </div>
+
+      /* When driver picks a destination show passenger cards also going in the same direction */
       // <div className={classes.list}>
       //   {!loading &&
       //     this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
