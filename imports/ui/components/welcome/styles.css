@@ -12,9 +12,8 @@
 }
 
 #login-dropdown-list {
-  background-color: #10b9c7;
-  height: 250px;
-  width: 300px;
+  height: 200px;
+  width: 400px;
 }
 
 .logged-out-message {

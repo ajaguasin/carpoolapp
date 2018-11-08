@@ -28,7 +28,7 @@ export default class AccountsUIWrapper extends Component {
     return (
       <React.Fragment>
         <div className="container">
-          <img src="/images/Logo-Front-page.png" />
+          <img src="/images/Logo-Front-page@3x.png" className="frontLogo"/>
 
           <div className="arrow bounce">
             <a className="icon" href="#" />

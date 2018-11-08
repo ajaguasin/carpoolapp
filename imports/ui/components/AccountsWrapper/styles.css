@@ -8,6 +8,30 @@
   height: 100vh;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  margin-top: -150px;
+}
+
+.container span {
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.container a {
+  margin: 0;
+  padding: 0;
+}
+
+.frontLogo {
+  width: 50%;
+  height: 60%;
+}
+
 .logged-out-message {
   margin: 1rem;
   text-align: center;
@@ -55,7 +79,7 @@
 }
 
 .accounts-dialog input:focus {
-  border-bottom-color: #4ccbb0;
+  /* border-bottom-color: #4ccbb0; */
 }
 
 .login-link-and-dropdown-list {
@@ -99,9 +123,10 @@
   cursor: pointer;
 }
 
-[id="login-buttons-open-change-password"]:hover {
+/* [id="login-buttons-open-change-password"]:hover {
   color: #4ccbb0;
-}
+
+} */
 
 [id="login-buttons-open-change-password"] {
   margin-bottom: 0.5rem;
@@ -110,7 +135,7 @@
 
 [id="login-buttons-logout"],
 .login-button-form-submit {
-  background-color: #a071b8;
+  /* background-color: #a071b8; */
   color: white;
   display: block;
   padding: 0.25rem 0.5rem;
@@ -119,7 +144,6 @@
 
 [id="login-buttons-logout"]:hover,
 .login-button-form-submit:hover {
-  background-color: #4ccbb0;
 }
 
 [id="login-email-label-and-input"],
@@ -130,7 +154,6 @@
   justify-content: space-between;
   line-height: 1;
   margin-bottom: 0.5rem;
-  background-color: #4ccbb0;
 }
 
 [id="login-password-label-and-input"],
