@@ -7,7 +7,6 @@ import Profile from "../ui/pages/profile";
 import { UsersInfoContext } from "../ui/components/context/UsersInfoProvider";
 
 const Layout = props => {
-  console.log("props", props);
   return (
     <React.Fragment>
       <UsersInfoContext.Consumer>
