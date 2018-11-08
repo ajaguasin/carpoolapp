@@ -31,8 +31,8 @@ class Header extends React.Component {
   };
 
   getLocation = () => {
-    setInterval(
-      () => {
+    // setInterval(
+    //   () => {
         navigator.geolocation.getCurrentPosition(
           success => {
             console.log(success.coords);
@@ -48,10 +48,10 @@ class Header extends React.Component {
             distanceFilter: 1
           }
         );
-      },
+    //   },
 
-      2000
-    );
+    //   2000
+    // );
 
     // const watchId = navigator.geolocation.watchPosition(
     //   success => {
@@ -85,12 +85,12 @@ class Header extends React.Component {
               onClick={() => this.getLocation()}
               className={classes.locationButton}
             />
-            <button
+            <span
               className={classes.input}
               onClick={() => this.getLocation()}
             >
               Use My Current location
-            </button>
+            </span>
           </div>
 
           <div className={classes.currentLocation}>

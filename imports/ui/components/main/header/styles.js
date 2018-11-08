@@ -1,3 +1,5 @@
+import { withTheme } from "@material-ui/core";
+
 const styles = theme => ({
   headerInputCntr: {
     display: "flex",
@@ -34,11 +36,15 @@ const styles = theme => ({
   },
 
   input: {
-    height: "30px",
+    height: "20px",
     border: "none",
     margin: "5px",
-    width: "300px",
-    cursor: "pointer"
+    width: "240px",
+    cursor: "pointer",
+    background: "white",
+    fontSize: "12px",
+    paddingTop: '10px',
+    paddingLeft: '10px'
   },
 
   select: {
