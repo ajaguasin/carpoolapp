@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import CircularIndeterminate from "../../loadingSpinner/index";
+import ProfileCard from "../../profileCard";
+import Button from "@material-ui/core/Button";
+
 class PassengerList extends Component {
   constructor() {
     super();
@@ -45,23 +48,32 @@ class PassengerList extends Component {
       // </div>
 
       /*When passenger picks a destination import loadingSpinner component while drivers are loading*/
-      <div>
-        <CircularIndeterminate />
-      </div>
+      // <div>
+      //   <CircularIndeterminate />
+      // </div>
 
       /* When driver picks a destination show passenger cards also going in the same direction */
-      // <div className={classes.list}>
-      //   {!loading &&
-      //     this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
-      //       return (
-      //         <ProfileCard
-      //           className={classes.card}
-      //           key={index}
-      //           email={record.email}
-      //         />
-      //       );
-      //     })}
-      // </div>
+      <div className={classes.list}>
+        {!loading &&
+          this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
+            return (
+              <React.Fragment className={classes.listContainer}>
+                <ProfileCard
+                  className={classes.card}
+                  key={index}
+                  email={record.email}
+                />
+                <Button
+                  variant="contained"
+                  className={classes.button}
+                  key={record.id}
+                >
+                  Accept
+                </Button>
+              </React.Fragment>
+            );
+          })}
+      </div>
     );
   }
 }
