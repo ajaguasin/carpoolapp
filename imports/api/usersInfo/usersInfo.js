@@ -118,6 +118,8 @@ Meteor.methods({
   },
 
   "usersInfo.profileUpdate"(name, number, car) {
+    console.log(name, number, car);
+    console.log(this.userId);
     UsersInfo.update(
       { id: this.userId },
       {
