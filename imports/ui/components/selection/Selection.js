@@ -22,7 +22,6 @@ class SelectButton extends React.Component {
 
   render() {
     const { classes, myUserInfo } = this.props;
-    console.log("Expected undefined", myUserInfo);
     myUserInfo && console.log(myUserInfo);
     return (
       <Grid className={classes.buttons}>

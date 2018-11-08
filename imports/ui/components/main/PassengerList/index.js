@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import { Meteor } from "meteor/meteor";
+import CircularIndeterminate from "../../loadingSpinner/index";
+import ProfileCard from "../../profileCard";
+import Button from "@material-ui/core/Button";
 
 class PassengerList extends Component {
   constructor() {
@@ -36,18 +39,18 @@ class PassengerList extends Component {
     const { classes, allUserInfo, myUserInfo, loading } = this.props;
 
     return (
-      <div>
-        <button onClick={() => this.updateToPending(passengerId)}>
-          To pending
-        </button>
-        <button onClick={() => this.updateToMatched()}>To Matched</button>
-        <button onClick={() => this.updateToInitialFromMatched()}>
-          To Initial From Matched
-        </button>
-        <button onClick={() => this.updateToInitialFromPending()}>
-          To Initial From Pending
-        </button>
-      </div>
+      // <div>
+      //   <button onClick={() => this.updateToPending(passengerId)}>
+      //     To pending
+      //   </button>
+      //   <button onClick={() => this.updateToMatched()}>To Matched</button>
+      //   <button onClick={() => this.updateToInitialFromMatched()}>
+      //     To Initial From Matched
+      //   </button>
+      //   <button onClick={() => this.updateToInitialFromPending()}>
+      //     To Initial From Pending
+      //   </button>
+      // </div>
 
       // <div className={classes.list}>
       //   {!loading &&
@@ -60,7 +63,49 @@ class PassengerList extends Component {
       //         />
       //       );
       //     })}
+      /* Initial state of passenger list when driver is selected */
+      // <div>
+      //   <p>
+      //     Please select a destination. Passengers going to the same destination
+      //     will be listed in this panel.
+      //   </p>
       // </div>
+
+      /*Initial state of passenger list when passenger is selected. */
+      // <div>
+      //   <p>
+      //     Please select a destination. Drivers going to the same destination
+      //     will be listed in this panel.
+      //   </p>
+      // </div>
+
+      /*When passenger picks a destination import loadingSpinner component while drivers are loading*/
+      // <div>
+      //   <CircularIndeterminate />
+      // </div>
+
+      /* When driver picks a destination show passenger cards also going in the same direction */
+      <div className={classes.list}>
+        {!loading &&
+          this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
+            return (
+              <React.Fragment className={classes.listContainer}>
+                <ProfileCard
+                  className={classes.card}
+                  key={index}
+                  email={record.email}
+                />
+                <Button
+                  variant="contained"
+                  className={classes.button}
+                  key={record.id}
+                >
+                  Accept
+                </Button>
+              </React.Fragment>
+            );
+          })}
+      </div>
     );
   }
 }

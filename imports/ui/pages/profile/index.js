@@ -32,7 +32,7 @@ class Profile extends Component {
 
           <label> Your Car Model </label>
           <input type="text" name="car" />
-          <button type="submit"></button>
+          <button type="submit">Submit Your Changes</button>
         </form>
         {/* <ProfileCard /> */}
       </div>

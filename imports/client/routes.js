@@ -5,27 +5,32 @@ import Select from "../ui/pages/selection/index";
 import Main from "../ui/pages/main/index";
 import Profile from "../ui/pages/profile";
 import { UsersInfoContext } from "../ui/components/context/UsersInfoProvider";
-import { UsersInfo } from "../api/usersInfo/usersInfo";
-// import {withRouter} from 'react-router'
 
-const Layout = (props) => {
-  console.log("props", props)
+const Layout = props => {
+  console.log("props", props);
   return (
     <React.Fragment>
       <UsersInfoContext.Consumer>
         {({ allUserInfo, myUserInfo, loading }) => {
           if (!loading && myUserInfo.length) {
-            // console.log(myUserInfo)
-            return (
-              <Switch>
-                <Route exact path="/select" component={Select} />
-                <Route exact path="/main" component={Main} />
-                <Route exact path="/profile" component={Profile} />
-                <Redirect from="*" to="/select" />
-              </Switch>
-            );
-          } 
-          else {
+            if (!loading && !myUserInfo[0].profileComplete) {
+              return (
+                <Switch>
+                  <Route exact path="/createprofile" component={Profile} />
+                  <Redirect from="*" to="/createprofile" />
+                </Switch>
+              );
+            } else {
+              return (
+                <Switch>
+                  <Route exact path="/select" component={Select} />
+                  <Route exact path="/main" component={Main} />
+                  <Route exact path="/profile" component={Profile} />
+                  <Redirect from="*" to="/select" />
+                </Switch>
+              );
+            }
+          } else {
             return (
               <Switch>
                 <Route exact path="/welcome" component={Welcome} />
@@ -39,5 +44,4 @@ const Layout = (props) => {
   );
 };
 
-// export default withRouter(Layout)
-export default Layout
+export default Layout;
