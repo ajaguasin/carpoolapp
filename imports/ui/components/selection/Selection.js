@@ -4,6 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import styles from "./styles";
 import { Link } from "react-router-dom";
+import Tooltip from "@material-ui/core/Tooltip";
+import Typography from "@material-ui/core/Typography";
 
 class SelectButton extends React.Component {
   constructor(props) {
@@ -25,32 +27,32 @@ class SelectButton extends React.Component {
     myUserInfo && console.log(myUserInfo);
     return (
       <Grid className={classes.buttons}>
-        <h2>Are you a:</h2>
+        <h1 className={classes.title}> Are you a:</h1>
         <div>
-          <Link to="/main">
-            <Button
-              onClick={() => this.driverToggle(myUserInfo)}
-              variant="contained"
-              className={classes.driver}
-            >
-              Driver
-            </Button>
-          </Link>
-
-          <p>You drive a passenger going in the same direction</p>
+          <Tooltip title="You drive a passenger going in the same direction">
+            <Link to="/main">
+              <Button
+                onClick={() => this.driverToggle(myUserInfo)}
+                variant="contained"
+                className={classes.driver}
+              >
+                Driver
+              </Button>
+            </Link>
+          </Tooltip>
         </div>
         <div>
-          <Link to="/main">
-            <Button
-              onClick={() => this.passengerToggle(myUserInfo)}
-              variant="contained"
-              className={classes.passenger}
-            >
-              Passenger
-            </Button>
-          </Link>
-
-          <p>You carpool with a driver going in the same direction</p>
+          <Tooltip title="You carpool with a driver going in the same direction">
+            <Link to="/main">
+              <Button
+                onClick={() => this.passengerToggle(myUserInfo)}
+                variant="contained"
+                className={classes.passenger}
+              >
+                Passenger
+              </Button>
+            </Link>
+          </Tooltip>
         </div>
       </Grid>
     );
