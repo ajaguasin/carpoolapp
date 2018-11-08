@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import PassengerList from "../PassengerList";
 import NotificationCard from "../notificationCard/index";
-import { RideStateContext } from "../../context/RideStateProvider";
+import { UsersInfoContext } from "../../context/UsersInfoProvider";
 
 library.add(faSearchLocation, faMapMarkedAlt);
 
@@ -69,7 +69,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes, allUserInfo, myUserInfo, loading } = this.props;
+    const { classes } = this.props;
     return (
       <div className={classes.headerWrapper}>
         <SimpleMenu />
@@ -78,7 +78,6 @@ class Header extends React.Component {
           src="/images/Logo @3x.png"
           className={classes.logo}
         />
-
         <form className={classes.headerInputCntr}>
           <div className={classes.currentLocation}>
             <FontAwesomeIcon
@@ -111,38 +110,40 @@ class Header extends React.Component {
             </select>
           </div>
         </form>
-
         <div className={classes.menuDiv} />
+        <UsersInfoContext.Consumer>
+          {({
+            allUserInfo,
+            myUserInfo,
+            loading,
+            ridesLoading,
+            rides,
+            myRide
+          }) => (
+            <React.Fragment>
+              <PassengerList
+                allUserInfo={allUserInfo}
+                myUserInfo={myUserInfo}
+                loading={loading}
+                ridesLoading={ridesLoading}
+                rides={rides}
+                myRide={myRide}
+              />
 
-        <RideStateContext.Consumer>
-          {({ rideStatus, setInitial, setMatched, setPending }) => {
-            console.log(rideStatus);
-            return (
-              <React.Fragment>
-                <PassengerList
+              <div>
+                <NotificationCard
                   allUserInfo={allUserInfo}
                   myUserInfo={myUserInfo}
                   loading={loading}
-                  setInitial={setInitial}
-                  setMatched={setMatched}
-                  setPending={setPending}
+                  ridesLoading={ridesLoading}
+                  rides={rides}
+                  myRide={myRide}
                 />
-
-                <div>
-                  <NotificationCard
-                    allUserInfo={allUserInfo}
-                    myUserInfo={myUserInfo}
-                    loading={loading}
-                    setInitial={setInitial}
-                    setMatched={setMatched}
-                    setPending={setPending}
-                    rideStatus={rideStatus}
-                  />
-                </div>
-              </React.Fragment>
-            );
-          }}
-        </RideStateContext.Consumer>
+              </div>
+            </React.Fragment>
+          )}
+        </UsersInfoContext.Consumer>
+        }}
       </div>
     );
   }

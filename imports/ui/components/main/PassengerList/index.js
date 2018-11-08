@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
+import { Meteor } from "meteor/meteor";
 import CircularIndeterminate from "../../loadingSpinner/index";
 import ProfileCard from "../../profileCard";
 import Button from "@material-ui/core/Button";
@@ -27,10 +28,42 @@ class PassengerList extends Component {
     return passengers;
   };
 
+  updateToPending = event => {
+    let passengerId = event.target.name;
+    Meteor.call("rides.updateToPending", passengerId);
+  };
+  updateToMatched = () => {};
+  updateToInitialFromMatched = () => {};
+  updateToInitialFromPending = () => {};
+
   render() {
-    const { classes, allUserInfo, myUserInfo, loading } = this.props;
+    const { classes, allUserInfo, myUserInfo, loading, myRideS } = this.props;
 
     return (
+      // <div>
+      //   <button onClick={() => this.updateToPending(passengerId)}>
+      //     To pending
+      //   </button>
+      //   <button onClick={() => this.updateToMatched()}>To Matched</button>
+      //   <button onClick={() => this.updateToInitialFromMatched()}>
+      //     To Initial From Matched
+      //   </button>
+      //   <button onClick={() => this.updateToInitialFromPending()}>
+      //     To Initial From Pending
+      //   </button>
+      // </div>
+
+      // <div className={classes.list}>
+      //   {!loading &&
+      //     this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
+      //       return (
+      //         <ProfileCard
+      //           className={classes.card}
+      //           key={index}
+      //           email={record.email}
+      //         />
+      //       );
+      //     })}
       /* Initial state of passenger list when driver is selected */
       // <div>
       //   <p>
@@ -57,19 +90,23 @@ class PassengerList extends Component {
         {!loading &&
           this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
             return (
-              <React.Fragment className={classes.listContainer}>
+              <React.Fragment key={index}>
+                {console.log(record.id)}
                 <ProfileCard
                   className={classes.card}
                   key={index}
                   email={record.email}
                 />
-                <Button
+                <button
                   variant="contained"
                   className={classes.button}
-                  key={record.id}
+                  name={record.id}
+                  onClick={event => {
+                    this.updateToPending(event);
+                  }}
                 >
                   Accept
-                </Button>
+                </button>
               </React.Fragment>
             );
           })}

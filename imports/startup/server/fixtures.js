@@ -34,6 +34,8 @@ Meteor.startup(() => {
             partnerMatched: false
           }
         });
+
+        return user;
       }
     );
   }

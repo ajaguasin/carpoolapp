@@ -1,7 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { UsersInfo } from "../usersInfo";
 import { Accounts } from "meteor/accounts-base";
-
 if (Meteor.isServer) {
   Meteor.publish("usersInfo", () => {
     return UsersInfo.find({});
@@ -33,6 +32,7 @@ if (Meteor.isServer) {
         partnerMatched: false
       }
     });
+
     return user;
   });
 }

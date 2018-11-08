@@ -136,8 +136,8 @@ Meteor.methods({
   }
 });
 
-if (Meteor.isServer) {
-  Meteor.publish("UsersInfo", function usersPublication() {
-    return UsersInfo.find({});
-  });
-}
+// if (Meteor.isServer) {
+//   Meteor.publish("UsersInfo", function usersPublication() {
+//     return UsersInfo.find({});
+//   });
+// }
