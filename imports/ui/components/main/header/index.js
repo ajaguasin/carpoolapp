@@ -136,6 +136,7 @@ class Header extends React.Component {
                     setInitial={setInitial}
                     setMatched={setMatched}
                     setPending={setPending}
+                    rideStatus={rideStatus}
                   />
                 </div>
               </React.Fragment>

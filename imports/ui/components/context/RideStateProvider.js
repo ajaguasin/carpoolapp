@@ -56,7 +56,7 @@ export default class RideStateProvider extends Component {
   setPending = () => {
     const newState = partnerMachine.transition(
       partnerMachine.currentState,
-      "pending"
+      "TO_PENDING"
     );
     this.setState(STATES[newState.value]);
   };
@@ -64,7 +64,7 @@ export default class RideStateProvider extends Component {
   setMatched = () => {
     const newState = partnerMachine.transition(
       partnerMachine.currentState,
-      "matched"
+      "TO_MATCHED"
     );
     this.setState(STATES[newState.value]);
   };
@@ -72,7 +72,7 @@ export default class RideStateProvider extends Component {
   setInitial = () => {
     const newState = partnerMachine.transition(
       partnerMachine.currentState,
-      "initial"
+      "TO_INITIAL"
     );
     this.setState(STATES[newState.value]);
   };
