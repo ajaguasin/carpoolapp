@@ -17,7 +17,6 @@ const Layout = props => {
           if (!loading && !myUserInfo[0].profileComplete) {
             return (
               <Switch>
-                {console.log("hello", myUserInfo.length)}
                 <Route exact path="/profile" component={Profile} />
                 <Redirect from="*" to="/profile" />
               </Switch>
