@@ -1,19 +1,22 @@
 const styles = theme => ({
   buttons: {
     textAlign: "center",
-    height: "30vh",
+    height: "100vh",
+    width: "100vw",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
-    marginTop: 100
+    justifyContent: "space-around",
+    margin: "auto 0"
   },
   driver: {
     background: "#58B9D4",
-    width: 300
+    width: 300,
+    height: 50
   },
   passenger: {
     background: "#EC5F59",
-    width: 300
+    width: 300,
+    height: 50
   }
 });
 

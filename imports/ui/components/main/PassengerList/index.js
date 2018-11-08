@@ -97,7 +97,7 @@ class PassengerList extends Component {
                   key={index}
                   email={record.email}
                 />
-                <button
+                <Button
                   variant="contained"
                   className={classes.button}
                   name={record.id}
@@ -106,7 +106,7 @@ class PassengerList extends Component {
                   }}
                 >
                   Accept
-                </button>
+                </Button>
               </React.Fragment>
             );
           })}
