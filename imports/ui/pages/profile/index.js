@@ -1,7 +1,14 @@
 import React, { Component } from "react";
-import ProfileCard from "../../components/profileCard";
 import { Meteor } from "meteor/meteor";
 import "./styles";
+import { UsersInfoContext } from "../../components/context/UsersInfoProvider";
+import Gravatar from "react-gravatar";
+import { Link } from "react-router-dom";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faChevronLeft);
 
 class Profile extends Component {
   constructor(props) {
@@ -22,9 +29,11 @@ class Profile extends Component {
   }
 
   render() {
-    const { myUserInfo } = this.props;
     return (
       <div className="profileWrapper">
+        <Link to="/main">
+          <FontAwesomeIcon className="icon" icon="chevron-left" />
+        </Link>
         <div className="content">
           <div className="content__container">
             <p className="content__container__text">Hello</p>
@@ -51,11 +60,28 @@ class Profile extends Component {
           <input type="text" name="number" className="profileFormInput" />
 
           <label className="profileFormLabel"> Your Car Model </label>
+          <p className="profileparag">
+            Please fill out this field if you wish to give rides.
+          </p>
           <input type="text" name="car" className="profileFormInput" />
           <button type="submit" className="button">
             SUBMIT
           </button>
         </form>
+
+        <UsersInfoContext.Consumer>
+          {({ myUserInfo }) => (
+            <div className="myprofileinfo">
+              {/* <Gravatar email={myUserInfo[0].emails.address} /> */}
+
+              <h1>Name: {myUserInfo[0].profileInformation.fullName}</h1>
+              <p>
+                Phone Number: {myUserInfo[0].profileInformation.phoneNumber}
+              </p>
+              <p>Car Model: {myUserInfo[0].profileInformation.carModel}</p>
+            </div>
+          )}
+        </UsersInfoContext.Consumer>
       </div>
     );
   }

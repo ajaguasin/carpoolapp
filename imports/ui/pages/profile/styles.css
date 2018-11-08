@@ -18,6 +18,29 @@
   margin-top: 10rem;
   margin-left: 5rem;
 }
+.profileparag {
+  color: white;
+  font-size: 12px;
+  margin-top: 0;
+}
+
+.icon {
+  margin-left: 20px;
+}
+
+.myprofileinfo {
+  color: white;
+  position: absolute;
+  left: 60%;
+  bottom: 10%;
+  border: 2px solid white;
+  width: 30vw;
+  height: 60%;
+  padding-left: 30px;
+  padding-top: 30px;
+
+}
+
 
 .profileFormInput {
   height: 2rem;
