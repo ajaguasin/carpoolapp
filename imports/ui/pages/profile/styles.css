@@ -5,18 +5,29 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.profileContent {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+  margin-top: 10%;
+
+}
+
+.infoparag {
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 30px;
+}
+
+.profileWrapper a {
+  width: 80px;
 }
 
 .profileForm {
   display: flex;
   flex-direction: column;
   width: 30vw;
-  height: 60%;
-  margin-top: 10rem;
-  margin-left: 5rem;
 }
 .profileparag {
   color: white;
@@ -25,17 +36,14 @@
 }
 
 .icon {
-  margin-left: 20px;
+  margin: 30px;
+  font-size: 40px;
 }
 
 .myprofileinfo {
   color: white;
-  position: absolute;
-  left: 60%;
-  bottom: 10%;
   border: 2px solid white;
   width: 30vw;
-  height: 60%;
   padding-left: 30px;
   padding-top: 30px;
 
@@ -63,6 +71,13 @@
 
 }
 
+.avatar {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  border: 5px solid #10B9C7;
+}
+
 .button:hover {
   background: #10B9C7;
   border: #10B9C7;
@@ -71,14 +86,14 @@
 
 .logo {
   width: 50%;
-  height: 10%;
+  height: 11%;
   margin: 0 auto;
 }
 
 .content {
-  position: absolute;
-  top: 10%;
-  left: 40%;
+  position: absolute; 
+  top: 7%;
+  left: 35%;
   height: 160px;
   overflow: hidden;
   font-family: "Lato", sans-serif;
@@ -281,3 +296,5 @@
     transform: translate3d(0, -25%, 0);
   }
 }
+
+
