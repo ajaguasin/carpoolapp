@@ -47,13 +47,19 @@ const partnerMachine = Machine({
 let currentState = partnerMachine.initialState;
 
 class RideState {
-  setPending = () => {
+  setPending = passengerId => {
     const newState = partnerMachine.transition(currentState, "TO_PENDING");
     currentState = newState;
-    console.log(STATES[newState.value]);
+    console.log(newState.value);
     Rides.update(
       { driverId: Meteor.userId() },
-      { $set: { rideStates: STATES[newState.value] } }
+      {
+        $set: {
+          passengerId: passengerId,
+          rideStates: newState.value
+          // rideStates: STATES[newState.value] <- Do I need it set to this ??
+        }
+      }
     );
   };
 

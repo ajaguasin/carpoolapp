@@ -5,16 +5,22 @@ import RideState from "./helpers/RideState";
 const RideStateObj = new RideState();
 
 Meteor.methods({
+  // Gets called when driver picks passenger
   "rides.updateToPending"(passengerId) {
     RideStateObj.setPending(passengerId);
   },
 
+  // Gets called when user selects driver
   "rides.driverToggle"(myUserInfo) {
-    console.log(myUserInfo);
-    Rides.update(
-      { owner: myUserInfo[0].id },
-      { $set: { driverId: myUserInfo[0].id } }
-    );
+    Rides.insert({
+      owner: myUserInfo[0].id,
+      driverId: myUserInfo[0].id,
+      passengerId: "",
+      rideStates: "initial"
+    });
+  },
+  "rides.deleteRide"() {
+    Rides.remove({ owner: this.userId });
   },
   "rides.passengerToggle"(myUserInfo) {
     Rides.update({ passengerId: myUserInfo[0].id });

@@ -28,7 +28,8 @@ class PassengerList extends Component {
     return passengers;
   };
 
-  updateToPending = passengerId => {
+  updateToPending = event => {
+    let passengerId = event.target.name;
     Meteor.call("rides.updateToPending", passengerId);
   };
   updateToMatched = () => {};
@@ -89,19 +90,23 @@ class PassengerList extends Component {
         {!loading &&
           this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
             return (
-              <React.Fragment className={classes.listContainer}>
+              <React.Fragment key={index}>
+                {console.log(record.id)}
                 <ProfileCard
                   className={classes.card}
                   key={index}
                   email={record.email}
                 />
-                <Button
+                <button
                   variant="contained"
                   className={classes.button}
-                  key={record.id}
+                  name={record.id}
+                  onClick={event => {
+                    this.updateToPending(event);
+                  }}
                 >
                   Accept
-                </Button>
+                </button>
               </React.Fragment>
             );
           })}

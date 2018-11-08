@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import PassengerList from "../PassengerList";
 import NotificationCard from "../notificationCard/index";
+import { UsersInfoContext } from "../../context/UsersInfoProvider";
 
 library.add(faSearchLocation, faMapMarkedAlt);
 
@@ -68,7 +69,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes, allUserInfo, myUserInfo, loading } = this.props;
+    const { classes } = this.props;
     return (
       <div className={classes.headerWrapper}>
         <SimpleMenu />
@@ -110,22 +111,29 @@ class Header extends React.Component {
           </div>
         </form>
         <div className={classes.menuDiv} />
-        console.log(rideStatus);
-        <React.Fragment>
-          <PassengerList
-            allUserInfo={allUserInfo}
-            myUserInfo={myUserInfo}
-            loading={loading}
-          />
+        <UsersInfoContext.Consumer>
+          {({ allUserInfo, myUserInfo, loading, ridesLoading, rides }) => (
+            <React.Fragment>
+              <PassengerList
+                allUserInfo={allUserInfo}
+                myUserInfo={myUserInfo}
+                loading={loading}
+                ridesLoading={ridesLoading}
+                rides={rides}
+              />
 
-          <div>
-            <NotificationCard
-              allUserInfo={allUserInfo}
-              myUserInfo={myUserInfo}
-              loading={loading}
-            />
-          </div>
-        </React.Fragment>
+              <div>
+                <NotificationCard
+                  allUserInfo={allUserInfo}
+                  myUserInfo={myUserInfo}
+                  loading={loading}
+                  ridesLoading={ridesLoading}
+                  rides={rides}
+                />
+              </div>
+            </React.Fragment>
+          )}
+        </UsersInfoContext.Consumer>
         }}
       </div>
     );

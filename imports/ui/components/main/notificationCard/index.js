@@ -12,10 +12,8 @@ class NotificationCard extends Component {
       allUserInfo,
       myUserInfo,
       loading,
-      setPending,
-      setMatched,
-      setInitial,
-      rideStatus
+      ridesLoading,
+      rides
     } = this.props;
     //aj this is just boolean values that i used
     //to test and style the notif card
@@ -39,7 +37,7 @@ class NotificationCard extends Component {
         <div className={classes.profileCard}>
           <ProfileCard />
           <Typography className={classes.pending}>
-            <div className={classes.pendingText}>CONFIRMATION PENDING</div>
+            {/* <div className={classes.pendingText}>CONFIRMATION PENDING</div> */}
           </Typography>
         </div> //MATCHED STATE
       ) : (
@@ -48,7 +46,7 @@ class NotificationCard extends Component {
           <div className={classes.profileCard}>
             <ProfileCard />
             <Typography className={classes.pending}>
-              <div className={classes.pendingText}>MATCH COMPLETE</div>
+              {/* <div className={classes.pendingText}>MATCH COMPLETE</div> */}
             </Typography>
           </div>
         )
@@ -86,7 +84,7 @@ class NotificationCard extends Component {
         <div className={classes.profileCard}>
           <ProfileCard />
           <Typography className={classes.pending}>
-            <div className={classes.pendingText}>MATCH COMPLETE</div>
+            {/* <div className={classes.pendingText}>MATCH COMPLETE</div> */}
           </Typography>
         </div>
       )
