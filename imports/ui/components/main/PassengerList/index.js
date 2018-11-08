@@ -44,7 +44,7 @@ class PassengerList extends Component {
       //   </p>
       // </div>
 
-      /*When passenger picks a destination show drivers also to the same destination*/
+      /*When passenger picks a destination import loadingSpinner component while drivers are loading*/
       <div>
         <CircularIndeterminate />
       </div>

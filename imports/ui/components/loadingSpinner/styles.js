@@ -4,8 +4,7 @@ const styles = theme => ({
   },
   loadingContainer: {
     display: "flex",
-    alignContent: "center",
-    color: "white"
+    alignContent: "center"
   },
   progress: {
     display: "flex",
