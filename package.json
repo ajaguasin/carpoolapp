@@ -25,6 +25,7 @@
     "react-map-gl": "^3.3.8",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "typeface-roboto": "0.0.54",
     "xstate": "^4.0.1"
   },
   "meteor": {

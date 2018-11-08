@@ -1,5 +1,8 @@
 .selection-page {
-  background: #31455a;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25)),
+    url("/images/selection-background.jpg");
+  background-position: center;
+  background-size: cover;
   position: absolute;
   top: 0;
   left: 0;
