@@ -19,6 +19,8 @@ Meteor.methods({
       rideStates: "initial"
     });
   },
+
+  // Gets called on componentDidMount in Select page
   "rides.deleteRide"() {
     Rides.remove({ owner: this.userId });
   },

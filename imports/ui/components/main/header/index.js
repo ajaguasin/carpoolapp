@@ -112,7 +112,14 @@ class Header extends React.Component {
         </form>
         <div className={classes.menuDiv} />
         <UsersInfoContext.Consumer>
-          {({ allUserInfo, myUserInfo, loading, ridesLoading, rides }) => (
+          {({
+            allUserInfo,
+            myUserInfo,
+            loading,
+            ridesLoading,
+            rides,
+            myRide
+          }) => (
             <React.Fragment>
               <PassengerList
                 allUserInfo={allUserInfo}
@@ -120,6 +127,7 @@ class Header extends React.Component {
                 loading={loading}
                 ridesLoading={ridesLoading}
                 rides={rides}
+                myRide={myRide}
               />
 
               <div>
@@ -129,6 +137,7 @@ class Header extends React.Component {
                   loading={loading}
                   ridesLoading={ridesLoading}
                   rides={rides}
+                  myRide={myRide}
                 />
               </div>
             </React.Fragment>

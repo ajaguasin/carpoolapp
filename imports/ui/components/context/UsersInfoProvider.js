@@ -12,11 +12,19 @@ class UsersInfoProvider extends Component {
       myUserInfo,
       loading,
       ridesLoading,
-      rides
+      rides,
+      myRide
     } = this.props;
     return (
       <UsersInfoContext.Provider
-        value={{ allUserInfo, myUserInfo, loading, ridesLoading, rides }}
+        value={{
+          allUserInfo,
+          myUserInfo,
+          loading,
+          ridesLoading,
+          rides,
+          myRide
+        }}
       >
         {this.props.children}
       </UsersInfoContext.Provider>
@@ -35,6 +43,9 @@ export default withTracker(() => {
     ridesLoading: !ridesReady,
     allUserInfo: UsersInfo.find({}).fetch(),
     myUserInfo: UsersInfo.find({ id: Meteor.userId() }).fetch(),
-    rides: Rides.find({}).fetch()
+    rides: Rides.find({}).fetch(),
+    myRide: Rides.find({
+      $or: [{ driverId: Meteor.userId }, { passengerId: Meteor.userId }]
+    }).fetch()
   };
 })(UsersInfoProvider);

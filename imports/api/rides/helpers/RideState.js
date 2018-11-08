@@ -50,7 +50,7 @@ class RideState {
   setPending = passengerId => {
     const newState = partnerMachine.transition(currentState, "TO_PENDING");
     currentState = newState;
-    console.log(newState.value);
+    console.log(passengerId);
     Rides.update(
       { driverId: Meteor.userId() },
       {

@@ -37,7 +37,7 @@ class PassengerList extends Component {
   updateToInitialFromPending = () => {};
 
   render() {
-    const { classes, allUserInfo, myUserInfo, loading } = this.props;
+    const { classes, allUserInfo, myUserInfo, loading, myRideS } = this.props;
 
     return (
       // <div>

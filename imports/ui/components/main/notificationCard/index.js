@@ -13,7 +13,8 @@ class NotificationCard extends Component {
       myUserInfo,
       loading,
       ridesLoading,
-      rides
+      rides,
+      myRide
     } = this.props;
     //aj this is just boolean values that i used
     //to test and style the notif card
@@ -22,7 +23,7 @@ class NotificationCard extends Component {
     const status = myUserInfo[0].partnerStatus.partnerId;
     const passenger = myUserInfo[0].passenger;
     const sample = myUserInfo[0].partnerStatus.partnerMatched;
-    console.log("sampleee", sample);
+    console.log(myRide);
 
     // status = null;
 
