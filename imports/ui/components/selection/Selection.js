@@ -27,9 +27,7 @@ class SelectButton extends React.Component {
     myUserInfo && console.log(myUserInfo);
     return (
       <Grid className={classes.buttons}>
-        <Typography variant="h1" color="#E3F2FD">
-          Are you a:
-        </Typography>
+        <h1 className={classes.title}> Are you a:</h1>
         <div>
           <Tooltip title="You drive a passenger going in the same direction">
             <Link to="/main">

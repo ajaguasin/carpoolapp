@@ -13,6 +13,7 @@ class PassengerList extends Component {
       partnerId: null
     };
   }
+
   passengerArray = (allUserInfo, myUserInfo) => {
     const passengers = allUserInfo
       .filter(record => {
@@ -88,10 +89,12 @@ class PassengerList extends Component {
       /* When driver picks a destination show passenger cards also going in the same direction */
       <div className={classes.list}>
         {!loading &&
+          myUserInfo[0].driver === true &&
           this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
             return (
               <React.Fragment key={index}>
                 {console.log(record.id)}
+                {console.log("vanessa", allUserInfo)}
                 <ProfileCard
                   className={classes.card}
                   key={index}

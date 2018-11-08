@@ -8,6 +8,9 @@ const styles = theme => ({
     justifyContent: "space-around",
     margin: "auto 0"
   },
+  title: {
+    color: "#E3F2FD"
+  },
   driver: {
     background: "#58B9D4",
     width: 300,
