@@ -94,7 +94,6 @@ class PassengerList extends Component {
             return (
               <React.Fragment key={index}>
                 {console.log(record.id)}
-                {console.log("vanessa", allUserInfo)}
                 <ProfileCard
                   className={classes.card}
                   key={index}

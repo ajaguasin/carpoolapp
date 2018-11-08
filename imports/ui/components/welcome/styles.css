@@ -9,11 +9,19 @@
   height: 100vh;
   background-image: linear-gradient(rgba(1, 1, 1, 0.75), rgba(2, 3, 3, 0.35)),
     url("/images/cover.jpeg");
+<<<<<<< HEAD
     position: absolute;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
+=======
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+>>>>>>> 253ec16b75c09cc65816e08ed9bf184b6d7cf86f
 }
 
 #login-dropdown-list {

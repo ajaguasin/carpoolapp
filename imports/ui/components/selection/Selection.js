@@ -27,30 +27,30 @@ class SelectButton extends React.Component {
     myUserInfo && console.log(myUserInfo);
     return (
       <Grid className={classes.buttons}>
-        <h1 className={classes.title}> Are you a:</h1>
-        <div>
+        <Typography className={classes.title}>
+          Who are <br /> you?
+        </Typography>
+        <div className={classes.selectButtons}>
           <Tooltip title="You drive a passenger going in the same direction">
             <Link to="/main">
-              <Button
+              <button
                 onClick={() => this.driverToggle(myUserInfo)}
                 variant="contained"
                 className={classes.driver}
               >
                 Driver
-              </Button>
+              </button>
             </Link>
           </Tooltip>
-        </div>
-        <div>
           <Tooltip title="You carpool with a driver going in the same direction">
             <Link to="/main">
-              <Button
+              <button
                 onClick={() => this.passengerToggle(myUserInfo)}
                 variant="contained"
                 className={classes.passenger}
               >
                 Passenger
-              </Button>
+              </button>
             </Link>
           </Tooltip>
         </div>
