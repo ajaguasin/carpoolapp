@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { withRouter } from "react-router-dom";
 
 library.add(faChevronLeft);
 
@@ -31,16 +32,30 @@ class Profile extends Component {
   render() {
     return (
       <div className="profileWrapper">
-        <Link to="/main">
-          <FontAwesomeIcon className="icon" icon="chevron-left" />
-        </Link>
+        {this.props.location.pathname === "/profile" && (
+          <Link to="/main">
+            <FontAwesomeIcon className="icon" icon="chevron-left" />
+          </Link>
+        )}
+
         <div className="content">
           <div className="content__container">
             <p className="content__container__text">Hello</p>
 
             <ul className="content__container__list">
               <li className="content__container__list__item">you !</li>
-              <li className="content__container__list__item">Einer !</li>
+              {this.props.location.pathname === "/profile" && (
+                <UsersInfoContext.Consumer>
+                  {({ myUserInfo }) => (
+                    <li className="content__container__list__item">
+                      {myUserInfo[0].profileInformation.fullName}
+                    </li>
+                  )}
+                </UsersInfoContext.Consumer>
+              )}
+              {this.props.location.pathname === "/createprofile" && (
+                <li className="content__container__list__item">user !</li>
+              )}
               <li className="content__container__list__item">beautiful !</li>
               <li className="content__container__list__item">to carpooling!</li>
             </ul>
@@ -87,4 +102,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default withRouter(Profile);
