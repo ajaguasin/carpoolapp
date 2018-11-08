@@ -1,5 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { UsersInfo } from "../../api/usersInfo/usersInfo";
+import { Rides } from "../../api/rides/rides";
 
 Meteor.startup(() => {
   if (!Meteor.users.find().count) {
@@ -34,6 +35,17 @@ Meteor.startup(() => {
             partnerMatched: false
           }
         });
+        Rides.insert({
+          owner: user._id,
+          driverId: "",
+          passengerId: "",
+          rideStates: {
+            partnerId: false,
+            pending: false,
+            partnerMatched: false
+          }
+        });
+        return user;
       }
     );
   }

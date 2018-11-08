@@ -12,10 +12,12 @@ class SelectButton extends React.Component {
 
   driverToggle = myUserInfo => {
     Meteor.call("usersInfo.driverToggle", myUserInfo);
+    Meteor.call("rides.driverToggle", myUserInfo);
   };
 
   passengerToggle = myUserInfo => {
     Meteor.call("usersInfo.passengerToggle", myUserInfo);
+    Meteor.call("rides.passengerToggle", myUserInfo);
   };
 
   render() {

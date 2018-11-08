@@ -9,12 +9,13 @@ export default class Main extends Component {
     return (
       <div>
         <UsersInfoContext.Consumer>
-          {({ allUserInfo, myUserInfo, loading }) => (
+          {({ allUserInfo, myUserInfo, loading, rides, ridesLoading }) => (
             <React.Fragment>
               <Header
                 allUserInfo={allUserInfo}
                 myUserInfo={myUserInfo}
-                loading={loading}
+                rides={rides}
+                ridesLoading={ridesLoading}
               />
               <Map
                 allUserInfo={allUserInfo}

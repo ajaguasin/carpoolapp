@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
+import { Meteor } from "meteor/meteor";
 
 class PassengerList extends Component {
   constructor() {
@@ -24,11 +25,29 @@ class PassengerList extends Component {
     return passengers;
   };
 
+  updateToPending = passengerId => {
+    Meteor.call("rides.updateToPending", passengerId);
+  };
+  updateToMatched = () => {};
+  updateToInitialFromMatched = () => {};
+  updateToInitialFromPending = () => {};
+
   render() {
     const { classes, allUserInfo, myUserInfo, loading } = this.props;
 
     return (
-      <div>Testing</div>
+      <div>
+        <button onClick={() => this.updateToPending(passengerId)}>
+          To pending
+        </button>
+        <button onClick={() => this.updateToMatched()}>To Matched</button>
+        <button onClick={() => this.updateToInitialFromMatched()}>
+          To Initial From Matched
+        </button>
+        <button onClick={() => this.updateToInitialFromPending()}>
+          To Initial From Pending
+        </button>
+      </div>
 
       // <div className={classes.list}>
       //   {!loading &&
