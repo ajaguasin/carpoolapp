@@ -6,6 +6,18 @@ import { Typography } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 
 class NotificationCard extends Component {
+  constructor() {
+    super();
+  }
+
+  updateToMatch = () => {
+    Meteor.call("rides.updateToMatch");
+  };
+
+  updateToInitialFromPending = () => {
+    Meteor.call("rides.setInitialFromPending");
+  };
+
   render() {
     const {
       classes,
@@ -16,76 +28,101 @@ class NotificationCard extends Component {
       rides,
       myRide
     } = this.props;
-    //aj this is just boolean values that i used
-    //to test and style the notif card
-    //you can all delete it and replace with the right data
+
+    const actualRide = rides.filter(ride => {
+      const final =
+        ride.driverId === Meteor.userId() ||
+        ride.passengerId === Meteor.userId();
+      return final;
+    });
+    // console.log(rides);
+    // !ridesLoading && console.log(actualRide[0].rideStates);
+
     const driver = myUserInfo[0].driver;
-    const status = myUserInfo[0].partnerStatus.partnerId;
-    const passenger = myUserInfo[0].passenger;
-    const sample = myUserInfo[0].partnerStatus.partnerMatched;
-    console.log(myRide);
-
-    // status = null;
-
     return driver ? (
-      status ? ( //INITIAL STATE
-        <div className={classes.profileCard}>
+      !ridesLoading && actualRide[0].rideStates === "initial" ? (
+        <div
+          className={
+            classes.profileCard //INITIAL STATE
+          }
+        >
           <Typography className={classes.text}>
             Choose a destination to show Passengers
           </Typography>
         </div>
-      ) : !sample ? ( //PENDING STATE
-        <div className={classes.profileCard}>
+      ) : !ridesLoading && actualRide[0].rideStates === "pending" ? (
+        <div
+          className={
+            classes.profileCard //PENDING STATE
+          }
+        >
           <ProfileCard />
           <Typography className={classes.pending}>
-            {/* <div className={classes.pendingText}>CONFIRMATION PENDING</div> */}
+            <div className={classes.pendingText}>CONFIRMATION PENDING</div>
           </Typography>
-        </div> //MATCHED STATE
+        </div>
       ) : (
-        //GET PASSENGER PROFILECARD
-        sample && (
-          <div className={classes.profileCard}>
+        !ridesLoading &&
+        actualRide[0].rideStates === "matched" && (
+          <div
+            className={
+              classes.profileCard //GET PASSENGER PROFILECARD //MATCHED STATE
+            }
+          >
             <ProfileCard />
             <Typography className={classes.pending}>
-              {/* <div className={classes.pendingText}>MATCH COMPLETE</div> */}
+              <div className={classes.pendingText}>MATCH COMPLETE</div>
             </Typography>
           </div>
         )
       )
-    ) : !sample ? ( //PASSENGER INITIAL STATE
-      <div className={classes.profileCard}>
+    ) : !ridesLoading && !actualRide[0] ? (
+      <div
+        className={
+          classes.profileCard //PASSENGER INITIAL STATE
+        }
+      >
         <Typography className={classes.text}>
           Choose a destination to show Drivers
         </Typography>
       </div>
-    ) : status ? ( //PASSENGER PENDING STATE
-      // ADD ONCLICK ON THE BUTTONS
-      //IF ACCEPT RUN MATCHED STATE
-      //IF CANCEL RUN INITIAL STATE
-      <div className={classes.profileCard}>
+    ) : !ridesLoading && actualRide[0].rideStates === "pending" ? (
+      <div
+        className={
+          classes.profileCard //IF CANCEL RUN INITIAL STATE //IF ACCEPT RUN MATCHED STATE // ADD ONCLICK ON THE BUTTONS //PASSENGER PENDING STATE
+        }
+      >
         <ProfileCard />
         <div className={classes.confirmationButton}>
           <Button
             style={{ backgroundColor: "#31455A" }}
-            onClick={() => alert("fire matched state")}
+            onClick={() => {
+              this.updateToMatch();
+            }}
           >
             ACCEPT
           </Button>
           <Button
             style={{ backgroundColor: "#31455A" }}
-            onClick={() => alert("fire initial state")}
+            onClick={() => {
+              this.updateToInitialFromPending();
+            }}
           >
             CANCEL
           </Button>
         </div>
-      </div> //PASSENGER MATCHED STATE
+      </div>
     ) : (
-      //GET THE DRIVERS PROFILECARD
-      sample && (
-        <div className={classes.profileCard}>
+      !ridesLoading &&
+      actualRide[0].rideStates === "matched" && (
+        <div
+          className={
+            classes.profileCard //GET THE DRIVERS PROFILECARD //PASSENGER MATCHED STATE
+          }
+        >
           <ProfileCard />
           <Typography className={classes.pending}>
-            {/* <div className={classes.pendingText}>MATCH COMPLETE</div> */}
+            <div className={classes.pendingText}>MATCH COMPLETE</div>
           </Typography>
         </div>
       )

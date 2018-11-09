@@ -15,6 +15,8 @@ class UsersInfoProvider extends Component {
       rides,
       myRide
     } = this.props;
+    !ridesLoading && console.log(myRide);
+    console.log(rides);
     return (
       <UsersInfoContext.Provider
         value={{
@@ -38,14 +40,18 @@ export default withTracker(() => {
 
   const ready = handle.ready();
   const ridesReady = ridesHandle.ready();
+
+  const myRide = Rides.find({
+    $or: [{ driverId: Meteor.userId() }, { passengerId: Meteor.userId() }]
+  }).fetch();
+
+  console.log(Meteor.userId());
   return {
     loading: !ready,
     ridesLoading: !ridesReady,
     allUserInfo: UsersInfo.find({}).fetch(),
     myUserInfo: UsersInfo.find({ id: Meteor.userId() }).fetch(),
     rides: Rides.find({}).fetch(),
-    myRide: Rides.find({
-      $or: [{ driverId: Meteor.userId }, { passengerId: Meteor.userId }]
-    }).fetch()
+    myRide
   };
 })(UsersInfoProvider);
