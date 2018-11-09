@@ -1,7 +1,8 @@
 const styles = theme => ({
   loadingText: {
     textAlign: "center",
-    color: "white"
+    color: "white",
+    fontSize: "20px"
   },
   loadingContainer: {
     display: "flex",
@@ -11,7 +12,8 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginTop: 100
   }
 });
 
