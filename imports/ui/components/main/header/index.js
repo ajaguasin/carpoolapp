@@ -119,19 +119,10 @@ class Header extends React.Component {
             ridesLoading,
             rides,
             myRide
-          }) => (
-            <React.Fragment>
-              <PassengerList
-                allUserInfo={allUserInfo}
-                myUserInfo={myUserInfo}
-                loading={loading}
-                ridesLoading={ridesLoading}
-                rides={rides}
-                myRide={myRide}
-              />
-
-              <div>
-                <NotificationCard
+          }) => {
+            return (
+              <React.Fragment>
+                <PassengerList
                   allUserInfo={allUserInfo}
                   myUserInfo={myUserInfo}
                   loading={loading}
@@ -139,9 +130,20 @@ class Header extends React.Component {
                   rides={rides}
                   myRide={myRide}
                 />
-              </div>
-            </React.Fragment>
-          )}
+
+                <div>
+                  <NotificationCard
+                    allUserInfo={allUserInfo}
+                    myUserInfo={myUserInfo}
+                    loading={loading}
+                    ridesLoading={ridesLoading}
+                    rides={rides}
+                    myRide={myRide}
+                  />
+                </div>
+              </React.Fragment>
+            );
+          }}
         </UsersInfoContext.Consumer>
         }}
       </div>
