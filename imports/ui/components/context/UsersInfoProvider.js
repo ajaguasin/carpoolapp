@@ -15,8 +15,6 @@ class UsersInfoProvider extends Component {
       rides,
       myRide
     } = this.props;
-    !ridesLoading && console.log(myRide);
-    console.log(rides);
     return (
       <UsersInfoContext.Provider
         value={{
@@ -45,7 +43,6 @@ export default withTracker(() => {
     $or: [{ driverId: Meteor.userId() }, { passengerId: Meteor.userId() }]
   }).fetch();
 
-  console.log(Meteor.userId());
   return {
     loading: !ready,
     ridesLoading: !ridesReady,

@@ -25,7 +25,6 @@ class SelectButton extends React.Component {
 
   render() {
     const { classes, myUserInfo } = this.props;
-    myUserInfo && console.log(myUserInfo);
     return (
       <Grid className={classes.buttons}>
         <Fade in={true} timeout={2000}>

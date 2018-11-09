@@ -54,7 +54,6 @@ Meteor.methods({
   },
 
   "usersInfo.handleSubmit"(coordinates) {
-    console.log(coordinates);
     UsersInfo.update(
       { id: this.userId },
       {
@@ -118,8 +117,6 @@ Meteor.methods({
   },
 
   "usersInfo.profileUpdate"(name, number, car) {
-    console.log(name, number, car);
-    console.log(this.userId);
     UsersInfo.update(
       { id: this.userId },
       {

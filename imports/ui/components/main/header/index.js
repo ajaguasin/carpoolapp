@@ -36,7 +36,6 @@ class Header extends React.Component {
     //   () => {
     navigator.geolocation.getCurrentPosition(
       success => {
-        console.log(success.coords);
         const myLocation = {
           lat: success.coords.latitude,
           lng: success.coords.longitude

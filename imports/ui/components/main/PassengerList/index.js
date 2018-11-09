@@ -55,6 +55,7 @@ class PassengerList extends Component {
         ride.passengerId === Meteor.userId();
       return final;
     });
+
     const driver = myUserInfo[0].driver;
     return driver ? (
       !ridesLoading && actualRide[0].rideStates === "initial" ? (
@@ -65,14 +66,12 @@ class PassengerList extends Component {
               (record, index) => {
                 return (
                   <React.Fragment key={index}>
-                    {console.log(record.id)}
                     <ProfileCard
                       className={classes.card}
                       key={index}
                       email={record.email}
                     />
-                    <Button
-                      variant="contained"
+                    <button
                       className={classes.button}
                       name={record.id}
                       onClick={event => {
@@ -80,7 +79,7 @@ class PassengerList extends Component {
                       }}
                     >
                       Accept
-                    </Button>
+                    </button>
                   </React.Fragment>
                 );
               }
