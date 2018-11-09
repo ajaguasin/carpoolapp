@@ -3,7 +3,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import CardHeader from "@material-ui/core/CardHeader";
 import styles from "./styles";
 import Gravatar from "react-gravatar";
 import { UsersInfoContext } from "../../components/context/UsersInfoProvider";
@@ -16,28 +15,20 @@ class ProfileCard extends Component {
         <CardContent className={classes.footerMetaWrapper}>
           <UsersInfoContext.Consumer>
             {({ allUserInfo }) => {
-              <CardHeader
-                avatar={
+              return (
+                <div className="myprofileinfo">
                   <Gravatar
-                    className={classes.avatar}
-                    // email={allUserInfo[12].email}
-                    default="monsterid"
+                    className={classes.imgprofilecard}
+                    email={allUserInfo[0].email.address}
+                    default="robohash"
                   />
-                }
-              />;
-              // console.log("gravatr email", allUserInfo[12].email);
-              console.log("gravataaaar", allUserInfo);
+                  <Typography component="h2" className={classes.p}>
+                    {allUserInfo[0].profileInformation.fullName}
+                  </Typography>
+                </div>
+              );
             }}
           </UsersInfoContext.Consumer>
-          <img
-            src="http://maliconsultoria.com.br/wp-content/uploads/2017/10/avatar-viola.png"
-            className={classes.img}
-          />
-          <div className={classes.footerMeta}>
-            <Typography component="h2" className={classes.p}>
-              Einer Lim
-            </Typography>
-          </div>
         </CardContent>
       </Card>
     );
