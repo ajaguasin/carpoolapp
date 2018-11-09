@@ -11,38 +11,39 @@ class ProfileCard extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Card className={classes.card}>
-        <CardContent className={classes.footerMetaWrapper}>
-          <UsersInfoContext.Consumer>
-            {({ allUserInfo }) => {
-              return (
-                <React.Fragment>
-                  <Gravatar
-                    className={classes.imgprofilecard}
-                    email={allUserInfo[0].email.address}
-                    default="robohash"
-                  />
-
-                  <div className={classes.profilecardbox}>
-                    <Typography
-                      component="h2"
-                      className={classes.profilecardname}
-                    >
-                      Name: {allUserInfo[0].profileInformation.fullName}
-                    </Typography>
-                    <Typography
-                      component="h3"
-                      className={classes.profilecardname}
-                    >
-                      Phone: {allUserInfo[0].profileInformation.phoneNumber}
-                    </Typography>
-                  </div>
-                </React.Fragment>
-              );
-            }}
-          </UsersInfoContext.Consumer>
-        </CardContent>
-      </Card>
+      <UsersInfoContext.Consumer>
+        {({ allUserInfo}) => {
+          return allUserInfo.map(alluserinfo => {
+            return (
+              <Card className={classes.card}>
+                <CardContent className={classes.footerMetaWrapper}>
+                  <React.Fragment>
+                    <Gravatar
+                      className={classes.imgprofilecard}
+                      email={alluserinfo.email.address}
+                      default="robohash"
+                    />
+                    <div className={classes.profilecardbox}>
+                      <Typography
+                        component="h2"
+                        className={classes.profilecardname}
+                      >
+                        Name: {alluserinfo.profileInformation.fullName}
+                      </Typography>
+                      <Typography
+                        component="h3"
+                        className={classes.profilecardname}
+                      >
+                        Phone: {alluserinfo.profileInformation.phoneNumber}
+                      </Typography>
+                    </div>
+                  </React.Fragment>
+                </CardContent>
+              </Card>
+            );
+          });
+        }}
+      </UsersInfoContext.Consumer>
     );
   }
 }
