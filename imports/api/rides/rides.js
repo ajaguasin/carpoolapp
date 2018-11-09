@@ -3,18 +3,24 @@ import { Meteor } from "meteor/meteor";
 
 export const Rides = new Mongo.Collection("rides");
 
-import RideState from "./helpers/RideState";
 if (Meteor.isServer) {
   Meteor.publish("rides", () => {
     return Rides.find({});
   });
 }
-const RideStateObj = new RideState();
 
 Meteor.methods({
   // Gets called when driver picks passenger
   "rides.updateToPending"(passengerId) {
-    RideStateObj.setPending(passengerId);
+    Rides.update(
+      { driverId: Meteor.userId() },
+      {
+        $set: {
+          passengerId: passengerId,
+          rideStates: "pending"
+        }
+      }
+    );
   },
 
   // Gets called when user selects driver
@@ -27,7 +33,10 @@ Meteor.methods({
     });
   },
   "rides.updateToMatch"() {
-    RideStateObj.setMatched({});
+    Rides.update(
+      { passengerId: Meteor.userId() },
+      { $set: { rideStates: "matched" } }
+    );
   },
 
   // Gets called on componentDidMount in Select page
@@ -35,7 +44,10 @@ Meteor.methods({
     Rides.remove({ owner: this.userId });
   },
   "rides.setInitialFromPending"() {
-    RideStateObj.setInitialFromPending();
+    Rides.update(
+      { passengerId: Meteor.userId() },
+      { $set: { rideStates: "initial", passengerId: "" } }
+    );
   }
 });
 

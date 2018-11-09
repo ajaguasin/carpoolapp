@@ -12,7 +12,7 @@ class ProfileCard extends Component {
     const { classes } = this.props;
     return (
       <UsersInfoContext.Consumer>
-        {({ allUserInfo}) => {
+        {({ allUserInfo }) => {
           return allUserInfo.map(alluserinfo => {
             return (
               <Card className={classes.card}>

@@ -33,21 +33,20 @@ class Header extends React.Component {
   getLocation = () => {
     // setInterval(
     //   () => {
-        navigator.geolocation.getCurrentPosition(
-          success => {
-            console.log(success.coords);
-            const myLocation = {
-              lat: success.coords.latitude,
-              lng: success.coords.longitude
-            };
-            Meteor.call("usersInfo.getLocation", myLocation);
-          },
-          err => console.log(err),
-          {
-            enableHighAccuracy: true,
-            distanceFilter: 1
-          }
-        );
+    navigator.geolocation.getCurrentPosition(
+      success => {
+        const myLocation = {
+          lat: success.coords.latitude,
+          lng: success.coords.longitude
+        };
+        Meteor.call("usersInfo.getLocation", myLocation);
+      },
+      err => console.log(err),
+      {
+        enableHighAccuracy: true,
+        distanceFilter: 1
+      }
+    );
     //   },
 
     //   2000
@@ -85,10 +84,7 @@ class Header extends React.Component {
               onClick={() => this.getLocation()}
               className={classes.locationButton}
             />
-            <span
-              className={classes.input}
-              onClick={() => this.getLocation()}
-            >
+            <span className={classes.input} onClick={() => this.getLocation()}>
               Use My Current location
             </span>
           </div>
