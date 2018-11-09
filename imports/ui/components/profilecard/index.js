@@ -16,16 +16,28 @@ class ProfileCard extends Component {
           <UsersInfoContext.Consumer>
             {({ allUserInfo }) => {
               return (
-                <div className="myprofileinfo">
+                <React.Fragment>
                   <Gravatar
                     className={classes.imgprofilecard}
                     email={allUserInfo[0].email.address}
                     default="robohash"
                   />
-                  <Typography component="h2" className={classes.p}>
-                    {allUserInfo[0].profileInformation.fullName}
-                  </Typography>
-                </div>
+
+                  <div className={classes.profilecardbox}>
+                    <Typography
+                      component="h2"
+                      className={classes.profilecardname}
+                    >
+                      Name: {allUserInfo[0].profileInformation.fullName}
+                    </Typography>
+                    <Typography
+                      component="h3"
+                      className={classes.profilecardname}
+                    >
+                      Phone: {allUserInfo[0].profileInformation.phoneNumber}
+                    </Typography>
+                  </div>
+                </React.Fragment>
               );
             }}
           </UsersInfoContext.Consumer>

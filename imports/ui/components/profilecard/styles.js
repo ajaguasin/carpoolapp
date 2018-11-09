@@ -1,17 +1,41 @@
 const styles = theme => ({
+  card: {
+    width: '75%',
+    background: 'transparent',
+    border: '2px solid #10B9C7',
+    display: 'flex',
+    marginRight: '5px',
+    height: '20%',
+    
+  },
+
   footerMetaWrapper: {
-    width: "50%",
-    height: "70%",
-    // margin: "5px 15px",
-    display: "flex"
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    padding: '5px'
 
   },
 
+  profilecardname: {
+    textTransform: 'capitalize',
+    color: "white",
+
+  },
+
+  profilecardbox: {
+    display: "flex",
+    flexDirection: "column"
+  },
+
   imgprofilecard: {
-    width: '10%',
-    height: '35%',
+    width: '20%',
+    height: '75%',
     border: '2px solid #10B9C7',
-    borderRadius: '50%'
+    borderRadius: '50%',
+    background: "white",
+    margin: "0",
+    marginRight: "10px"
   },
 
 });

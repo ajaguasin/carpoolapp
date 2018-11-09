@@ -12,8 +12,8 @@ const styles = theme => ({
     alignItems: "center"
   },
   button: {
-    width: "40%",
-    height: "20%",
+    width: "20%",
+    height: "10%",
     background: "#29eecb"
   },
   animation: {

@@ -92,38 +92,38 @@ class PassengerList extends Component {
       // </div>
 
       /*Whilst driver and passenger are driving to destination load animating car or something */
-      <div className={classes.animation}>
-        <FontAwesomeIcon className={classes.car} icon="car-side" spin={true} />
-        <p className={classes.quote}>Enroute to your destination...</p>
-      </div>
+      // <div className={classes.animation}>
+      //   <FontAwesomeIcon className={classes.car} icon="car-side" spin={true} />
+      //   <p className={classes.quote}>Enroute to your destination...</p>
+      // </div>
 
       /* When driver picks a destination show passenger cards also going in the same direction */
-      // <div className={classes.list}>
-      //   {!loading &&
-      //     myUserInfo[0].driver === true &&
-      //     this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
-      //       return (
-      //         <React.Fragment key={index}>
-      //           {console.log(record.id)}
-      //           <ProfileCard
-      //             className={classes.card}
-      //             key={index}
-      //             email={record.email}
-      //           />
-      //           <Button
-      //             variant="contained"
-      //             className={classes.button}
-      //             name={record.id}
-      //             onClick={event => {
-      //               this.updateToPending(event);
-      //             }}
-      //           >
-      //             Accept
-      //           </Button>
-      //         </React.Fragment>
-      //       );
-      //     })}
-      // </div>
+      <div className={classes.list}>
+        {!loading &&
+          myUserInfo[0].driver === true &&
+          this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
+            return (
+              <React.Fragment key={index}>
+                {console.log(record.id)}
+                <ProfileCard
+                  className={classes.card}
+                  key={index}
+                  email={record.email}
+                />
+                <Button
+                  variant="contained"
+                  className={classes.button}
+                  name={record.id}
+                  onClick={event => {
+                    this.updateToPending(event);
+                  }}
+                >
+                  Accept
+                </Button>
+              </React.Fragment>
+            );
+          })}
+      </div>
     );
   }
 }
