@@ -44,19 +44,25 @@ const partnerMachine = Machine({
   }
 });
 
-let currentState = partnerMachine.initialState;
+let initialState = partnerMachine.initialState;
 
 class RideState {
+  constructor() {
+    this.currentState = initialState;
+  }
+
   setPending = passengerId => {
-    const newState = partnerMachine.transition(currentState, "TO_PENDING");
-    currentState = newState;
-    console.log(passengerId);
+    this.currentState = partnerMachine.transition(
+      this.currentState,
+      "TO_PENDING"
+    );
+    console.log(this.currentState.value);
     Rides.update(
       { driverId: Meteor.userId() },
       {
         $set: {
           passengerId: passengerId,
-          rideStates: newState.value
+          rideStates: this.currentState.value
           // rideStates: STATES[newState.value] <- Do I need it set to this ??
         }
       }
@@ -64,35 +70,33 @@ class RideState {
   };
 
   setMatched = () => {
-    const newState = partnerMachine.transition(
-      (currentState = newState),
+    this.currentState = partnerMachine.transition(
+      this.currentState,
       "TO_MATCHED"
     );
-
     Rides.update(
       { passengerId: Meteor.userId() },
-      { $set: { rideStates: STATES[newState.value] } }
+      { $set: { rideStates: this.currentState.value } }
     );
   };
 
   setInitialFromMatched = () => {
-    const newState = partnerMachine.transition(
-      this.state.current,
+    this.currentState = partnerMachine.transition(
+      this.currentState,
       "TO_INITIAL"
     );
-    Rides.update({ ...STATES[newState.value], current: newState.value });
+    Rides.update({ ...STATES[this.currentState], current: this.currentState });
   };
 
   setInitialFromPending = () => {
-    const newState = partnerMachine.transition(
-      this.state.current,
+    this.currentState = partnerMachine.transition(
+      this.currentState,
       "TO_INITIAL"
     );
+    console.log(this.currentState.value);
     Rides.update(
-      {
-        /*query with this.userId*/
-      },
-      { ...STATES[newState.value], current: newState.value }
+      { passengerId: Meteor.userId() },
+      { $set: { rideStates: "initial", passengerId: "" } }
     );
   };
 }
