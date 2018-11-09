@@ -22,6 +22,26 @@ Meteor.methods({
       }
     );
   },
+  "rides.updateToDone"() {
+    Rides.update(
+      { passengerId: Meteor.userId() },
+      {
+        $set: {
+          rideStates: "done"
+        }
+      }
+    );
+  },
+  "rides.updateToCancel"() {
+    Rides.update(
+      { passengerId: Meteor.userId() },
+      {
+        $set: {
+          rideStates: "cancel"
+        }
+      }
+    );
+  },
 
   // Gets called when user selects driver
   "rides.driverToggle"(myUserInfo) {

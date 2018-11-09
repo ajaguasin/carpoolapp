@@ -1,11 +1,8 @@
-import { faAlignCenter } from "@fortawesome/free-solid-svg-icons";
-
 const styles = theme => ({
   list: {
     overflow: "scroll",
-    width: "90%",
+    width: "100%",
     height: "35%",
-    margin: "0 auto",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
@@ -22,22 +19,33 @@ const styles = theme => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 100
+    marginTop: 50
   },
   quote: {
     fontSize: "25px",
-    color: "white"
+    color: "white",
+    textAlign: "center"
   },
   button: {
     background: "#29eecb",
     width: 75,
     height: 50,
     cursor: "pointer",
-    borderRadius: "10px 10px 10px 10px",
+    borderRadius: "50px 50px",
     boxShadow: "0px 0px 13px 1px rgba(0,0,0,0.73)",
     border: "none",
     textTransform: "uppercase",
     fontSize: "12px"
+  },
+  loading: {
+    height: 100
+  },
+  tripComplete: {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+    height: "30%"
   }
 });
 export default styles;
