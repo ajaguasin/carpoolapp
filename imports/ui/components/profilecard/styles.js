@@ -1,27 +1,43 @@
 const styles = theme => ({
   card: {
-    width: "50%",
-    height: "20%",
-    margin: "15px 0"
+    width: '75%',
+    background: 'transparent',
+    border: '2px solid #10B9C7',
+    display: 'flex',
+    marginRight: '5px',
+    height: '20%',
+    
   },
 
   footerMetaWrapper: {
-    display: "flex"
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    padding: '5px'
+
   },
 
-  footerMeta: {
-    paddingTop: "5px"
+  profilecardname: {
+    textTransform: 'capitalize',
+    color: "white",
+
   },
 
-  img: {
-    width: "30px",
-    height: "30px",
-    borderRadius: "50%"
+  profilecardbox: {
+    display: "flex",
+    flexDirection: "column"
   },
-  p: {
+
+  imgprofilecard: {
+    width: '18%',
+    height: '75%',
+    border: '2px solid #10B9C7',
+    borderRadius: '50%',
+    background: "white",
     margin: "0",
-    paddingLeft: "10px"
-  }
+    marginRight: "10px"
+  },
+
 });
 
 export default styles;
