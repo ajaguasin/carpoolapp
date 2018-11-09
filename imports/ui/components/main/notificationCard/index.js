@@ -68,7 +68,7 @@ class NotificationCard extends Component {
         >
           <ProfileCard />
           <Typography className={classes.pending}>
-            <div className={classes.pendingText}>CONFIRMATION PENDING</div>
+            <span className={classes.pendingText}>CONFIRMATION PENDING</span>
           </Typography>
         </div>
       ) : !ridesLoading && actualRide[0].rideStates === "matched" ? (
@@ -79,13 +79,15 @@ class NotificationCard extends Component {
         >
           <ProfileCard />
           <Typography className={classes.pending}>
-            <div className={classes.pendingText}>MATCH COMPLETE</div>
+            <span className={classes.pendingText}>MATCH COMPLETE</span>
           </Typography>
         </div>
       ) : !ridesLoading && actualRide[0].rideStates === "done" ? (
         <div className={classes.profileCard}>
           <Typography className={classes.pending}>
-            <div className={classes.pendingText}>DONE STATE</div>
+            <span className={classes.pendingText}>
+              Arrived on your Destination
+            </span>
           </Typography>
         </div>
       ) : (
@@ -93,7 +95,9 @@ class NotificationCard extends Component {
         actualRide[0].rideStates === "cancel" && (
           <div className={classes.profileCard}>
             <Typography className={classes.pending}>
-              <div className={classes.pendingText}>CANCEL STATE</div>
+              <span className={classes.pendingText}>
+                Your Passenger Cancelled the trip
+              </span>
             </Typography>
           </div>
         )
@@ -142,9 +146,9 @@ class NotificationCard extends Component {
       >
         <ProfileCard />
         <Typography className={classes.pending}>
-          <div className={classes.pendingText}>MATCH COMPLETE</div>
+          <span className={classes.pendingText}>MATCH COMPLETE</span>
         </Typography>
-        <div className={classes.confirmationButton}>
+        <span className={classes.confirmationButton}>
           <Button
             style={{ backgroundColor: "#31455A" }}
             onClick={() => {
@@ -161,12 +165,15 @@ class NotificationCard extends Component {
           >
             DONE
           </Button>
-        </div>
+        </span>
       </div>
     ) : !ridesLoading && actualRide[0].rideStates === "done" ? (
       <div className={classes.profileCard}>
         <Typography className={classes.pending}>
-          <div className={classes.pendingText}>DONE STATE</div>
+          <span className={classes.pendingText}>
+            {" "}
+            Thanks for using JoinRide!{" "}
+          </span>
         </Typography>
       </div>
     ) : (
@@ -174,7 +181,9 @@ class NotificationCard extends Component {
       actualRide[0].rideStates === "cancel" && (
         <div className={classes.profileCard}>
           <Typography className={classes.pending}>
-            <div className={classes.pendingText}>CANCEL STATE</div>
+            <span className={classes.pendingText}>
+              You Cancelled your JoinRide{" "}
+            </span>
           </Typography>
         </div>
       )
@@ -183,25 +192,3 @@ class NotificationCard extends Component {
 }
 
 export default withStyles(styles)(NotificationCard);
-
-{
-  /* <div className={classes.profileCard}>
-  <ProfileCard />
-  <p>this is the notification card</p>
-  <button>Button</button>
-  <button>Button </button>
-</div>; */
-}
-
-// return driver
-//   ? status
-//     ? setInitial()
-//     : !status
-//       ? setPending()
-//       : setMatched()
-//   : passenger
-//     ? setInitial()
-//     : !status
-//       ? setPending()
-//       : setMatched();
-//   }
