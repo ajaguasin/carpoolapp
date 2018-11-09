@@ -5,6 +5,11 @@ import { Meteor } from "meteor/meteor";
 import CircularIndeterminate from "../../loadingSpinner/index";
 import ProfileCard from "../../profileCard";
 import Button from "@material-ui/core/Button";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCarSide } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faCarSide);
 
 class PassengerList extends Component {
   constructor() {
@@ -86,33 +91,39 @@ class PassengerList extends Component {
       //   <CircularIndeterminate />
       // </div>
 
-      /* When driver picks a destination show passenger cards also going in the same direction */
-      <div className={classes.list}>
-        {!loading &&
-          myUserInfo[0].driver === true &&
-          this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
-            return (
-              <React.Fragment key={index}>
-                {console.log(record.id)}
-                <ProfileCard
-                  className={classes.card}
-                  key={index}
-                  email={record.email}
-                />
-                <Button
-                  variant="contained"
-                  className={classes.button}
-                  name={record.id}
-                  onClick={event => {
-                    this.updateToPending(event);
-                  }}
-                >
-                  Accept
-                </Button>
-              </React.Fragment>
-            );
-          })}
+      /*Whilst driver and passenger are driving to destination load animating car or something */
+      <div className={classes.animation}>
+        <FontAwesomeIcon className={classes.car} icon="car-side" spin={true} />
+        <p className={classes.quote}>Enroute to your destination...</p>
       </div>
+
+      /* When driver picks a destination show passenger cards also going in the same direction */
+      // <div className={classes.list}>
+      //   {!loading &&
+      //     myUserInfo[0].driver === true &&
+      //     this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
+      //       return (
+      //         <React.Fragment key={index}>
+      //           {console.log(record.id)}
+      //           <ProfileCard
+      //             className={classes.card}
+      //             key={index}
+      //             email={record.email}
+      //           />
+      //           <Button
+      //             variant="contained"
+      //             className={classes.button}
+      //             name={record.id}
+      //             onClick={event => {
+      //               this.updateToPending(event);
+      //             }}
+      //           >
+      //             Accept
+      //           </Button>
+      //         </React.Fragment>
+      //       );
+      //     })}
+      // </div>
     );
   }
 }
