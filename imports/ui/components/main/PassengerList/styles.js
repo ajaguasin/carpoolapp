@@ -19,11 +19,12 @@ const styles = theme => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 100
+    marginTop: 50
   },
   quote: {
     fontSize: "25px",
-    color: "white"
+    color: "white",
+    textAlign: "center"
   },
   button: {
     background: "#29eecb",
@@ -38,6 +39,13 @@ const styles = theme => ({
   },
   loading: {
     height: 100
+  },
+  tripComplete: {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+    height: "30%"
   }
 });
 export default styles;

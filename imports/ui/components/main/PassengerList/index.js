@@ -7,9 +7,10 @@ import ProfileCard from "../../profileCard";
 import Button from "@material-ui/core/Button";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCarSide } from "@fortawesome/free-solid-svg-icons";
+import { faCarSide, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import Slide from "@material-ui/core/Slide";
 
-library.add(faCarSide);
+library.add(faCarSide, faCheckCircle);
 
 class PassengerList extends Component {
   constructor() {
@@ -48,6 +49,16 @@ class PassengerList extends Component {
       ridesLoading,
       rides
     } = this.props;
+    // return (
+    //   <div className={classes.tripComplete}>
+    //     <Slide in={true} direction="up" timeout={1000}>
+    //       <FontAwesomeIcon icon="check-circle" />
+    //     </Slide>
+    //     <Slide in={true} direction="up" timeout={1000}>
+    //       <p>Your trip has ended</p>
+    //     </Slide>
+    //   </div>
+    // );
 
     const actualRide = rides.filter(ride => {
       const final =
@@ -93,12 +104,22 @@ class PassengerList extends Component {
         !ridesLoading &&
         actualRide[0].rideStates === "matched" && (
           <div className={classes.animation}>
-            <FontAwesomeIcon
-              className={classes.car}
-              icon="car-side"
-              spin={true}
-            />
-            <p className={classes.quote}>Enroute to your destination...</p>
+            <Slide in={true} direction="up" timeout={1000}>
+              <FontAwesomeIcon
+                className={classes.car}
+                icon="car-side"
+                spin={true}
+              />
+            </Slide>
+            <Slide in={true} direction="up" timeout={1000}>
+              <p className={classes.quote}>Enroute to your destination...</p>
+            </Slide>
+            <Slide in={true} direction="up" timeout={1000}>
+              <p className={classes.quote}>
+                Press "Cancel" to cancel your trip or press "Done" once your
+                trip has ended.
+              </p>
+            </Slide>
           </div>
         )
       )
