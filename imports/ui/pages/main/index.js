@@ -1,14 +1,23 @@
 import React, { Component } from "react";
 import Header from "../../components/main/header";
 import Map from "../../components/main/map";
-import Footer from "../../components/main/footer";
+
 import { UsersInfoContext } from "../../components/context/UsersInfoProvider";
 
 export default class Main extends Component {
+
+  getInitialState = () => {
+    return { sidebarOpen: true };
+  }
+
+  handleViewSidebar = () => {
+    this.setState({ sidebarOpen: this.state.sidebarOpen });
+  }
+
   render() {
     return (
       <div>
-        <Header />
+        <Header onClick={this.handleViewSidebar} />
         <UsersInfoContext.Consumer>
           {({ allUserInfo, myUserInfo, loading }) => (
             <Map
@@ -18,7 +27,6 @@ export default class Main extends Component {
             />
           )}
         </UsersInfoContext.Consumer>
-        <Footer />
       </div>
     );
   }

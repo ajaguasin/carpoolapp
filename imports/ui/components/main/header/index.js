@@ -31,6 +31,7 @@ class Header extends React.Component {
     Meteor.call("usersInfo.handleSubmit", result[0].DD);
   };
 
+
   getLocation = () => {
     // setInterval(
     //   () => {
@@ -48,6 +49,8 @@ class Header extends React.Component {
         distanceFilter: 1
       }
     );
+
+    
     //   },
 
     //   2000
@@ -72,7 +75,7 @@ class Header extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.headerWrapper}>
-        {/* <FontAwesomeIcon icon="angle-double-right" /> */}
+        <FontAwesomeIcon icon="angle-double-right" onClick={this.props.onClick}/>
         <SimpleMenu />
         <img
           alt="company's logo"
