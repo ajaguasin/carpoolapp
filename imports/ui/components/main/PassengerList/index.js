@@ -110,8 +110,8 @@ class PassengerList extends Component {
         </p>
       </div>
     ) : !ridesLoading && actualRide[0].rideStates === "pending" ? (
-      <div>
-        <CircularIndeterminate />
+      <div className={classes.loading}>
+        <CircularIndeterminate className={classes.loadingAnimation} />
       </div>
     ) : (
       !ridesLoading &&
