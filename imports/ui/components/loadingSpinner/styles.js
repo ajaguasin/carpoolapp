@@ -1,6 +1,7 @@
 const styles = theme => ({
   loadingText: {
-    textAlign: "center"
+    textAlign: "center",
+    color: "white"
   },
   loadingContainer: {
     display: "flex",
