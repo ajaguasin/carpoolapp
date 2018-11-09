@@ -69,7 +69,7 @@ class PassengerList extends Component {
                     <ProfileCard
                       className={classes.card}
                       key={index}
-                      email={record.email}
+                      user={record}
                     />
                     <button
                       className={classes.button}
