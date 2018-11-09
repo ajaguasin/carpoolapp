@@ -7,13 +7,14 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearchLocation,
-  faMapMarkedAlt
+  faMapMarkedAlt,
+  faAngleDoubleRight
 } from "@fortawesome/free-solid-svg-icons";
 import PassengerList from "../PassengerList";
 import NotificationCard from "../notificationCard/index";
 import { UsersInfoContext } from "../../context/UsersInfoProvider";
 
-library.add(faSearchLocation, faMapMarkedAlt);
+library.add(faSearchLocation, faMapMarkedAlt, faAngleDoubleRight);
 
 class Header extends React.Component {
   constructor(props) {
@@ -71,6 +72,7 @@ class Header extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.headerWrapper}>
+        {/* <FontAwesomeIcon icon="angle-double-right" /> */}
         <SimpleMenu />
         <img
           alt="company's logo"
@@ -141,7 +143,7 @@ class Header extends React.Component {
             );
           }}
         </UsersInfoContext.Consumer>
-        }}
+        
       </div>
     );
   }
