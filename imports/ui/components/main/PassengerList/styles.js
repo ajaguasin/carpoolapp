@@ -27,6 +27,17 @@ const styles = theme => ({
   quote: {
     fontSize: "25px",
     color: "white"
+  },
+  button: {
+    background: "#29eecb",
+    width: 75,
+    height: 50,
+    cursor: "pointer",
+    borderRadius: "10px 10px 10px 10px",
+    boxShadow: "0px 0px 13px 1px rgba(0,0,0,0.73)",
+    border: "none",
+    textTransform: "uppercase",
+    fontSize: "12px"
   }
 });
 export default styles;
