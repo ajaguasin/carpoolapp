@@ -14,7 +14,7 @@ function CircularIndeterminate(props) {
       <Grid item xs={6} className={classes.progress}>
         <CircularProgress color="secondary" size={50} />
         <Typography variant="body1" className={classes.loadingText}>
-          Please wait a moment as we look for the next available driver...
+          Please wait a moment...
         </Typography>
       </Grid>
     </Grid>

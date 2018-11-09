@@ -93,85 +93,42 @@ class PassengerList extends Component {
       ) : (
         !ridesLoading &&
         actualRide[0].rideStates === "matched" && (
-          <div>
-            <p>Matched for driver</p>
+          <div className={classes.animation}>
+            <FontAwesomeIcon
+              className={classes.car}
+              icon="car-side"
+              spin={true}
+            />
+            <p className={classes.quote}>Enroute to your destination...</p>
           </div>
         )
       )
     ) : !ridesLoading && !actualRide[0] ? (
-      <div>
-        <p>
+      <div className={classes.animation}>
+        <p className={classes.quote}>
           Please select a destination. Drivers going to the same destination
           will be listed in this panel.
         </p>
       </div>
     ) : !ridesLoading && actualRide[0].rideStates === "pending" ? (
       <div>
-        <p>pending state</p>
+        <CircularIndeterminate />
       </div>
     ) : (
       !ridesLoading &&
       actualRide[0].rideStates === "matched" && (
-        <div>
-          <p>Match</p>
+        <div className={classes.animation}>
+          <FontAwesomeIcon
+            className={classes.car}
+            icon="car-side"
+            spin={true}
+          />
+          <p className={classes.quote}>
+            Driver is on the way. Please wait a moment...
+          </p>
         </div>
       )
     );
-
-    /* Initial state of passenger list when driver is selected */
-    // <div>
-    //   <p>
-    //     Please select a destination. Passengers going to the same destination
-    //     will be listed in this panel.
-    //   </p>
-    // </div>
-
-    /*Initial state of passenger list when passenger is selected. */
-    // <div>
-    //   <p>
-    //     Please select a destination. Drivers going to the same destination
-    //     will be listed in this panel.
-    //   </p>
-    // </div>
-
-    /*When passenger picks a destination import loadingSpinner component while drivers are loading*/
-    // <div>
-    //   <CircularIndeterminate />
-    // </div>
-
-    /*Whilst driver and passenger are driving to destination load animating car or something */
-    // <div className={classes.animation}>
-    //   <FontAwesomeIcon className={classes.car} icon="car-side" spin={true} />
-    //   <p className={classes.quote}>Enroute to your destination...</p>
-    // </div>
-
-    /* When driver picks a destination show passenger cards also going in the same direction */
-    // <div className={classes.list}>
-    //   {!loading &&
-    //     myUserInfo[0].driver === true &&
-    //     this.passengerArray(allUserInfo, myUserInfo).map((record, index) => {
-    //       return (
-    //         <React.Fragment key={index}>
-    //           {console.log(record.id)}
-    //           <ProfileCard
-    //             className={classes.card}
-    //             key={index}
-    //             email={record.email}
-    //           />
-    //           <Button
-    //             variant="contained"
-    //             className={classes.button}
-    //             name={record.id}
-    //             onClick={event => {
-    //               this.updateToPending(event);
-    //             }}
-    //           >
-    //             Accept
-    //           </Button>
-    //         </React.Fragment>
-    //       );
-    //     })}
-    // </div>
   }
 }
 
