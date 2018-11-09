@@ -4,6 +4,7 @@ import styles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import { Button } from "@material-ui/core";
+import { UsersInfo } from "../../../../api/usersInfo/usersInfo";
 
 class NotificationCard extends Component {
   constructor() {
@@ -29,6 +30,17 @@ class NotificationCard extends Component {
       myRide
     } = this.props;
 
+    //for the driver's profie card
+
+    // const driversProfile = allUserInfo.filter(user => {
+    //   const result = user.id === actualRide[0].driverId;
+    //   return result;
+    // });
+    // console.log(allUserInfo);
+    // console.log(driversProfile);
+    // console.log(rides[0].driverId);
+    // console.log(rides);
+
     const actualRide = rides.filter(ride => {
       const final =
         ride.driverId === Meteor.userId() ||
@@ -37,6 +49,7 @@ class NotificationCard extends Component {
     });
     // console.log(rides);
     // !ridesLoading && console.log(actualRide[0].rideStates);
+    console.log(actualRide[0]);
 
     const driver = myUserInfo[0].driver;
     return driver ? (
