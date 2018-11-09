@@ -143,7 +143,7 @@ class Header extends React.Component {
             );
           }}
         </UsersInfoContext.Consumer>
-        }}
+        
       </div>
     );
   }
