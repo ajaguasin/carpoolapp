@@ -48,7 +48,7 @@ class NotificationCard extends Component {
       return final;
     });
     // console.log(rides);
-    // !ridesLoading && console.log(actualRide[0].rideStates);
+    //  !ridesLoading && console.log(actualRide[0].rideStates);
     console.log(actualRide[0]);
 
     const driver = myUserInfo[0].driver;
