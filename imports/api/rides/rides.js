@@ -1,7 +1,14 @@
 import { Mongo } from "meteor/mongo";
+import { Meteor } from "meteor/meteor";
+
 export const Rides = new Mongo.Collection("rides");
 
 import RideState from "./helpers/RideState";
+if (Meteor.isServer) {
+  Meteor.publish("rides", () => {
+    return Rides.find({});
+  });
+}
 const RideStateObj = new RideState();
 
 Meteor.methods({
@@ -19,13 +26,16 @@ Meteor.methods({
       rideStates: "initial"
     });
   },
+  "rides.updateToMatch"() {
+    RideStateObj.setMatched({});
+  },
 
   // Gets called on componentDidMount in Select page
   "rides.deleteRide"() {
     Rides.remove({ owner: this.userId });
   },
-  "rides.passengerToggle"(myUserInfo) {
-    Rides.update({ passengerId: myUserInfo[0].id });
+  "rides.setInitialFromPending"() {
+    RideStateObj.setInitialFromPending();
   }
 });
 
