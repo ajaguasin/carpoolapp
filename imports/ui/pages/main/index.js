@@ -1,23 +1,30 @@
 import React, { Component } from "react";
 import Header from "../../components/main/header";
+import SideBar from "../../components/toggleSideBar";
 import Map from "../../components/main/map";
+import "./styles.css";
 
 import { UsersInfoContext } from "../../components/context/UsersInfoProvider";
 
-export default class Main extends Component {
-
-  getInitialState = () => {
-    return { sidebarOpen: true };
+class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hidden: true
+    };
   }
 
-  handleViewSidebar = () => {
-    this.setState({ sidebarOpen: this.state.sidebarOpen });
-  }
+  drawerToggleHandler = () => {
+    this.setState({hidden: !this.state.hidden})
+  };
 
   render() {
     return (
       <div>
-        <Header onClick={this.handleViewSidebar} />
+         {this.state.hidden && <Header /> }
+        <div onClick={() => this.drawerToggleHandler()}>
+          <SideBar />
+        </div>
         <UsersInfoContext.Consumer>
           {({ allUserInfo, myUserInfo, loading }) => (
             <Map
@@ -31,3 +38,4 @@ export default class Main extends Component {
     );
   }
 }
+export default Main;

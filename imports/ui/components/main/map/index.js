@@ -5,6 +5,7 @@ import styles from "./styles";
 import Pin from "./marker/Pin";
 import landmarks from "./marker/data";
 import PinPopup from "./marker/PinPopup";
+import SideBar from '../../toggleSideBar';
 
 const TOKEN =
   "pk.eyJ1IjoiYWphZ3Vhc2luIiwiYSI6ImNqbnllYW5yNTJheDAzcm1vdXFxOHJoMWwifQ.ntYdMe4rfbmQ-7OkbQuBMw";
@@ -101,6 +102,7 @@ class Map extends Component {
 
     return (
       <div className={classes.mapContainer}>
+       <SideBar />
         <ReactMapGL
           mapboxApiAccessToken={TOKEN}
           {...this.state.viewport}
