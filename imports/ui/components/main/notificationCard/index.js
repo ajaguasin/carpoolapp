@@ -4,7 +4,6 @@ import styles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import { Button } from "@material-ui/core";
-import { UsersInfo } from "../../../../api/usersInfo/usersInfo";
 
 class NotificationCard extends Component {
   constructor() {
@@ -27,6 +26,21 @@ class NotificationCard extends Component {
     Meteor.call("rides.updateToCancel");
   };
 
+  driversInfo = (allUserInfo, actualRide) => {
+    let result = allUserInfo.filter(user => {
+      return user.id === actualRide[0].driverId;
+    });
+
+    return result[0];
+  };
+  passengersInfo = (allUserInfo, actualRide) => {
+    let result = allUserInfo.filter(user => {
+      return user.id === actualRide[0].passengerId;
+    });
+
+    return result[0];
+  };
+
   render() {
     const {
       classes,
@@ -44,9 +58,6 @@ class NotificationCard extends Component {
         ride.passengerId === Meteor.userId();
       return final;
     });
-    // console.log(rides);
-    //  !ridesLoading && console.log(actualRide[0].rideStates);
-    console.log(actualRide[0]);
 
     const driver = myUserInfo[0].driver;
     return driver ? (
@@ -66,9 +77,9 @@ class NotificationCard extends Component {
             classes.profileCard //PENDING STATE
           }
         >
-          <ProfileCard />
+          <ProfileCard user={this.passengersInfo(allUserInfo, actualRide)} />
           <Typography className={classes.pending}>
-            <div className={classes.pendingText}>CONFIRMATION PENDING</div>
+            <span className={classes.pendingText}>CONFIRMATION PENDING</span>
           </Typography>
         </div>
       ) : !ridesLoading && actualRide[0].rideStates === "matched" ? (
@@ -77,15 +88,17 @@ class NotificationCard extends Component {
             classes.profileCard //GET PASSENGER PROFILECARD //MATCHED STATE
           }
         >
-          <ProfileCard />
+          <ProfileCard user={this.passengersInfo(allUserInfo, actualRide)} />
           <Typography className={classes.pending}>
-            <div className={classes.pendingText}>MATCH COMPLETE</div>
+            <span className={classes.pendingText}>MATCH COMPLETE</span>
           </Typography>
         </div>
       ) : !ridesLoading && actualRide[0].rideStates === "done" ? (
         <div className={classes.profileCard}>
           <Typography className={classes.pending}>
-            <div className={classes.pendingText}>DONE STATE</div>
+            <span className={classes.pendingText}>
+              Arrived on your Destination
+            </span>
           </Typography>
         </div>
       ) : (
@@ -93,7 +106,9 @@ class NotificationCard extends Component {
         actualRide[0].rideStates === "cancel" && (
           <div className={classes.profileCard}>
             <Typography className={classes.pending}>
-              <div className={classes.pendingText}>CANCEL STATE</div>
+              <span className={classes.pendingText}>
+                Your Passenger Cancelled the trip
+              </span>
             </Typography>
           </div>
         )
@@ -114,7 +129,7 @@ class NotificationCard extends Component {
           classes.profileCard //IF CANCEL RUN INITIAL STATE //IF ACCEPT RUN MATCHED STATE // ADD ONCLICK ON THE BUTTONS //PASSENGER PENDING STATE
         }
       >
-        <ProfileCard />
+        <ProfileCard user={this.driversInfo(allUserInfo, actualRide)} />
         <div className={classes.confirmationButton}>
           <Button
             style={{ backgroundColor: "#31455A" }}
@@ -140,11 +155,11 @@ class NotificationCard extends Component {
           classes.profileCard //GET THE DRIVERS PROFILECARD //PASSENGER MATCHED STATE
         }
       >
-        <ProfileCard />
+        <ProfileCard user={this.driversInfo(allUserInfo, actualRide)} />
         <Typography className={classes.pending}>
-          <div className={classes.pendingText}>MATCH COMPLETE</div>
+          <span className={classes.pendingText}>MATCH COMPLETE</span>
         </Typography>
-        <div className={classes.confirmationButton}>
+        <span className={classes.confirmationButton}>
           <Button
             style={{ backgroundColor: "#31455A" }}
             onClick={() => {
@@ -161,12 +176,15 @@ class NotificationCard extends Component {
           >
             DONE
           </Button>
-        </div>
+        </span>
       </div>
     ) : !ridesLoading && actualRide[0].rideStates === "done" ? (
       <div className={classes.profileCard}>
         <Typography className={classes.pending}>
-          <div className={classes.pendingText}>DONE STATE</div>
+          <span className={classes.pendingText}>
+            {" "}
+            Thanks for using JoinRide!{" "}
+          </span>
         </Typography>
       </div>
     ) : (
@@ -174,7 +192,9 @@ class NotificationCard extends Component {
       actualRide[0].rideStates === "cancel" && (
         <div className={classes.profileCard}>
           <Typography className={classes.pending}>
-            <div className={classes.pendingText}>CANCEL STATE</div>
+            <span className={classes.pendingText}>
+              You Cancelled your JoinRide{" "}
+            </span>
           </Typography>
         </div>
       )
@@ -183,25 +203,3 @@ class NotificationCard extends Component {
 }
 
 export default withStyles(styles)(NotificationCard);
-
-{
-  /* <div className={classes.profileCard}>
-  <ProfileCard />
-  <p>this is the notification card</p>
-  <button>Button</button>
-  <button>Button </button>
-</div>; */
-}
-
-// return driver
-//   ? status
-//     ? setInitial()
-//     : !status
-//       ? setPending()
-//       : setMatched()
-//   : passenger
-//     ? setInitial()
-//     : !status
-//       ? setPending()
-//       : setMatched();
-//   }
