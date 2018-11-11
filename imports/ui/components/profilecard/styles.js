@@ -5,7 +5,7 @@ const styles = theme => ({
     border: '2px solid #10B9C7',
     display: 'flex',
     marginRight: '5px',
-    height: '20%',
+    height: '50%',
     
   },
 
