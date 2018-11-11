@@ -13,6 +13,7 @@ import {
 import PassengerList from "../PassengerList";
 import NotificationCard from "../notificationCard/index";
 import { UsersInfoContext } from "../../context/UsersInfoProvider";
+import { withRouter } from "react-router-dom";
 
 library.add(faSearchLocation, faMapMarkedAlt, faAngleDoubleRight);
 
@@ -23,8 +24,7 @@ class Header extends React.Component {
   }
 
   handleChange = e => {
-    e.preventDefault();
-    let location = this.destSelect.current.value;
+    const location = this.destSelect.current.value;
 
     let result = landmarks.filter(data => data.name === location);
 
@@ -48,6 +48,7 @@ class Header extends React.Component {
         distanceFilter: 1
       }
     );
+
     //   },
 
     //   2000
@@ -70,9 +71,10 @@ class Header extends React.Component {
 
   render() {
     const { classes } = this.props;
+
     return (
       <div className={classes.headerWrapper}>
-        {/* <FontAwesomeIcon icon="angle-double-right" /> */}
+     
         <SimpleMenu />
         <img
           alt="company's logo"
@@ -100,6 +102,7 @@ class Header extends React.Component {
               className={classes.select}
               onChange={e => this.handleChange(e)}
               ref={this.destSelect}
+              value={this.destSelect}
             >
               <option>Choose Destination</option>
               {landmarks.map((landmark, index) => (
@@ -143,7 +146,6 @@ class Header extends React.Component {
             );
           }}
         </UsersInfoContext.Consumer>
-        
       </div>
     );
   }

@@ -297,4 +297,44 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  .profileContent {
+    flex-direction: column;
+  }
 
+  .content {
+    top: 8%;
+    left: 5%;
+    width: 90vw;
+    font-size: 25px;
+    line-height: 30px;
+
+
+  }
+
+  .profileForm  {
+    width: 90vw;
+    margin: 50px auto;
+
+  }
+
+  .myprofileinfo {
+    width: 80vw;
+    margin: 0 auto;
+  }
+
+  .profileWrapper {
+    height: 1000px;
+  }
+
+  .content__container {
+    height: 35px;
+  }
+  .content__container__text {
+    padding-top: 5px;
+  }
+
+  .icon {
+    margin: 10px;
+  }
+}
