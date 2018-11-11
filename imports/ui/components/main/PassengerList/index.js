@@ -30,13 +30,13 @@ class PassengerList extends Component {
       })
       .filter(passenger => {
         return (
-          passenger.destination.lat === myUserInfo[0].destination.lat &&
-          passenger.destination.long === myUserInfo[0].destination.long &&
-          passenger.destination.lat === !null &&
-          passenger.destination.long === !null
+          (passenger.destination.lat === myUserInfo[0].destination.lat &&
+            passenger.destination.long === myUserInfo[0].destination.long) ||
+          (passenger.destination.lat === !null &&
+            passenger.destination.long === !null)
         );
       });
-
+    console.log(passengers);
     return passengers;
   };
 
@@ -120,12 +120,6 @@ class PassengerList extends Component {
             <Slide in={true} direction="up" timeout={1000}>
               <p className={classes.quote}>Enroute to your destination...</p>
             </Slide>
-            <Slide in={true} direction="up" timeout={1000}>
-              <p className={classes.quote}>
-                Press "Cancel" to cancel your trip or press "Done" once your
-                trip has ended.
-              </p>
-            </Slide>
           </div>
         )
       )
@@ -149,9 +143,18 @@ class PassengerList extends Component {
             icon="car-side"
             spin={true}
           />
-          <p className={classes.quote}>
-            Driver is on the way. Please wait a moment...
-          </p>
+          <Slide in={true} direction="up" timeout={1000}>
+            <p className={classes.quote}>
+              Driver is on the way. Please wait a moment...
+            </p>
+          </Slide>
+
+          <Slide in={true} direction="up" timeout={1000}>
+            <p className={classes.quote}>
+              Press "Cancel trip" to cancel your trip or press "End trip" once
+              your trip has ended.
+            </p>
+          </Slide>
         </div>
       )
     );
