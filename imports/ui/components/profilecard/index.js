@@ -25,6 +25,12 @@ class ProfileCard extends Component {
               <Typography component="h3" className={classes.profilecardname}>
                 Phone: {user.profileInformation.phoneNumber}
               </Typography>
+
+              {user.profileInformation.carModel.length > 0 && (
+                <Typography component="h3" className={classes.profilecardname}>
+                  Car: {user.profileInformation.carModel}
+                </Typography>
+              )}
             </div>
           </React.Fragment>
         </CardContent>

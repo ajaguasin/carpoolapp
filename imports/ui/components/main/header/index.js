@@ -105,7 +105,7 @@ class Header extends React.Component {
             >
               <option>Choose Destination</option>
               {landmarks.map((landmark, index) => (
-                <option key={index} value={this.destSelect}>{landmark.name}</option>
+                <option key={index}>{landmark.name}</option>
               ))}
             </select>
           </div>
