@@ -13,7 +13,7 @@ import {
 import PassengerList from "../PassengerList";
 import NotificationCard from "../notificationCard/index";
 import { UsersInfoContext } from "../../context/UsersInfoProvider";
-import { withRouter } from "react-router-dom";
+import './styles';
 
 library.add(faSearchLocation, faMapMarkedAlt, faAngleDoubleRight);
 
