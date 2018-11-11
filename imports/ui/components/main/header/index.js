@@ -102,11 +102,10 @@ class Header extends React.Component {
               className={classes.select}
               onChange={e => this.handleChange(e)}
               ref={this.destSelect}
-              value={this.destSelect}
             >
               <option>Choose Destination</option>
               {landmarks.map((landmark, index) => (
-                <option key={index}>{landmark.name}</option>
+                <option key={index} value={this.destSelect}>{landmark.name}</option>
               ))}
             </select>
           </div>
