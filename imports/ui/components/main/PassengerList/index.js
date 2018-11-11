@@ -25,10 +25,15 @@ class PassengerList extends Component {
       .filter(record => {
         return record.passenger;
       })
+      .filter(record => {
+        return !record.occupied;
+      })
       .filter(passenger => {
         return (
           passenger.destination.lat === myUserInfo[0].destination.lat &&
-          passenger.destination.long === myUserInfo[0].destination.long
+          passenger.destination.long === myUserInfo[0].destination.long &&
+          passenger.destination.lat === !null &&
+          passenger.destination.long === !null
         );
       });
 
@@ -38,6 +43,7 @@ class PassengerList extends Component {
   updateToPending = event => {
     let passengerId = event.target.name;
     Meteor.call("rides.updateToPending", passengerId);
+    Meteor.call("usersInfo.updateOccupied", passengerId);
   };
 
   render() {
