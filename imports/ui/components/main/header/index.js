@@ -13,7 +13,7 @@ import {
 import PassengerList from "../PassengerList";
 import NotificationCard from "../notificationCard/index";
 import { UsersInfoContext } from "../../context/UsersInfoProvider";
-import { withRouter } from "react-router-dom";
+import './styles';
 
 library.add(faSearchLocation, faMapMarkedAlt, faAngleDoubleRight);
 
@@ -102,11 +102,10 @@ class Header extends React.Component {
               className={classes.select}
               onChange={e => this.handleChange(e)}
               ref={this.destSelect}
-              value={this.destSelect}
             >
               <option>Choose Destination</option>
               {landmarks.map((landmark, index) => (
-                <option key={index}>{landmark.name}</option>
+                <option key={index} value={this.destSelect}>{landmark.name}</option>
               ))}
             </select>
           </div>
