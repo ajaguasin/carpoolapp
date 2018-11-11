@@ -5,7 +5,7 @@ const styles = theme => ({
     border: '2px solid #10B9C7',
     display: 'flex',
     marginRight: '5px',
-    height: '50%',
+    height: '35%',
     
   },
 
@@ -30,7 +30,7 @@ const styles = theme => ({
 
   imgprofilecard: {
     width: '18%',
-    height: '75%',
+    height: '73%',
     border: '2px solid #10B9C7',
     borderRadius: '50%',
     background: "white",
