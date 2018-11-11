@@ -10,7 +10,7 @@ import styles from "./styles";
 function CircularIndeterminate(props) {
   const { classes } = props;
   return (
-    <Grid justify="center" className={classes.loadingContainer}>
+    <Grid className={classes.loadingContainer}>
       <Grid item xs={6} className={classes.progress}>
         <CircularProgress color="secondary" size={50} />
         <Typography className={classes.loadingText}>

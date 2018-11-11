@@ -20,6 +20,7 @@ Meteor.startup(() => {
           },
           driver: false,
           passenger: false,
+          occupied: false,
           currentLocation: {
             long: null,
             lat: null

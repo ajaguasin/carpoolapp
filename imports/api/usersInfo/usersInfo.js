@@ -32,7 +32,16 @@ Meteor.methods({
       }
     );
   },
-
+  "usersInfo.updateOccupied"(passengerId) {
+    UsersInfo.update(
+      { id: passengerId },
+      {
+        $set: {
+          occupied: true
+        }
+      }
+    );
+  },
   "usersInfo.resetStatus"() {
     UsersInfo.update(
       { id: this.userId },
@@ -87,6 +96,7 @@ Meteor.methods({
       email: email.address,
       driver: false,
       passenger: false,
+      occupied: false,
       currentLocation: {
         long: null,
         lat: null
