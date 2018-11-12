@@ -80,31 +80,33 @@ class Map extends Component {
           {...this.state.viewport}
           onViewportChange={viewport => this.setState({ viewport })}
         >
-          {landmarks.map((landmark, index) => {
-            return (
-              <Marker
-                key={index}
-                longitude={landmark.DD.lng}
-                latitude={landmark.DD.lat}
-              >
-                <Pin
-                  size={15}
-                  onClick={() =>
-                    this.setState({
-                      filterName: landmark.name,
-                      showpopup: true
-                    })
-                  }
-                />
-              </Marker>
-            );
-          })}
+          {landmarks
+            .filter(landmark => landmark.DD.lng !== null)
+            .map((landmark, index) => {
+              return (
+                <Marker
+                  key={index}
+                  longitude={landmark.DD.lng}
+                  latitude={landmark.DD.lat}
+                >
+                  <Pin
+                    size={15}
+                    onClick={() =>
+                      this.setState({
+                        filterName: landmark.name,
+                        showpopup: true
+                      })
+                    }
+                  />
+                </Marker>
+              );
+            })}
           {this.renderPopup()}
           {!loading &&
-            myUserInfo[0].destination.long &&
+            myUserInfo[0].destination.long !== null &&
             this.renderDestpin(myUserInfo)}
           {!loading &&
-            myUserInfo[0].currentLocation.long &&
+            myUserInfo[0].currentLocation.long !== null &&
             this.renderCurrpin(myUserInfo)}
         </ReactMapGL>
       </div>

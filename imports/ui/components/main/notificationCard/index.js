@@ -16,7 +16,6 @@ class NotificationCard extends Component {
   };
 
   updateToInitialFromPending = () => {
-    // Meteor.call("rides.setInitialFromPending");
     Meteor.call("rides.updateToCancel");
     Meteor.call("rides.unhookPassenger");
     Meteor.call("usersInfo.resetStatus");
@@ -51,10 +50,8 @@ class NotificationCard extends Component {
       classes,
       allUserInfo,
       myUserInfo,
-      loading,
       ridesLoading,
-      rides,
-      myRide
+      rides
     } = this.props;
 
     const actualRide = rides.filter(ride => {
@@ -165,8 +162,7 @@ class NotificationCard extends Component {
       <div className={classes.profileCard}>
         <Typography className={classes.pending}>
           <span className={classes.pendingText}>
-            {" "}
-            Thanks for using JoinRide!{" "}
+            Thanks for using JoinRide!
           </span>
         </Typography>
       </div>
@@ -176,7 +172,7 @@ class NotificationCard extends Component {
         <div className={classes.profileCard}>
           <Typography className={classes.pending}>
             <span className={classes.pendingText}>
-              You Cancelled your JoinRide{" "}
+              You Cancelled your JoinRide
             </span>
           </Typography>
         </div>

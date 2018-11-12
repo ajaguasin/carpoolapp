@@ -86,7 +86,6 @@ class Header extends React.Component {
               onChange={e => this.handleChange(e)}
               ref={this.destSelect}
             >
-              {/* <option>Choose Destination</option> */}
               {landmarks.map((landmark, index) => (
                 <option key={index}>{landmark.name}</option>
               ))}
