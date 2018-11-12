@@ -19,15 +19,15 @@ class ProfileCard extends Component {
               default="robohash"
             />
             <div className={classes.profilecardbox}>
-              <Typography component="h2" className={classes.profilecardname}>
+              <Typography className={classes.profilecardname}>
                 Name: {user.profileInformation.fullName}
               </Typography>
-              <Typography component="h3" className={classes.profilecardname}>
+              <Typography className={classes.profilecardname}>
                 Phone: {user.profileInformation.phoneNumber}
               </Typography>
 
               {user.profileInformation.carModel.length > 0 && (
-                <Typography component="h3" className={classes.profilecardname}>
+                <Typography className={classes.profilecardname}>
                   Car: {user.profileInformation.carModel}
                 </Typography>
               )}

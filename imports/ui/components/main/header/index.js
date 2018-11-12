@@ -13,7 +13,6 @@ import {
 import PassengerList from "../PassengerList";
 import NotificationCard from "../notificationCard/index";
 import { UsersInfoContext } from "../../context/UsersInfoProvider";
-import './styles';
 
 library.add(faSearchLocation, faMapMarkedAlt, faAngleDoubleRight);
 
@@ -74,7 +73,6 @@ class Header extends React.Component {
 
     return (
       <div className={classes.headerWrapper}>
-     
         <SimpleMenu />
         <img
           alt="company's logo"
