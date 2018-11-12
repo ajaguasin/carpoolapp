@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import "./styles";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import Slide from "@material-ui/core/Slide";
 
-library.add(faAngleDoubleRight);
+library.add(faAngleDoubleLeft);
 
 class SideBar extends Component {
   constructor() {
@@ -24,7 +24,7 @@ class SideBar extends Component {
     const { drawerClickHandler } = this.props;
     return (
       <div className={btn_class} onClick={this.changePosition.bind(this)}>
-        <FontAwesomeIcon icon="angle-double-right" className="toggleicon" />
+        <FontAwesomeIcon icon="angle-double-left" className="toggleicon" />
       </div>
     );
   }
