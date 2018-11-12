@@ -13,6 +13,7 @@ import {
 import PassengerList from "../PassengerList";
 import NotificationCard from "../notificationCard/index";
 import { UsersInfoContext } from "../../context/UsersInfoProvider";
+import PropTypes from 'prop-types';
 
 import "./styles";
 
