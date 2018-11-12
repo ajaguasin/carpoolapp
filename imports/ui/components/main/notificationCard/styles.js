@@ -4,8 +4,8 @@ const styles = theme => ({
     position: "fixed",
     bottom: "0px",
     left: "0px",
-    height: "200px",
-    width: "25vw"
+    width: "25vw",
+    margin: "0 auto"
   },
   text: {
     fontSize: "25px",
@@ -13,8 +13,6 @@ const styles = theme => ({
     marginLeft: "15px"
   },
   pending: {
-    border: "2px solid gray",
-    borderRadius: "8px",
     height: "30px",
     margin: "20px auto",
     fontSize: "18px",
@@ -23,13 +21,13 @@ const styles = theme => ({
   },
   pendingText: {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    paddingTop: "3px"
   },
   confirmationButton: {
     height: "50px",
     display: "flex",
     fontSize: "30px",
-    // backgroundColor: "#31455A",
     justifyContent: "space-around",
     margin: "20px auto"
   }

@@ -9,7 +9,6 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  // Gets called when driver picks passenger
   "rides.updateToPending"(passengerId) {
     Rides.update(
       { driverId: Meteor.userId() },
@@ -42,7 +41,6 @@ Meteor.methods({
     );
   },
 
-  // Gets called when user selects driver
   "rides.driverToggle"(myUserInfo) {
     Rides.insert({
       owner: myUserInfo[0].id,
@@ -58,9 +56,34 @@ Meteor.methods({
     );
   },
 
-  // Gets called on componentDidMount in Select page
   "rides.deleteRide"() {
-    Rides.remove({ owner: this.userId });
+    Rides.remove({
+      $or: [{ owner: this.userId }, { passengerId: this.userId }]
+    });
+  },
+
+  "rides.unhookDriver"() {
+    Rides.update(
+      {
+        owner: this.userId
+      },
+      {
+        $set: {
+          owner: "",
+          driverId: ""
+        }
+      }
+    );
+  },
+  "rides.unhookPassenger"() {
+    Rides.update(
+      { passengerId: this.userId },
+      {
+        $set: {
+          passengerId: ""
+        }
+      }
+    );
   },
   "rides.setInitialFromPending"() {
     Rides.update(
@@ -69,9 +92,3 @@ Meteor.methods({
     );
   }
 });
-
-// if (Meteor.isServer) {
-//   Meteor.publish("Rides", function ridesPublication() {
-//     return Rides.find({});
-//   });
-// }

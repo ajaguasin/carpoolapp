@@ -3,6 +3,7 @@ import Header from "../../components/main/header";
 import SideBar from "../../components/toggleSideBar";
 import Map from "../../components/main/map";
 import "./styles.css";
+import Slide from "@material-ui/core/Slide";
 
 import { UsersInfoContext } from "../../components/context/UsersInfoProvider";
 
@@ -15,15 +16,21 @@ class Main extends Component {
   }
 
   drawerToggleHandler = () => {
-    this.setState({hidden: !this.state.hidden})
+    this.setState({ hidden: !this.state.hidden });
   };
 
   render() {
     return (
       <div>
-         {this.state.hidden && <Header /> }
+        {this.state.hidden && (
+          <Slide in={true} direction="right" timeout={300}>
+            <Header />
+          </Slide>
+        )}
         <div onClick={() => this.drawerToggleHandler()}>
-          <SideBar />
+          <Slide in={true} direction="right" timeout={300}>
+            <SideBar />
+          </Slide>
         </div>
         <UsersInfoContext.Consumer>
           {({ allUserInfo, myUserInfo, loading }) => (

@@ -1,15 +1,6 @@
-/**
- * This creates the usersInfo collection in Mongo
- */
-
 import { Mongo } from "meteor/mongo";
 export const UsersInfo = new Mongo.Collection("usersInfo");
 
-/**
- *
- * Methods
- *
- */
 Meteor.methods({
   "usersInfo.driverToggle"(myUserInfo) {
     UsersInfo.update(
@@ -32,7 +23,16 @@ Meteor.methods({
       }
     );
   },
-
+  "usersInfo.updateOccupied"(passengerId) {
+    UsersInfo.update(
+      { id: passengerId },
+      {
+        $set: {
+          occupied: true
+        }
+      }
+    );
+  },
   "usersInfo.resetStatus"() {
     UsersInfo.update(
       { id: this.userId },
@@ -40,6 +40,7 @@ Meteor.methods({
         $set: {
           driver: false,
           passenger: false,
+          occupied: false,
           currentLocation: {
             long: "",
             lat: ""
@@ -47,6 +48,11 @@ Meteor.methods({
           destination: {
             long: "",
             lat: ""
+          },
+          partnerStatus: {
+            partnerId: null,
+            partnerPending: false,
+            partnerMatched: false
           }
         }
       }
@@ -87,6 +93,7 @@ Meteor.methods({
       email: email.address,
       driver: false,
       passenger: false,
+      occupied: false,
       currentLocation: {
         long: null,
         lat: null
@@ -132,9 +139,3 @@ Meteor.methods({
     );
   }
 });
-
-// if (Meteor.isServer) {
-//   Meteor.publish("UsersInfo", function usersPublication() {
-//     return UsersInfo.find({});
-//   });
-// }

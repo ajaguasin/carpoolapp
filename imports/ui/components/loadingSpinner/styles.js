@@ -6,14 +6,15 @@ const styles = theme => ({
   },
   loadingContainer: {
     display: "flex",
-    alignContent: "center"
+    alignContent: "center",
+    justifyContent: "center"
   },
   progress: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 100
+    marginTop: 80
   }
 });
 

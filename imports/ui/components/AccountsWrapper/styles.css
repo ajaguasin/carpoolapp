@@ -123,11 +123,6 @@
   cursor: pointer;
 }
 
-/* [id="login-buttons-open-change-password"]:hover {
-  color: #4ccbb0;
-
-} */
-
 [id="login-buttons-open-change-password"] {
   margin-bottom: 0.5rem;
   text-decoration: underline;
@@ -135,7 +130,6 @@
 
 [id="login-buttons-logout"],
 .login-button-form-submit {
-  /* background-color: #a071b8; */
   color: white;
   display: block;
   padding: 0.25rem 0.5rem;

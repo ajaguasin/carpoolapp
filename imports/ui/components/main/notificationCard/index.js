@@ -4,6 +4,7 @@ import styles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 class NotificationCard extends Component {
   constructor() {
@@ -15,7 +16,10 @@ class NotificationCard extends Component {
   };
 
   updateToInitialFromPending = () => {
-    Meteor.call("rides.setInitialFromPending");
+    // Meteor.call("rides.setInitialFromPending");
+    Meteor.call("rides.updateToCancel");
+    Meteor.call("rides.unhookPassenger");
+    Meteor.call("usersInfo.resetStatus");
   };
 
   updateToDone = () => {
@@ -42,6 +46,7 @@ class NotificationCard extends Component {
   };
 
   render() {
+    window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
     const {
       classes,
       allUserInfo,
@@ -62,32 +67,20 @@ class NotificationCard extends Component {
     const driver = myUserInfo[0].driver;
     return driver ? (
       !ridesLoading && actualRide[0].rideStates === "initial" ? (
-        <div
-          className={
-            classes.profileCard //INITIAL STATE
-          }
-        >
+        <div className={classes.profileCard}>
           <Typography className={classes.text}>
             Choose a destination to show Passengers
           </Typography>
         </div>
       ) : !ridesLoading && actualRide[0].rideStates === "pending" ? (
-        <div
-          className={
-            classes.profileCard //PENDING STATE
-          }
-        >
+        <div className={classes.profileCard}>
           <ProfileCard user={this.passengersInfo(allUserInfo, actualRide)} />
           <Typography className={classes.pending}>
             <span className={classes.pendingText}>CONFIRMATION PENDING</span>
           </Typography>
         </div>
       ) : !ridesLoading && actualRide[0].rideStates === "matched" ? (
-        <div
-          className={
-            classes.profileCard //GET PASSENGER PROFILECARD //MATCHED STATE
-          }
-        >
+        <div className={classes.profileCard}>
           <ProfileCard user={this.passengersInfo(allUserInfo, actualRide)} />
           <Typography className={classes.pending}>
             <span className={classes.pendingText}>MATCH COMPLETE</span>
@@ -114,21 +107,13 @@ class NotificationCard extends Component {
         )
       )
     ) : !ridesLoading && !actualRide[0] ? (
-      <div
-        className={
-          classes.profileCard //PASSENGER INITIAL STATE
-        }
-      >
+      <div className={classes.profileCard}>
         <Typography className={classes.text}>
           Choose a destination to show Drivers
         </Typography>
       </div>
     ) : !ridesLoading && actualRide[0].rideStates === "pending" ? (
-      <div
-        className={
-          classes.profileCard //IF CANCEL RUN INITIAL STATE //IF ACCEPT RUN MATCHED STATE // ADD ONCLICK ON THE BUTTONS //PASSENGER PENDING STATE
-        }
-      >
+      <div className={classes.profileCard}>
         <ProfileCard user={this.driversInfo(allUserInfo, actualRide)} />
         <div className={classes.confirmationButton}>
           <Button
@@ -139,22 +124,20 @@ class NotificationCard extends Component {
           >
             ACCEPT
           </Button>
-          <Button
-            style={{ backgroundColor: "#31455A" }}
-            onClick={() => {
-              this.updateToInitialFromPending();
-            }}
-          >
-            CANCEL
-          </Button>
+          <Link to="/select">
+            <Button
+              style={{ backgroundColor: "#31455A" }}
+              onClick={() => {
+                this.updateToInitialFromPending();
+              }}
+            >
+              CANCEL
+            </Button>
+          </Link>
         </div>
       </div>
     ) : !ridesLoading && actualRide[0].rideStates === "matched" ? (
-      <div
-        className={
-          classes.profileCard //GET THE DRIVERS PROFILECARD //PASSENGER MATCHED STATE
-        }
-      >
+      <div className={classes.profileCard}>
         <ProfileCard user={this.driversInfo(allUserInfo, actualRide)} />
         <Typography className={classes.pending}>
           <span className={classes.pendingText}>MATCH COMPLETE</span>
@@ -166,7 +149,7 @@ class NotificationCard extends Component {
               this.updateToCancel();
             }}
           >
-            CANCEL
+            CANCEL TRIP
           </Button>
           <Button
             style={{ backgroundColor: "#31455A" }}
@@ -174,7 +157,7 @@ class NotificationCard extends Component {
               this.updateToDone();
             }}
           >
-            DONE
+            END TRIP
           </Button>
         </span>
       </div>

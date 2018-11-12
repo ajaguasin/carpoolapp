@@ -72,7 +72,6 @@ class Map extends Component {
 
   render() {
     const { myUserInfo, classes, loading } = this.props;
-
     return (
       <div className={classes.mapContainer}>
         <SideBar />
@@ -113,10 +112,11 @@ class Map extends Component {
   }
 }
 
-export default withStyles(styles)(Map);
-
 Map.propTypes = {
-  myUserInfo: PropTypes.array,
+  allUserInfo: PropTypes.array,
   classes: PropTypes.object,
+  myUserInfo: PropTypes.array,
   loading: PropTypes.bool
 };
+
+export default withStyles(styles)(Map);

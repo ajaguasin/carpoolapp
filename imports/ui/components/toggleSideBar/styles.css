@@ -1,4 +1,20 @@
-.sidebarwrapper {
+.headeron {
   position: absolute;
-  right: 0;
+  left: 22%;
+  cursor: pointer;
+}
+
+.headeroff {
+  left: 2%;
+  cursor: pointer;
+  position: absolute;
+}
+
+.headeroff .toggleicon {
+  transform: rotate(180deg);
+  transition: transform 0.50s;
+}
+
+.toggleicon {
+  font-size: 30px;
 }
