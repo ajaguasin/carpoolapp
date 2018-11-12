@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 export default class Select extends Component {
   render() {
     return (
-      <div class="selection-page">
+      <div className="selection-page">
         <UsersInfoContext.Consumer>
           {({ allUserInfo, myUserInfo }) => (
             <Selection myUserInfo={myUserInfo} />

@@ -23,7 +23,9 @@ class SelectButton extends React.Component {
     Meteor.call("usersInfo.passengerToggle", myUserInfo);
   };
 
+  
   render() {
+    window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true
     const { classes, myUserInfo } = this.props;
     return (
       <Grid className={classes.buttons}>
@@ -38,7 +40,6 @@ class SelectButton extends React.Component {
               <Link to="/main">
                 <button
                   onClick={() => this.driverToggle(myUserInfo)}
-                  variant="contained"
                   className={classes.driver}
                 >
                   Driver
@@ -51,7 +52,6 @@ class SelectButton extends React.Component {
               <Link to="/main">
                 <button
                   onClick={() => this.passengerToggle(myUserInfo)}
-                  variant="contained"
                   className={classes.passenger}
                 >
                   Passenger
