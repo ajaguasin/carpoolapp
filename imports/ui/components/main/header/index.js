@@ -13,10 +13,9 @@ import {
 import PassengerList from "../PassengerList";
 import NotificationCard from "../notificationCard/index";
 import { UsersInfoContext } from "../../context/UsersInfoProvider";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import "./styles";
-
 
 library.add(faSearchLocation, faMapMarkedAlt, faAngleDoubleRight);
 
@@ -55,7 +54,11 @@ class Header extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.headerWrapper}>
-        <SimpleMenu />
+        <UsersInfoContext.Consumer>
+          {({ rides }) => {
+            return <SimpleMenu rides={rides} />;
+          }}
+        </UsersInfoContext.Consumer>
         <img
           alt="company's logo"
           src="/images/Logo @3x.png"
@@ -83,7 +86,7 @@ class Header extends React.Component {
               onChange={e => this.handleChange(e)}
               ref={this.destSelect}
             >
-              <option>Choose Destination</option>
+              {/* <option>Choose Destination</option> */}
               {landmarks.map((landmark, index) => (
                 <option key={index}>{landmark.name}</option>
               ))}

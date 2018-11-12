@@ -1,5 +1,9 @@
 export default (landmarks = [
   {
+    name: "Choose Destination",
+    DD: { lng: null, lat: null }
+  },
+  {
     name: "University of British Columbia",
 
     DD: { lng: -123.250439, lat: 49.265548 }
