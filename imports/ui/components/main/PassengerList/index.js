@@ -41,7 +41,6 @@ class PassengerList extends Component {
           passenger.destination.long !== null
         );
       });
-    console.log(passengers);
     return passengers;
   };
 
