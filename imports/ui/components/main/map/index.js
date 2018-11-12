@@ -5,7 +5,8 @@ import styles from "./styles";
 import Pin from "./marker/Pin";
 import landmarks from "./marker/data";
 import PinPopup from "./marker/PinPopup";
-import SideBar from '../../toggleSideBar';
+import SideBar from "../../toggleSideBar";
+import PropTypes from "prop-types";
 
 const TOKEN =
   "pk.eyJ1IjoiYWphZ3Vhc2luIiwiYSI6ImNqbnllYW5yNTJheDAzcm1vdXFxOHJoMWwifQ.ntYdMe4rfbmQ-7OkbQuBMw";
@@ -70,11 +71,11 @@ class Map extends Component {
   };
 
   render() {
-    const { myUserInfo, classes, loading, allUserInfo } = this.props;
+    const { myUserInfo, classes, loading } = this.props;
 
     return (
       <div className={classes.mapContainer}>
-       <SideBar />
+        <SideBar />
         <ReactMapGL
           mapboxApiAccessToken={TOKEN}
           {...this.state.viewport}
@@ -113,3 +114,9 @@ class Map extends Component {
 }
 
 export default withStyles(styles)(Map);
+
+Map.propTypes = {
+  myUserInfo: PropTypes.array,
+  classes: PropTypes.object,
+  loading: PropTypes.bool
+};
