@@ -58,7 +58,33 @@ Meteor.methods({
   },
 
   "rides.deleteRide"() {
-    Rides.remove({ owner: this.userId });
+    Rides.remove({
+      $or: [{ owner: this.userId }, { passengerId: this.userId }]
+    });
+  },
+
+  "rides.unhookDriver"() {
+    Rides.update(
+      {
+        owner: this.userId
+      },
+      {
+        $set: {
+          owner: "",
+          driverId: ""
+        }
+      }
+    );
+  },
+  "rides.unhookPassenger"() {
+    Rides.update(
+      { passengerId: this.userId },
+      {
+        $set: {
+          passengerId: ""
+        }
+      }
+    );
   },
   "rides.setInitialFromPending"() {
     Rides.update(
