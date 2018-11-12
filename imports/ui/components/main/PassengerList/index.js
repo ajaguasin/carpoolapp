@@ -142,30 +142,34 @@ class PassengerList extends Component {
             <FontAwesomeIcon icon="check-circle" />
           </Slide>
           <Slide in={true} direction="up" timeout={1000}>
-            <p>Your trip has ended</p>
+            <p className={classes.quote}>Your trip has ended</p>
           </Slide>
-          <Link to="/select">
-            <button
-              onClick={() => this.resetStatus(actualRide)}
-              className={classes.button}
-            >
-              CLICK HERE FOR ANOTHER RIDE
-            </button>
-          </Link>
+          <Slide in={true} direction="up" timeout={1000}>
+            <Link to="/select">
+              <button
+                onClick={() => this.resetStatus(actualRide)}
+                className={classes.reloadButton}
+              >
+                CLICK HERE FOR ANOTHER RIDE
+              </button>
+            </Link>
+          </Slide>
         </div>
       ) : (
         !ridesLoading &&
         actualRide[0].rideStates === "cancel" && (
           <div>
-            <p>Your trip has been cancelled</p>
-            <Link to="/select">
-              <button
-                onClick={() => this.resetStatus(actualRide)}
-                className={classes.button}
-              >
-                CLICK HERE FOR ANOTHER RIDE
-              </button>
-            </Link>
+            <p className={classes.quote}>Your trip has been cancelled</p>
+            <Slide in={true} direction="up" timeout={1000}>
+              <Link to="/select">
+                <button
+                  onClick={() => this.resetStatus(actualRide)}
+                  className={classes.reloadButton}
+                >
+                  CLICK HERE FOR ANOTHER RIDE
+                </button>
+              </Link>
+            </Slide>
           </div>
         )
       )
@@ -202,30 +206,34 @@ class PassengerList extends Component {
           <FontAwesomeIcon icon="check-circle" />
         </Slide>
         <Slide in={true} direction="up" timeout={1000}>
-          <p>Your trip has ended</p>
+          <p className={classes.quote}>Your trip has ended</p>
         </Slide>
-        <Link to="/select">
-          <button
-            onClick={() => this.resetStatus(actualRide)}
-            className={classes.button}
-          >
-            CLICK HERE FOR ANOTHER RIDE
-          </button>
-        </Link>
+        <Slide in={true} direction="up" timeout={1000}>
+          <Link to="/select">
+            <button
+              onClick={() => this.resetStatus(actualRide)}
+              className={classes.reloadButton}
+            >
+              CLICK HERE FOR ANOTHER RIDE
+            </button>
+          </Link>
+        </Slide>
       </div>
     ) : (
       !ridesLoading &&
       actualRide[0].rideStates === "cancel" && (
         <div>
-          <p>driver has cancelled your trip</p>
-          <Link to="/select">
-            <button
-              onClick={() => this.resetStatus(actualRide)}
-              className={classes.button}
-            >
-              CLICK HERE FOR ANOTHER RIDE
-            </button>
-          </Link>
+          <p className={classes.quote}>driver has cancelled your trip</p>
+          <Slide in={true} direction="up" timeout={1000}>
+            <Link to="/select">
+              <button
+                onClick={() => this.resetStatus(actualRide)}
+                className={classes.reloadButton}
+              >
+                CLICK HERE FOR ANOTHER RIDE
+              </button>
+            </Link>
+          </Slide>
         </div>
       )
     );
