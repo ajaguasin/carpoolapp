@@ -10,6 +10,11 @@
   position: absolute;
 }
 
+.headeroff .toggleicon {
+  transform: rotate(180deg);
+  transition: transform 0.50s;
+}
+
 .toggleicon {
   font-size: 30px;
 }
