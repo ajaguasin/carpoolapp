@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./styles.css";
 import AccountsUIWrapper from "../accountsWrapper";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -9,7 +10,6 @@ class LoginForm extends Component {
   }
   render() {
     const { allUserInfo, loading } = this.props;
-    // !loading && console.log(allUserInfo);
     return (
       <div className="app-wrapper">
         <AccountsUIWrapper />
@@ -17,5 +17,9 @@ class LoginForm extends Component {
     );
   }
 }
+
+LoginForm.propTypes = {
+  allUserInfo: PropTypes.array
+};
 
 export default LoginForm;

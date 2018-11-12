@@ -55,16 +55,6 @@ class PassengerList extends Component {
       ridesLoading,
       rides
     } = this.props;
-    // return (
-    //   <div className={classes.tripComplete}>
-    //     <Slide in={true} direction="up" timeout={1000}>
-    //       <FontAwesomeIcon icon="check-circle" />
-    //     </Slide>
-    //     <Slide in={true} direction="up" timeout={1000}>
-    //       <p>Your trip has ended</p>
-    //     </Slide>
-    //   </div>
-    // );
 
     const actualRide = rides.filter(ride => {
       const final =
