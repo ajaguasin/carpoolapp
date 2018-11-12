@@ -40,6 +40,7 @@ Meteor.methods({
         $set: {
           driver: false,
           passenger: false,
+          occupied: false,
           currentLocation: {
             long: "",
             lat: ""
@@ -47,6 +48,11 @@ Meteor.methods({
           destination: {
             long: "",
             lat: ""
+          },
+          partnerStatus: {
+            partnerId: null,
+            partnerPending: false,
+            partnerMatched: false
           }
         }
       }

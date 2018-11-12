@@ -4,6 +4,7 @@ import styles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 class NotificationCard extends Component {
   constructor() {
@@ -15,7 +16,10 @@ class NotificationCard extends Component {
   };
 
   updateToInitialFromPending = () => {
-    Meteor.call("rides.setInitialFromPending");
+    // Meteor.call("rides.setInitialFromPending");
+    Meteor.call("rides.updateToCancel");
+    Meteor.call("rides.unhookPassenger");
+    Meteor.call("usersInfo.resetStatus");
   };
 
   updateToDone = () => {
@@ -120,14 +124,16 @@ class NotificationCard extends Component {
           >
             ACCEPT
           </Button>
-          <Button
-            style={{ backgroundColor: "#31455A" }}
-            onClick={() => {
-              this.updateToInitialFromPending();
-            }}
-          >
-            CANCEL
-          </Button>
+          <Link to="/select">
+            <Button
+              style={{ backgroundColor: "#31455A" }}
+              onClick={() => {
+                this.updateToInitialFromPending();
+              }}
+            >
+              CANCEL
+            </Button>
+          </Link>
         </div>
       </div>
     ) : !ridesLoading && actualRide[0].rideStates === "matched" ? (
