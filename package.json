@@ -8,6 +8,7 @@
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "@babel/runtime": "^7.1.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
@@ -27,6 +28,7 @@
     "react-map-gl": "^3.3.8",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "simpl-schema": "^1.5.3",
     "typeface-roboto": "0.0.54",
     "xstate": "^4.0.1"
   },

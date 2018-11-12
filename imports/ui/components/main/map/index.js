@@ -71,8 +71,7 @@ class Map extends Component {
   };
 
   render() {
-    const { myUserInfo, classes, loading, allUserInfo } = this.props;
-    console.log("maaaap", this.props);
+    const { myUserInfo, classes, loading } = this.props;
     return (
       <div className={classes.mapContainer}>
         <SideBar />
@@ -116,7 +115,8 @@ class Map extends Component {
 Map.propTypes = {
   allUserInfo: PropTypes.array,
   classes: PropTypes.object,
-  myUserInfo: PropTypes.array
+  myUserInfo: PropTypes.array,
+  loading: PropTypes.bool
 };
 
 export default withStyles(styles)(Map);
