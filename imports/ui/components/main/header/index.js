@@ -73,7 +73,6 @@ class Header extends React.Component {
 
     return (
       <div className={classes.headerWrapper}>
-     
         <SimpleMenu />
         <img
           alt="company's logo"
