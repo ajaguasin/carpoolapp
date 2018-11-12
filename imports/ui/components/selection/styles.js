@@ -24,26 +24,22 @@ const styles = theme => ({
   driver: {
     background: "#29eecb",
     width: 300,
-    height: 50,
     cursor: "pointer",
     borderRadius: "10px 10px 10px 10px",
     boxShadow: "0px 0px 13px 1px rgba(0,0,0,0.73)",
     border: "none",
     textTransform: "uppercase",
-    fontSize: "25px",
-    marginTop: 300
+    fontSize: "25px"
   },
   passenger: {
     background: "#189ad3",
     width: 300,
-    height: 50,
     cursor: "pointer",
     borderRadius: "10px 10px 10px 10px",
     boxShadow: "0px 0px 13px 1px rgba(0,0,0,0.73)",
     border: "none",
     textTransform: "uppercase",
-    fontSize: "25px",
-    marginTop: 300
+    fontSize: "25px"
   }
 });
 
