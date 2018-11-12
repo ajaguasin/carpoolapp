@@ -143,7 +143,7 @@ class PassengerList extends Component {
             <FontAwesomeIcon icon="check-circle" />
           </Slide>
           <Slide in={true} direction="up" timeout={1000}>
-            <p>Your trip has ended</p>
+            <p className={classes.quote}>Your trip has ended</p>
           </Slide>
           <Slide in={true} direction="up" timeout={1000}>
             <Link to="/select">
@@ -160,7 +160,7 @@ class PassengerList extends Component {
         !ridesLoading &&
         actualRide[0].rideStates === "cancel" && (
           <div>
-            <p>Your trip has been cancelled</p>
+            <p className={classes.quote}>Your trip has been cancelled</p>
             <Slide in={true} direction="up" timeout={1000}>
               <Link to="/select">
                 <button
@@ -207,7 +207,7 @@ class PassengerList extends Component {
           <FontAwesomeIcon icon="check-circle" />
         </Slide>
         <Slide in={true} direction="up" timeout={1000}>
-          <p>Your trip has ended</p>
+          <p className={classes.quote}>Your trip has ended</p>
         </Slide>
         <Slide in={true} direction="up" timeout={1000}>
           <Link to="/select">
@@ -224,7 +224,7 @@ class PassengerList extends Component {
       !ridesLoading &&
       actualRide[0].rideStates === "cancel" && (
         <div>
-          <p>driver has cancelled your trip</p>
+          <p className={classes.quote}>driver has cancelled your trip</p>
           <Slide in={true} direction="up" timeout={1000}>
             <Link to="/select">
               <button
