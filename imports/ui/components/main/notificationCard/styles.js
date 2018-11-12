@@ -13,8 +13,6 @@ const styles = theme => ({
     marginLeft: "15px"
   },
   pending: {
-    border: "2px solid gray",
-    borderRadius: "8px",
     height: "30px",
     margin: "20px auto",
     fontSize: "18px",
@@ -23,7 +21,8 @@ const styles = theme => ({
   },
   pendingText: {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    paddingTop: "3px"
   },
   confirmationButton: {
     height: "50px",
