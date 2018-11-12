@@ -12,7 +12,7 @@ This is a solution to reduce traffic, polution and a way to get know your commun
 
 ## Technologies Used: 
 
-`backend`: Meteor
+`backend`: Meteor, MongoDB 
 `frontend`: React.js, CSS
 
 ## Features: 
@@ -27,6 +27,7 @@ Drivers can choose a passenger and once both parties accept the ride, they'll pr
 - Run `meteor` frotend
 - Run `meteor mongo` backend 
 
+![joinride](https://user-images.githubusercontent.com/40447526/48325408-4ce53d80-e5ea-11e8-9652-3f1baba3d177.jpg)
 
 
 
