@@ -13,7 +13,8 @@ import {
 import PassengerList from "../PassengerList";
 import NotificationCard from "../notificationCard/index";
 import { UsersInfoContext } from "../../context/UsersInfoProvider";
-import './styles';
+import "./styles";
+import PropTypes from "prop-types";
 
 library.add(faSearchLocation, faMapMarkedAlt, faAngleDoubleRight);
 
@@ -32,8 +33,6 @@ class Header extends React.Component {
   };
 
   getLocation = () => {
-    // setInterval(
-    //   () => {
     navigator.geolocation.getCurrentPosition(
       success => {
         const myLocation = {
@@ -48,33 +47,12 @@ class Header extends React.Component {
         distanceFilter: 1
       }
     );
-
-    //   },
-
-    //   2000
-    // );
-
-    // const watchId = navigator.geolocation.watchPosition(
-    //   success => {
-    //     console.log(success.coords);
-    //     const myLocation = {
-    //       lat: success.coords.latitude,
-    //       lng: success.coords.longitude
-    //     };
-    //     Meteor.call("usersInfo.getLocation", myLocation);
-    //   },
-    //   err => console.log(err)
-    // );
-
-    // console.log("watchID: ", watchId);
   };
 
   render() {
     const { classes } = this.props;
-
     return (
       <div className={classes.headerWrapper}>
-     
         <SimpleMenu />
         <img
           alt="company's logo"
@@ -149,5 +127,9 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  classes: PropTypes.object
+};
 
 export default withStyles(styles)(Header);

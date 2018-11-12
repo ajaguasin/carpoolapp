@@ -11,10 +11,7 @@ class SideBar extends Component {
     const { drawerClickHandler } = this.props;
     return (
       <div className="sidebarwrapper">
-        <FontAwesomeIcon
-          icon="angle-double-right"
-          // onClick={() => drawerClickHandler()}
-        />
+        <FontAwesomeIcon icon="angle-double-right" />
       </div>
     );
   }

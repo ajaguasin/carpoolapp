@@ -4,8 +4,8 @@ const styles = theme => ({
     position: "fixed",
     bottom: "0px",
     left: "0px",
-    height: "200px",
-    width: "25vw"
+    width: "25vw",
+    margin: "0 auto"
   },
   text: {
     fontSize: "25px",
@@ -29,7 +29,6 @@ const styles = theme => ({
     height: "50px",
     display: "flex",
     fontSize: "30px",
-    // backgroundColor: "#31455A",
     justifyContent: "space-around",
     margin: "20px auto"
   }

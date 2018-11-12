@@ -3,10 +3,9 @@ import Selection from "../../components/selection/Selection";
 import { UsersInfoContext } from "../../components/context/UsersInfoProvider";
 import { Meteor } from "meteor/meteor";
 import "./styles";
+import PropTypes from "prop-types";
+
 export default class Select extends Component {
-  // componentDidMount() {
-  //   Meteor.call("rides.deleteRide");
-  // }
   render() {
     return (
       <div class="selection-page">
@@ -19,3 +18,9 @@ export default class Select extends Component {
     );
   }
 }
+
+Select.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object
+};

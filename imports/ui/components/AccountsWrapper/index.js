@@ -15,20 +15,19 @@ export default class AccountsUIWrapper extends Component {
     this.myRef = React.createRef();
   }
   componentDidMount() {
-    // Use Meteor Blaze to render login buttons
     this.view = Blaze.render(
       Template.loginButtons,
       ReactDOM.findDOMNode(this.refs.container)
     );
   }
   componentWillUnmount() {
-    Blaze.remove(this.view); // Clean up Blaze view
+    Blaze.remove(this.view);
   }
   render() {
     return (
       <React.Fragment>
         <div className="container">
-          <img src="/images/Logo-Front-page@3x.png" className="frontLogo"/>
+          <img src="/images/Logo-Front-page@3x.png" className="frontLogo" />
 
           <div className="arrow bounce">
             <a className="icon" href="#" />
@@ -37,6 +36,6 @@ export default class AccountsUIWrapper extends Component {
           <span ref="container" />
         </div>
       </React.Fragment>
-    ); // Render a placeholder
+    );
   }
 }

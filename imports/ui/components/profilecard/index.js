@@ -5,6 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import styles from "./styles";
 import Gravatar from "react-gravatar";
+import PropTypes from "prop-types";
 
 class ProfileCard extends Component {
   render() {
@@ -38,5 +39,15 @@ class ProfileCard extends Component {
     );
   }
 }
+
+ProfileCard.propTypes = {
+  users: PropTypes.objectOf({
+    profileInformation: PropTypes.objectOf({
+      carModel: PropTypes.string.isRequired,
+      fullName: PropTypes.string.isRequired,
+      phoneNumber: PropTypes.number.isRequired
+    })
+  })
+};
 
 export default withStyles(styles)(ProfileCard);
