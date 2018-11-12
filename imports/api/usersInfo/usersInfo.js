@@ -1,15 +1,6 @@
-/**
- * This creates the usersInfo collection in Mongo
- */
-
 import { Mongo } from "meteor/mongo";
 export const UsersInfo = new Mongo.Collection("usersInfo");
 
-/**
- *
- * Methods
- *
- */
 Meteor.methods({
   "usersInfo.driverToggle"(myUserInfo) {
     UsersInfo.update(
@@ -142,9 +133,3 @@ Meteor.methods({
     );
   }
 });
-
-// if (Meteor.isServer) {
-//   Meteor.publish("UsersInfo", function usersPublication() {
-//     return UsersInfo.find({});
-//   });
-// }

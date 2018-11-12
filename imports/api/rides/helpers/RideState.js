@@ -63,7 +63,6 @@ class RideState {
         $set: {
           passengerId: passengerId,
           rideStates: this.currentState.value
-          // rideStates: STATES[newState.value] <- Do I need it set to this ??
         }
       }
     );

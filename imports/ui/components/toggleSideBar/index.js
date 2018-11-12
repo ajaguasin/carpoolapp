@@ -23,8 +23,17 @@ class SideBar extends Component {
     let btn_class = this.state.headerOn ? "headeron" : "headeroff";
     const { drawerClickHandler } = this.props;
     return (
+
+      <div className="sidebarwrapper">
+        <FontAwesomeIcon icon="angle-double-right" />
+
       <div className={btn_class} onClick={this.changePosition.bind(this)}>
+
         <FontAwesomeIcon icon="angle-double-left" className="toggleicon" />
+
+        <FontAwesomeIcon icon="angle-double-right" className="toggleicon" />
+
+
       </div>
     );
   }
