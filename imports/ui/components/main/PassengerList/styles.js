@@ -13,6 +13,17 @@ const styles = theme => ({
     height: "10%",
     background: "#29eecb"
   },
+  reloadButton: {
+    cursor: "pointer",
+    borderRadius: "50px 50px",
+    boxShadow: "0px 0px 13px 1px rgba(0,0,0,0.73)",
+    border: "none",
+    textTransform: "uppercase",
+    fontSize: "12px",
+    width: 100,
+    background: "#29eecb",
+    height: 50
+  },
   animation: {
     fontSize: "50px",
     display: "flex",
