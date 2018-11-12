@@ -31,10 +31,14 @@ class PassengerList extends Component {
       })
       .filter(passenger => {
         return (
-          (passenger.destination.lat === myUserInfo[0].destination.lat &&
-            passenger.destination.long === myUserInfo[0].destination.long) ||
-          (passenger.destination.lat === !null &&
-            passenger.destination.long === !null)
+          passenger.destination.lat === myUserInfo[0].destination.lat &&
+          passenger.destination.long === myUserInfo[0].destination.long
+        );
+      })
+      .filter(passenger => {
+        return (
+          passenger.destination.lat !== null &&
+          passenger.destination.long !== null
         );
       });
     console.log(passengers);
