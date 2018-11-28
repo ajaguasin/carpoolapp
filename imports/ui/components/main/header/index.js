@@ -1,8 +1,8 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
-import SimpleMenu from "../menu";
-import landmarks from "../map/marker/data";
+import SimpleMenu from "../Menu";
+import landmarks from "../Map/marker/data";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,7 +11,7 @@ import {
   faAngleDoubleRight
 } from "@fortawesome/free-solid-svg-icons";
 import PassengerList from "../PassengerList";
-import NotificationCard from "../notificationCard/index";
+import NotificationCard from "../NotificationCard/index";
 import { UsersInfoContext } from "../../context/UsersInfoProvider";
 import PropTypes from "prop-types";
 
