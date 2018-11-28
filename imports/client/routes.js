@@ -10,7 +10,7 @@ const Layout = props => {
   return (
     <React.Fragment>
       <UsersInfoContext.Consumer>
-        {({ allUserInfo, myUserInfo, loading }) => {
+        {({ myUserInfo, loading }) => {
           if (!loading && myUserInfo.length) {
             if (!loading && !myUserInfo[0].profileComplete) {
               return (

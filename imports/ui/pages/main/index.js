@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Header from "../../components/main/header";
+import Header from "../../components/main/Header";
 import SideBar from "../../components/toggleSideBar";
-import Map from "../../components/main/map";
+import Map from "../../components/main/Map";
 import "./styles.css";
 import Slide from "@material-ui/core/Slide";
 

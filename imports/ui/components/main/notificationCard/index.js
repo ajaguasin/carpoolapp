@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProfileCard from "../../profileCard/index";
+import ProfileCard from "../../ProfileCard/index";
 import styles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";

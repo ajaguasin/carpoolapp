@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
-import AccountsUIWrapper from "../accountsWrapper";
-import { Link } from "react-router-dom";
+import AccountsUIWrapper from "../AccountsWrapper";
 import PropTypes from "prop-types";
 
 class LoginForm extends Component {
@@ -9,7 +8,6 @@ class LoginForm extends Component {
     super(props);
   }
   render() {
-    const { allUserInfo, loading } = this.props;
     return (
       <div className="app-wrapper">
         <AccountsUIWrapper />

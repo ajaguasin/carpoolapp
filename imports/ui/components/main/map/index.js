@@ -70,8 +70,39 @@ class Map extends Component {
     );
   };
 
+  renderPassengers = (allUserInfo, myUserInfo) => {
+    let passengers = allUserInfo
+      .filter(record => {
+        return record.passenger;
+      })
+      .filter(record => {
+        return !record.occupied;
+      })
+      .filter(passenger => {
+        return (
+          passenger.destination.lat === myUserInfo[0].destination.lat &&
+          passenger.destination.long === myUserInfo[0].destination.long
+        );
+      })
+      .filter(passenger => {
+        return (
+          passenger.destination.lat !== null &&
+          passenger.destination.long !== null
+        );
+      });
+    return passengers.map((passenger, index) => {
+      <Marker
+        key={index}
+        longitude={passenger.currentLocation.long}
+        latitude={passenger.currentLocation.lat}
+      >
+        <Pin size={15} myPin={true} current={true} />
+      </Marker>;
+    });
+  };
+
   render() {
-    const { myUserInfo, classes, loading } = this.props;
+    const { myUserInfo, classes, loading, allUserInfo } = this.props;
     return (
       <div className={classes.mapContainer}>
         <SideBar />
@@ -108,6 +139,8 @@ class Map extends Component {
           {!loading &&
             myUserInfo[0].currentLocation.long !== null &&
             this.renderCurrpin(myUserInfo)}
+
+          {!loading && this.renderPassengers(allUserInfo, myUserInfo)}
         </ReactMapGL>
       </div>
     );
