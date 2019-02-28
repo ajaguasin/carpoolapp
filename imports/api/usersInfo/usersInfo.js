@@ -1,37 +1,37 @@
 import { Mongo } from "meteor/mongo";
 export const UsersInfo = new Mongo.Collection("usersInfo");
-import SimpleSchema from "simpl-schema";
-UsersInfo.schema = new SimpleSchema({
-  id: String,
-  email: String,
-  profileComplete: Boolean,
-  profileInformation: String,
-  profileInformation: {
-    type: Object
-    // fullName: String,
-    // phoneNumber: String,
-    // carModel: String
-  },
-  driver: Boolean,
-  passenger: Boolean,
-  occupied: Boolean,
-  currentLocation: {
-    type: Object
-    // long: { type: Number, required: false },
-    // lat: { type: Number, required: false }
-  },
-  destination: {
-    type: Object
-    // long: { type: Number, required: false },
-    // lat: { type: Number, required: false }
-  },
-  partnerStatus: {
-    type: Object
-    // partnerId: { type: String, required: false },
-    // partnerPending: Boolean,
-    // partnerMatched: Boolean
-  }
-});
+// import SimpleSchema from "simpl-schema";
+// UsersInfo.schema = new SimpleSchema({
+//   id: String,
+//   email: String,
+//   profileComplete: Boolean,
+//   profileInformation: String,
+//   profileInformation: {
+//     type: Object
+//     // fullName: String,
+//     // phoneNumber: String,
+//     // carModel: String
+//   },
+//   driver: Boolean,
+//   passenger: Boolean,
+//   occupied: Boolean,
+//   currentLocation: {
+//     type: Object
+//     // long: { type: Number, required: false },
+//     // lat: { type: Number, required: false }
+//   },
+//   destination: {
+//     type: Object
+//     // long: { type: Number, required: false },
+//     // lat: { type: Number, required: false }
+//   },
+//   partnerStatus: {
+//     type: Object
+//     // partnerId: { type: String, required: false },
+//     // partnerPending: Boolean,
+//     // partnerMatched: Boolean
+//   }
+// });
 
 Meteor.methods({
   "usersInfo.driverToggle"(myUserInfo) {
