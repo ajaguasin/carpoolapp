@@ -20,7 +20,7 @@
     "gravatar": "^1.6.0",
     "i": "^0.3.6",
     "meteor-node-stubs": "^0.4.1",
-    "npm": "^6.4.1",
+    "npm": "^6.13.4",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-final-form": "^3.6.7",
